@@ -1,0 +1,475 @@
+﻿'V2.exe' (CoreCLR: DefaultDomain): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Private.CoreLib.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\V2.dll'. Symbols loaded.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.17\System.Windows.Forms.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.17\System.Windows.Forms.Primitives.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.ComponentModel.Primitives.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.InteropServices.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Drawing.Primitives.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Collections.Specialized.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.17\System.Drawing.Common.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Threading.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Diagnostics.TraceSource.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Collections.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Data.Common.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Transactions.Local.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.ComponentModel.TypeConverter.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.ComponentModel.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Xml.ReaderWriter.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Private.Xml.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Diagnostics.Process.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\Emgu.CV.Platform.NetStandard.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\netstandard.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.InteropServices.RuntimeInformation.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.IO.FileSystem.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\Microsoft.Win32.Primitives.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.ComponentModel.EventBasedAsync.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Threading.Thread.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.17\Accessibility.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.Extensions.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\MigraDoc.DocumentObjectModel.netstandard.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Memory.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.ObjectModel.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.17\Microsoft.Win32.SystemEvents.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Collections.Concurrent.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Buffers.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Diagnostics.FileVersionInfo.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\System.Resources.Extensions.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.17\System.Drawing.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Linq.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\HidSharp.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Threading.ThreadPool.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Threading.Overlapped.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Collections.NonGeneric.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\DALSA.SaperaLT.SapClassBasic.Core.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Console.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.CompilerServices.VisualC.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Text.Encoding.Extensions.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\Microsoft.Win32.Registry.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Private.Uri.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.Serialization.Formatters.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\Newtonsoft.Json.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Linq.Expressions.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.Numerics.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.Serialization.Primitives.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Reflection.Emit.ILGeneration.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Reflection.Primitives.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Reflection.Emit.Lightweight.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'Anonymously Hosted DynamicMethods Assembly'. 
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\Emgu.CV.Bitmap.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\Tensorflow.Binding.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\Tensorflow.Keras.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\MethodBoundaryAspect.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\mscorlib.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\Serilog.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\Serilog.Sinks.Console.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\Google.Protobuf.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\System.Runtime.CompilerServices.Unsafe.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\HDF5CSharp.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\HDF.PInvoke.1.10.dll'. 
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Threading.Tasks.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Diagnostics.DiagnosticSource.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Diagnostics.Tracing.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Threading.Timer.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Security.Principal.Windows.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Security.Claims.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Text.Encoding.CodePages.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'V2.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Resources.ResourceManager.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-40 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-45 ms
+Predict:--PCS-1Time-53 ms
+Predict:--PCS-1Time-56 ms
+Predict:--PCS-1Time-61 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-56 ms
+Predict:--PCS-1Time-56 ms
+Predict:--PCS-1Time-56 ms
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-19 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-2Time-40 ms
+Predict:--PCS-2Time-40 ms
+Predict:--PCS-1Time-19 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-21 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-21 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-41 ms
+Predict:--PCS-1Time-40 ms
+Predict:--PCS-1Time-43 ms
+Predict:--PCS-1Time-43 ms
+Predict:--PCS-1Time-41 ms
+Predict:--PCS-1Time-44 ms
+Predict:--PCS-1Time-46 ms
+Predict:--PCS-1Time-47 ms
+Predict:--PCS-1Time-48 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-40 ms
+Predict:--PCS-1Time-40 ms
+Predict:--PCS-1Time-42 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-2Time-46 ms
+Predict:--PCS-2Time-46 ms
+Predict:--PCS-1Time-44 ms
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-66 ms
+Predict:--PCS-1Time-66 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-3Time-63 ms
+Predict:--PCS-3Time-63 ms
+Predict:--PCS-3Time-63 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-34 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-34 ms
+Predict:--PCS-1Time-34 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-68 ms
+Predict:--PCS-1Time-73 ms
+Predict:--PCS-1Time-76 ms
+Predict:--PCS-1Time-80 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-2Time-40 ms
+Predict:--PCS-2Time-40 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-2Time-38 ms
+Predict:--PCS-2Time-38 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-34 ms
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-61 ms
+Predict:--PCS-1Time-62 ms
+Predict:--PCS-1Time-63 ms
+Predict:--PCS-1Time-64 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-41 ms
+Predict:--PCS-1Time-43 ms
+Predict:--PCS-1Time-45 ms
+Predict:--PCS-2Time-61 ms
+Predict:--PCS-2Time-61 ms
+Predict:--PCS-2Time-62 ms
+Predict:--PCS-2Time-62 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-43 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-19 ms
+Predict:--PCS-1Time-28 ms
+Predict:--PCS-2Time-41 ms
+Predict:--PCS-2Time-41 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-21 ms
+Predict:--PCS-2Time-36 ms
+Predict:--PCS-2Time-36 ms
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-34 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-2Time-37 ms
+Predict:--PCS-2Time-37 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-40 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-18 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-28 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-19 ms
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Predict:--PCS-1Time-21 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-3Time-51 ms
+Predict:--PCS-3Time-51 ms
+Predict:--PCS-3Time-51 ms
+Predict:--PCS-1Time-21 ms
+Predict:--PCS-2Time-33 ms
+Predict:--PCS-2Time-33 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-21 ms
+Predict:--PCS-1Time-19 ms
+Predict:--PCS-1Time-19 ms
+Predict:--PCS-1Time-52 ms
+Predict:--PCS-1Time-56 ms
+Predict:--PCS-1Time-57 ms
+Predict:--PCS-1Time-59 ms
+Predict:--PCS-1Time-28 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-2Time-49 ms
+Predict:--PCS-2Time-49 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-34 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-2Time-44 ms
+Predict:--PCS-2Time-44 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-21 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-19 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-47 ms
+Predict:--PCS-1Time-49 ms
+Predict:--PCS-1Time-55 ms
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Predict:--PCS-1Time-22 ms
+Predict:--PCS-1Time-58 ms
+Predict:--PCS-1Time-59 ms
+Predict:--PCS-1Time-62 ms
+Predict:--PCS-1Time-62 ms
+Predict:--PCS-2Time-75 ms
+Predict:--PCS-2Time-75 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-28 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-34 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-39 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-2Time-41 ms
+Predict:--PCS-2Time-41 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-38 ms
+Predict:--PCS-1Time-76 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-33 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-35 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-2Time-38 ms
+Predict:--PCS-2Time-38 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-27 ms
+Predict:--PCS-1Time-20 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Predict:--PCS-1Time-28 ms
+Predict:--PCS-1Time-28 ms
+Predict:--PCS-2Time-53 ms
+Predict:--PCS-2Time-53 ms
+Predict:--PCS-1Time-41 ms
+Predict:--PCS-1Time-41 ms
+Predict:--PCS-1Time-42 ms
+Predict:--PCS-1Time-42 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-25 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-26 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-29 ms
+Predict:--PCS-1Time-28 ms
+Predict:--PCS-1Time-28 ms
+Predict:--PCS-2Time-44 ms
+Predict:--PCS-2Time-44 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-40 ms
+Predict:--PCS-1Time-41 ms
+Predict:--PCS-2Time-58 ms
+Predict:--PCS-2Time-58 ms
+Predict:--PCS-2Time-100 ms
+Predict:--PCS-2Time-100 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-37 ms
+Predict:--PCS-1Time-21 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-24 ms
+Predict:--PCS-1Time-19 ms
+Predict:--PCS-1Time-23 ms
+Predict:--PCS-2Time-37 ms
+Predict:--PCS-2Time-37 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-31 ms
+Predict:--PCS-1Time-32 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-30 ms
+Predict:--PCS-1Time-34 ms
+Predict:--PCS-1Time-36 ms
+Predict:--PCS-1Time-36 ms
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+The thread 0x5b24 has exited with code 0 (0x0).
+The thread 0x1e78 has exited with code 0 (0x0).
+The thread 0x34b8 has exited with code 0 (0x0).
+The thread 0x5374 has exited with code 0 (0x0).
+The thread 0x3d7c has exited with code 0 (0x0).
+The thread 0x3be4 has exited with code 0 (0x0).
+Exception thrown: 'System.TimeoutException' in HidSharp.dll
+The thread 0x4858 has exited with code 0 (0x0).
+The program '[10068] V2.exe' has exited with code 0 (0x0).

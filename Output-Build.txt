@@ -1,0 +1,74 @@
+﻿Rebuild started...
+1>------ Rebuild All started: Project: uEyeApp, Configuration: Debug Any CPU ------
+Restored D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\uEyeApp.csproj (in 261 ms).
+1>C:\Users\Microptik i9\.nuget\packages\system.resources.extensions\7.0.0\buildTransitive\netcoreapp2.0\System.Resources.Extensions.targets(4,5): warning : System.Resources.Extensions 7.0.0 doesn't support net5.0-windows and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk.
+1>Emgu.CV.runtime.windows nuget package deploying x86 x64 binary for Windows
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(10,7,10,13): warning CS0105: The using directive for 'System' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(12,7,12,21): warning CS0105: The using directive for 'System.Drawing' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(14,7,14,14): warning CS0105: The using directive for 'Emgu.CV' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(15,7,15,24): warning CS0105: The using directive for 'Emgu.CV.Structure' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(31,7,31,18): warning CS0105: The using directive for 'System.Data' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(11,7,11,13): warning CS0105: The using directive for 'System' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(12,7,12,33): warning CS0105: The using directive for 'System.Collections.Generic' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(14,7,14,18): warning CS0105: The using directive for 'System.Linq' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(25,7,25,13): warning CS0105: The using directive for 'System' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(26,7,26,33): warning CS0105: The using directive for 'System.Collections.Generic' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(27,7,27,18): warning CS0105: The using directive for 'System.Linq' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(28,7,28,17): warning CS0105: The using directive for 'Tensorflow' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(30,7,30,33): warning CS0105: The using directive for 'System.Collections.Generic' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(31,7,31,17): warning CS0105: The using directive for 'Tensorflow' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(32,7,32,23): warning CS0105: The using directive for 'Tensorflow.Keras' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(33,14,33,32): warning CS0105: The using directive for 'Binding' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(38,7,38,30): warning CS0105: The using directive for 'Tensorflow.Keras.Engine' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(46,7,46,29): warning CS0105: The using directive for 'System.Threading.Tasks' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(50,7,50,22): warning CS0105: The using directive for 'Tensorflow.Util' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(54,7,54,17): warning CS0105: The using directive for 'Tensorflow' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(55,7,55,23): warning CS0105: The using directive for 'Tensorflow.Keras' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(60,14,60,32): warning CS0105: The using directive for 'Binding' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(80,7,80,23): warning CS0105: The using directive for 'Tensorflow.Keras' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(82,7,82,30): warning CS0105: The using directive for 'Tensorflow.Keras.Models' appeared previously in this namespace
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1673,27,1673,42): warning CS0612: 'HidDeviceLoader' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\LiberiDalsa\AboutBox.cs(45,67,45,107): warning SYSLIB0012: 'Assembly.CodeBase' is obsolete: 'Assembly.CodeBase and Assembly.EscapedCodeBase are only included for .NET Framework compatibility. Use Assembly.Location instead.'
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\CamDALSA\DalsaCam.cs(192,95,192,96): warning CS0642: Possible mistaken empty statement
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\CamDALSA\DalsaCam.cs(249,98,249,99): warning CS0642: Possible mistaken empty statement
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\CamDALSA\DalsaCam.cs(274,91,274,92): warning CS0642: Possible mistaken empty statement
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1673,59,1673,74): warning CS0612: 'HidDeviceLoader' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1673,55,1673,76): warning CS0612: 'HidDeviceLoader.HidDeviceLoader()' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1683,17,1683,69): warning CS0612: 'HidDeviceLoader.GetDeviceOrDefault(int?, int?, int?, string)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1685,26,1685,78): warning CS0612: 'HidDeviceLoader.GetDeviceOrDefault(int?, int?, int?, string)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1705,26,1705,74): warning CS0612: 'HidDeviceLoader.GetDeviceOrDefault(int?, int?, int?, string)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1706,26,1706,74): warning CS0612: 'HidDeviceLoader.GetDeviceOrDefault(int?, int?, int?, string)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1707,26,1707,75): warning CS0612: 'HidDeviceLoader.GetDeviceOrDefault(int?, int?, int?, string)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1708,26,1708,74): warning CS0612: 'HidDeviceLoader.GetDeviceOrDefault(int?, int?, int?, string)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(1709,26,1709,73): warning CS0612: 'HidDeviceLoader.GetDeviceOrDefault(int?, int?, int?, string)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML\ML.cs(411,20,411,28): warning CS0219: The variable 'fileName' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(660,26,660,34): warning CS0162: Unreachable code detected
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(714,29,714,31): warning CS0162: Unreachable code detected
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(1644,55,1644,89): warning CS0612: 'Form1.MakeReportButton_Click(object, EventArgs)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(2341,25,2341,26): warning CS0219: The variable 'x' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.Designer.cs(1576,68,1576,95): warning CS0612: 'Form1.MakeReportButton_Click(object, EventArgs)' is obsolete
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(1087,28,1087,45): warning CS0649: Field 'AnalisPredict.LoadImageLearning' is never assigned to, and will always have its default value false
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(95,23,95,28): warning CS0169: The field 'Form1.MOTOR' is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(820,27,820,34): warning CS0169: The field 'FlowAnalis.Resalt1' is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(55,30,55,38): warning CS0169: The field 'Form1.linkCell' is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(819,27,819,33): warning CS0169: The field 'FlowAnalis.Resalt' is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\LiberiDalsa\FlatFieldDlg.cs(40,18,40,32): warning CS0649: Field 'FlatFieldDlg.m_pLocalBuffer' is never assigned to, and will always have its default value null
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(81,16,81,28): warning CS0169: The field 'Form1.AverageWight' is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.Designer.cs(5097,71,5097,77): warning CS0649: Field 'Form1.chart1' is never assigned to, and will always have its default value null
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(49,27,49,38): warning CS0649: Field 'FlowCamera.CameraEroor' is never assigned to, and will always have its default value 0
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(1082,27,1082,33): warning CS0649: Field 'AnalisPredict.ErrorY' is never assigned to, and will always have its default value 0
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(1081,27,1081,33): warning CS0649: Field 'AnalisPredict.ErrorX' is never assigned to, and will always have its default value 0
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(56,32,56,42): warning CS0169: The field 'Form1.buttonCell' is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\FlowAnalis.cs(44,21,44,35): warning CS0414: The field 'FlowCamera.RestartCamStop' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(601,13,601,19): warning CS0414: The field 'ML_Nets.epochs' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML\ML.cs(35,17,35,23): warning CS0414: The field 'ML.epochs' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(53,28,53,38): warning CS0414: The field 'Form1.sqlCommand' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(1086,28,1086,45): warning CS0414: The field 'Form1.MosaicsCoutOllBad' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(36,14,36,29): warning CS0414: The field 'USB_HID.REPORT_ID_WRITE' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\ML_Net.cs(121,13,121,19): warning CS0414: The field 'ML_Net.epochs' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(1087,28,1087,46): warning CS0414: The field 'Form1.MosaicsCoutOllGood' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\DeviceHID.cs(35,14,35,28): warning CS0414: The field 'USB_HID.REPORT_ID_READ' is assigned but its value is never used
+1>D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\Form1.cs(257,22,257,37): warning CS0414: The field 'Form1.ValueMotorReset' is assigned but its value is never used
+1>uEyeApp -> D:\V2\LinearScanning  Sorter 3.1 _V2S10\LinearScanningSorter-master\bin\Debug\net5.0-windows\V2.dll
+1>Done building project "uEyeApp.csproj".
+========== Rebuild All: 1 succeeded, 0 failed, 0 skipped ==========
