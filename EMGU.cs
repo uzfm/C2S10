@@ -730,7 +730,15 @@ namespace MVision
         public Image<Bgr, byte>[] ImgSlave ;
         public Rectangle[] ROI_Master ;
         public Rectangle[] ROI_Slave;
+        public double   [] AriaM ;
+        public double   [] AriaS;
+
+
     }
+
+
+
+
 
 
     class CutImages
@@ -772,8 +780,10 @@ namespace MVision
          public float   [][] Value ;                       // детальна значеня по усіх назвах сеплів для двох сторін
          public int          IdxOut;                       // ідекс розташування в таблиці
          public int       [] IdxName = new int [2] ;                       // ідекс розташування в таблиці
-                                                 //------static---------//
-                                                 //static public String[]     NameGp;  // назви семплів
+        
+        public double[] SizeCorect = new double[2];
+        public double[] Aria = new double[2];
+
         static public List<int> SelectITM = new List<int>(); // вибираєм семпли та заносим в даний ліст для подальшої обробки.
     };
 
