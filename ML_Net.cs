@@ -93,11 +93,12 @@ namespace MVision
 {
     static public class MLD{
         static public string    Path   { get; set; }  // шлях для Моделі
-        static public string    PathSamples { get; set; }  // шлях для sepls
-        static public string [] Names        { get; set; }  // назви відів семплів (назва папки)
+        static public string    PathSamples { get; set; }  // шлях для sempls
+        static public string [] Names        { get; set; }  // назви видів семплів (назва папки)
+        static public string [] TypeALL{ get; set; }  // назви видів семплів (назва папки)
 
 
-// Кольори у форматі RGB
+        // Кольори у форматі RGB
         static public Color[] NameColor = {
     Color.FromArgb(255, 0, 0), // Червоний
     Color.FromArgb(0, 255, 0), // Зелений
@@ -129,8 +130,9 @@ namespace MVision
             // Перевірка на null, щоб уникнути помилки, якщо масив Names ще не ініціалізовано
             if (MLD.Names != null)
             {
+           
                 // Знаходимо індекс рядка "Good" в масиві Names
-                int index = Array.IndexOf(MLD.Names, args);
+                int index = Array.IndexOf(MLD.TypeALL, args);
 
                 // Перевіряємо, чи знайдено рядок "Good"
                 if (index != -1)
