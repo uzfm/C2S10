@@ -87,6 +87,10 @@ namespace MVision
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.listView3 = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.UnderType = new System.Windows.Forms.TabPage();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Goot_Show_Mosaic = new System.Windows.Forms.CheckBox();
@@ -315,7 +319,10 @@ namespace MVision
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.UnderType = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subgroups = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -351,6 +358,8 @@ namespace MVision
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.UnderType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxWeight.SuspendLayout();
@@ -1063,13 +1072,13 @@ namespace MVision
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.UnderType);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.UnderType);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -1078,6 +1087,58 @@ namespace MVision
             this.tabControl1.Size = new System.Drawing.Size(1568, 306);
             this.tabControl1.TabIndex = 45;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
+            // 
+            // UnderType
+            // 
+            this.UnderType.Controls.Add(this.treeView1);
+            this.UnderType.Controls.Add(this.button2);
+            this.UnderType.Controls.Add(this.dataGridViewUnderType);
+            this.UnderType.Location = new System.Drawing.Point(4, 25);
+            this.UnderType.Name = "UnderType";
+            this.UnderType.Size = new System.Drawing.Size(1560, 277);
+            this.UnderType.TabIndex = 10;
+            this.UnderType.Text = "Under Type";
+            this.UnderType.UseVisualStyleBackColor = true;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.treeView1.Location = new System.Drawing.Point(1123, 3);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(424, 259);
+            this.treeView1.TabIndex = 280;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(526, 18);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(106, 47);
+            this.button2.TabIndex = 279;
+            this.button2.Text = "Apply Changes";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dataGridViewUnderType
+            // 
+            this.dataGridViewUnderType.AllowUserToAddRows = false;
+            this.dataGridViewUnderType.AllowUserToDeleteRows = false;
+            this.dataGridViewUnderType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUnderType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameSmpl,
+            this.SampleSize,
+            this.Subgroups});
+            this.dataGridViewUnderType.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridViewUnderType.Location = new System.Drawing.Point(8, 5);
+            this.dataGridViewUnderType.Name = "dataGridViewUnderType";
+            this.dataGridViewUnderType.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGridViewUnderType.RowHeadersVisible = false;
+            this.dataGridViewUnderType.RowHeadersWidth = 40;
+            this.dataGridViewUnderType.RowTemplate.Height = 25;
+            this.dataGridViewUnderType.Size = new System.Drawing.Size(482, 269);
+            this.dataGridViewUnderType.TabIndex = 1;
+            this.dataGridViewUnderType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnderType_CellClick);
             // 
             // tabPage5
             // 
@@ -4111,14 +4172,37 @@ namespace MVision
             this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // UnderType
+            // contextMenuStrip1
             // 
-            this.UnderType.Location = new System.Drawing.Point(4, 25);
-            this.UnderType.Name = "UnderType";
-            this.UnderType.Size = new System.Drawing.Size(1560, 277);
-            this.UnderType.TabIndex = 10;
-            this.UnderType.Text = "Under Type";
-            this.UnderType.UseVisualStyleBackColor = true;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // NameSmpl
+            // 
+            this.NameSmpl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NameSmpl.FillWeight = 200F;
+            this.NameSmpl.HeaderText = "Names";
+            this.NameSmpl.MaxInputLength = 100;
+            this.NameSmpl.MinimumWidth = 6;
+            this.NameSmpl.Name = "NameSmpl";
+            this.NameSmpl.ReadOnly = true;
+            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameSmpl.Width = 200;
+            // 
+            // SampleSize
+            // 
+            this.SampleSize.HeaderText = "Sample Size";
+            this.SampleSize.Name = "SampleSize";
+            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Subgroups
+            // 
+            this.Subgroups.HeaderText = "Sub Groups";
+            this.Subgroups.Name = "Subgroups";
+            this.Subgroups.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Subgroups.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Form1
             // 
@@ -4131,8 +4215,6 @@ namespace MVision
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.IsMdiContainer = true;
-            this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MicrOptik";
@@ -4179,6 +4261,8 @@ namespace MVision
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.UnderType.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -4568,6 +4652,13 @@ namespace MVision
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel13;
         private System.Windows.Forms.NumericUpDown GAIN;
         private System.Windows.Forms.TabPage UnderType;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.DataGridView dataGridViewUnderType;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameSmpl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SampleSize;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Subgroups;
     }
 }
 

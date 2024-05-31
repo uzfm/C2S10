@@ -36,6 +36,8 @@ namespace MVision
         {
             public Mat[] Img = new Mat[2];
             public Rectangle[] ROI = new Rectangle[2];
+            public double[] SizeCorect = new double[2];
+            public double[] Aria = new double[2];
             public int ID { get; set; }
         }
 
@@ -152,6 +154,8 @@ namespace MVision
         class CutImg
         {
             public Mat[] Img = new Mat[2];
+            public double[] Aria = new double[2];
+            public double[] SizeCorect = new double[2];
             public Rectangle [] ROI = new Rectangle[2];
             public int ID { get; set; }
         }
@@ -200,17 +204,11 @@ namespace MVision
             ROI_Main = ImagsCam[0].ROI;
 
             for (int ID = 0; ID < 2; ID++) {
-
-                 // ImagsCam[ID] = ImagsCam[ID].Resize(ImagsCam[ID].Width * 4, ImagsCam[ID].Height *4, Inter.Linear);
-
                 //зжимаємо фото
                 img = ImagsCam[ID].Resize(ImagsCam[ID].Width/ Rosolution, ImagsCam[ID].Height/ Rosolution, Inter.Linear);
          
-
                 //mg = imgtest1;
                 NewMat = new Mat();
-
-
 
                 // склейка фото 3 трьох частитн
                 if (CountContact[ID] >= 2) { ImagContact[ID].ROI = new Rectangle(0, (img.Height), img.Width, (img.Height)); }
@@ -219,24 +217,17 @@ namespace MVision
                 if (ImagContact[ID] != null)
                 {
                     CvInvoke.VConcat(ImagContact[ID], img, NewMat);
-                }
-                else { NewMat = img.Mat; }
+                } else { NewMat = img.Mat; }
+
+
                 //    NewMat = img.Mat;
                 ImagContact[ID] = NewMat.ToImage<Bgr, byte>();
             }
 
-
-
-            Image<Bgr, byte> [] imgAVT = new Image<Bgr, byte>[2];
+                Image<Bgr, byte> [] imgAVT = new Image<Bgr, byte>[2];
            
-
-
-
-
                 imgAVT[Master] = ImagContact[Master].Clone();
                 imgAVT[Slave]  = ImagContact[Slave].Clone();
-
-
 
 
             if (ImagContact[Master].Height == (img.Height * 2)){
@@ -246,10 +237,9 @@ namespace MVision
 
 
 
-
                 //**----------   визначаєм контори  -----------------**//
-                var CutCTR_SV1 = FindBlobMini(ImagContact[0], 0);
-                var CutCTR_SV2 = FindBlobMini(ImagContact[1], 0);
+                CutCTR CutCTR_SV1 = FindBlobMini(ImagContact[0], 0);
+                CutCTR CutCTR_SV2 = FindBlobMini(ImagContact[1], 0);
 
 
          
@@ -275,12 +265,6 @@ namespace MVision
                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     for (int i = 0; i < CutCTR_SV.CUT.Length; i++)
                     {
-
-                       // CutCTR_SV.ROI[i].X--;
-                       // CutCTR_SV.ROI[i].Y--;
-                        //CutCTR_SV.ROI[i].Width= CutCTR_SV.ROI[i].Width + 2;
-                       // CutCTR_SV.ROI[i].Height= CutCTR_SV.ROI[i].Height + 2;
-
 
                         int scale = 0;
                         /****************************/
@@ -370,12 +354,12 @@ namespace MVision
                                 CvInvoke.VConcat(Old_IMG[ID], ImagsCam[ID], NewMatAI);
 
 
-                                //CutImgClass.Img = NewMatAI.ToImage<Bgr, byte>().Copy().Resize(100, 100, Inter.Linear).Mat;
+                          
                                 TempColl = new CutImg();
+                                TempColl.Aria[ID]    = (CutCTR_SV.Aria[i] * (double)Rosolution);
                                 TempColl.Img[ID] = NewMatAI.ToImage<Bgr, byte>().Copy().Resize(64, 64, Inter.Linear).Mat;
                                 TempColl.ROI[ID] = ROI;
-                                //CollecTemp[ID].TryAdd(TempColl);
-                               // if (ListCutImg[ID] == null) { ListCutImg = new List<CutImg>(); }
+    
                                 if (ID==Master) {
                                     if ((SAV.DT.Analys.SelectPS) && (SAV.DT.Device.LiveView)) { 
                                     CvInvoke.Rectangle(imgAVT[ID].Mat, ROIT, new Bgr(Color.Blue).MCvScalar, 1);
@@ -397,7 +381,7 @@ namespace MVision
                                                 if ((SAV.DT.Analys.SelectPS)&& (SAV.DT.Device.LiveView)) { 
                                                 CvInvoke.Rectangle(imgAVT[ID].Mat, ROIT, new Bgr(Color.Blue).MCvScalar, 1);
                                                 CvInvoke.Rectangle(imgAVT[ID].Mat, ROIB, new Bgr(Color.Red).MCvScalar, 1);}
-
+                                                ListCutImg[j].Aria[Slave] = TempColl.Aria[Slave];
                                                 ListCutImg[j].Img[Slave] = TempColl.Img[Slave];
                                                 ListCutImg[j].ROI[Slave] = TempColl.ROI[Slave];
                                                 break;
@@ -434,12 +418,10 @@ namespace MVision
 
                                     ImagsCam[ID].ROI = ROI;
                                     TempColl = new CutImg();
+                                    TempColl.Aria[ID] = (CutCTR_SV.Aria[i] * (double)Rosolution);
                                     TempColl.Img[ID] = ImagsCam[ID].Copy().Resize(64, 64, Inter.Linear).Mat;
                                     TempColl.ROI[ID] = ROI;
-                                    /// CollecTemp[ID].TryAdd(TempColl);
-
-
-                                    //if (ListCutImg[ID]==null) { ListCutImg[ID] = new List<CutImg>(); }
+                      
 
                                     /************************    Тут вирізає картинки з Master CAM    *****************************************/
                                     if (ID == Master) {
@@ -485,10 +467,10 @@ namespace MVision
                                             {
 
                                                 if ((SAV.DT.Analys.SelectPS)&&(SAV.DT.Device.LiveView)) { CvInvoke.Rectangle(imgAVT[ID].Mat, CutCTR_SV.ROI[i], new Bgr(Color.LightSeaGreen).MCvScalar, 1); }
-                                                    
 
-                                                    ListCutImg[IdxJ].Img[Slave] = TempColl.Img[Slave];
-                                                    ListCutImg[IdxJ].ROI[Slave] = TempColl.ROI[Slave];
+                                                    ListCutImg[IdxJ].Aria[Slave] = TempColl.Aria[Slave];
+                                                    ListCutImg[IdxJ].Img[Slave]  = TempColl.Img [Slave];
+                                                    ListCutImg[IdxJ].ROI[Slave]  = TempColl.ROI [Slave];
                                                     ImagsCam[ID].ROI = ROI_Main;
                                                     //CvInvoke.Rectangle(ImagsCam[Slave], ROI, new Bgr(Color.Blue).MCvScalar, 9);
                                                     //break;
@@ -502,13 +484,6 @@ namespace MVision
                                     {
 
                                         ROI = CutCTR_SV.ROI[i];
-                                        //Top IMG
-                                        //ROI.Y -= imgAVT[ID].Height / 2;
-
-                                        //Bottom IMG
-                                        //ROI = CutCTR_SV.ROI[i];
-                                        //ROI.Height = CatHeight - CutCTR_SV.ROI[i].Y;
-
                                         ROI.Y *= Rosolution;
                                         ROI.X *= Rosolution;
                                         ROI.Width *= Rosolution;
@@ -518,17 +493,8 @@ namespace MVision
                                         TempColl = new CutImg();
                                         TempColl.Img[ID] = Old_IMG[ID].Copy().Resize(64, 64, Inter.Linear).Mat;
                                         TempColl.ROI[ID] = ROI;
-                                        /// CollecTemp[ID].TryAdd(TempColl);
 
 
-                                        //if (ListCutImg[ID]==null) { ListCutImg[ID] = new List<CutImg>(); }
-                                        //if (ID == Master)
-                                        //{
-                                        //    CvInvoke.Rectangle(imgAVT[ID].Mat, CutCTR_SV.ROI[i], new Bgr(Color.Green).MCvScalar, 1);
-                                        //    ListCutImg.Add(TempColl);
-                                        //}
-                                        //else
-                                        //{}
 
 
                            
@@ -547,7 +513,8 @@ namespace MVision
                                                     if (ListCutImg[j].Img[Slave] == null)  {
                                                     if (ErrorCount !=0) { ErrorCount--; };
                                                     if ((SAV.DT.Analys.SelectPS)&& (SAV.DT.Device.LiveView)) { CvInvoke.Rectangle(imgAVT[ID].Mat, CutCTR_SV.ROI[i], new Bgr(Color.LightYellow).MCvScalar, 2); }
-
+                                                    
+                                                        ListCutImg[j].Aria[Slave] = TempColl.Aria[Slave];
                                                         ListCutImg[j].Img[Slave] = TempColl.Img[Slave];
                                                         ListCutImg[j].ROI[Slave] = TempColl.ROI[Slave];
                                                         Old_IMG[ID].ROI = ROI_Main;
@@ -571,11 +538,6 @@ namespace MVision
 
 
 
-
-                    //if ((DTLimg.Length != 0)&&(DTLimg[0] != null) && (DTLimg[Master].Img.Length != 0 )) { 
-                    //MosaicaEvent(DTLimg);
-                    //}
-
                 }
 
 
@@ -592,19 +554,7 @@ namespace MVision
                      DTLimgs[0] = new DTLimg();
                    if ( (ListCutImg[idx].Img[Master] == null) || (ListCutImg[idx].Img[Slave] == null) ) { break; }
 
-                        //DTLimgs[0].Img[Master] = ListCutImg[idx].Img[Master].ToImage<Bgr, byte>();
-                        //DTLimgs[0].Name[Master] = "Bead";
 
-                        //DTLimgs[0].Img[Slave]  = ListCutImg[idx].Img[Slave].ToImage<Bgr, byte>();
-                        //DTLimgs[0].Name[Slave] = "Bead";
-
-                        //DTLimgs[0].Value = new float[2][];
-
-                        //DTLimgs[0].Value[Slave] = new float[1];
-                        //    DTLimgs[0].Value[Slave][0] = 1;
-
-                        //    DTLimgs[0].Value[Master] = new float[1];
-                        //    DTLimgs[0].Value[Master][0] = 1;
 
                         FlowCamera.CutImg cutImg = new FlowCamera.CutImg();
 
@@ -612,28 +562,22 @@ namespace MVision
                         cutImg.Img[1] = ListCutImg[idx].Img[1];
                         cutImg.ROI[0] = ListCutImg[idx].ROI[0];
                         cutImg.ROI[1] = ListCutImg[idx].ROI[1];
-
+                        cutImg.Aria[0] = ListCutImg[idx].Aria[0];
+                        cutImg.Aria[1] = ListCutImg[idx].Aria[1];
+                        cutImg.SizeCorect[0] = ListCutImg[idx].SizeCorect[0];
+                        cutImg.SizeCorect[1] = ListCutImg[idx].SizeCorect[1];
 
 
                         if (LiveViewSetings){ 
                         IProducerConsumerCollection<FlowCamera.CutImg> tmp = FlowCamera.BuferIMG;
                         tmp.TryAdd(cutImg);  }
 
-                       // BuferIMG.
-                // MosaicaEvent(DTLimgs);
                     }
 
                  }
 
 
                 CutList cutList = new CutList();
-
-                //BuferImg[0].TryDequeue(out TempColl);
-                //BuferImg[1].TryDequeue(out TempColl);
-                //cutList.ListDT[1] = TempColl;
-                //cutList.ListDT.Img = ListCutImg[0][0].Img;
-                //cutList.ListDT[1] = ListCutImg[0][1];
-                //CollecListTemp.TryAdd(cutList);
 
                 cutList.Nam = 1;
 
@@ -737,7 +681,7 @@ namespace MVision
             //LiveViewTv.Image = _img.ToBitmap();
 
             CutImages CutImage = new CutImages();
-            // Image<Bgr, byte> ImageAN = new Image<Bgr, byte>(ImagAI.Width, ImagAI.Height);
+         // Image<Bgr, byte> ImageAN = new Image<Bgr, byte>(ImagAI.Width, ImagAI.Height);
             Rectangle boxROI;
 
             //ВИЗНАЧИТИ ЧИ ПРОХОДИТЬ ЗНАЙДЕНИЙ КОНТУР ПО РОЗМІРУ
@@ -753,13 +697,9 @@ namespace MVision
             }
 
 
-
-
-
-
-
             CutCTR cutCTR = new CutCTR();
             cutCTR.ROI = new Rectangle[CnSize];
+            cutCTR.Aria = new double[CnSize];
             cutCTR.CUT = new bool[CnSize];
             cutCTR.NULL = new bool[CnSize];
             CnSize = 0;
@@ -782,14 +722,14 @@ namespace MVision
                             ImagAI.ROI = boxROI;
                             cutCTR.ROI[CnSize] = boxROI;
                             cutCTR.NULL[CnSize] = false;
-                            cutCTR.CUT[CnSize++] = true;
+                            cutCTR.CUT[CnSize] = true;
+                            cutCTR.Aria[CnSize++] = CnturSize;
 
                 }
             }
 
             Treker = new HashSet<int>(TrekerRW);
             TrekerRW.Clear();
-
 
             return cutCTR;
         }
@@ -799,6 +739,7 @@ namespace MVision
 
         public class CutCTR {
             public Rectangle[] ROI { get; set; }
+            public double[] Aria { get; set; }
             public bool[] CUT { get; set; }
             public bool[] NULL { get; set; }
         };
@@ -1013,7 +954,9 @@ namespace MVision
                     IMG_CUT.ImgMaster = new Image<Bgr, byte>[CountBF];
                     IMG_CUT.ImgSlave = new Image<Bgr, byte>[CountBF];
                     IMG_CUT.ROI_Master = new Rectangle[CountBF];
-                    IMG_CUT.ROI_Slave = new Rectangle[CountBF];
+                    IMG_CUT.ROI_Slave  = new Rectangle[CountBF];
+                    IMG_CUT.AriaM = new double[CountBF];
+                    IMG_CUT.AriaS = new double[CountBF];
 
                     ReadIng = 0;
 
@@ -1025,10 +968,12 @@ namespace MVision
                         if (ListDT != null)
                         {
                             ReadIng++;
-                            IMG_CUT.ImgMaster[i] = ListDT.Img[0].ToImage<Bgr, byte>();
-                            IMG_CUT.ImgSlave[i] = ListDT.Img[1].ToImage<Bgr, byte>();
+                            IMG_CUT.ImgMaster[i]  = ListDT.Img[0].ToImage<Bgr, byte>();
+                            IMG_CUT.ImgSlave[i]   = ListDT.Img[1].ToImage<Bgr, byte>();
                             IMG_CUT.ROI_Master[i] = ListDT.ROI[0];
-                            IMG_CUT.ROI_Slave[i] = ListDT.ROI[1];
+                            IMG_CUT.ROI_Slave[i]  = ListDT.ROI[1];
+                            IMG_CUT.AriaM[i] = ListDT.Aria[0];
+                            IMG_CUT.AriaS[i] = ListDT.Aria[1];
                         }
                         else { break; };
 
@@ -1059,9 +1004,10 @@ namespace MVision
                             DTLimg[i].Value = new float[2][];
 
                           //  ---наповнюєм-- -
-                           DTLimg[i].Img[0] = IMG_CUT.ImgMaster[i];
-                           DTLimg[i].Img[1] = IMG_CUT.ImgSlave[i];
-
+                           DTLimg[i].Img[0]  = IMG_CUT.ImgMaster[i];
+                           DTLimg[i].Img[1]  = IMG_CUT.ImgSlave[i];
+                           DTLimg[i].Aria[0] = IMG_CUT.AriaM[i];
+                           DTLimg[i].Aria[1] = IMG_CUT.AriaS[i];
                         }
 
 

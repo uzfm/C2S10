@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
@@ -34,7 +35,10 @@ namespace MVision
             public int PiecesWeighed { get; set; }      // кількість шт тестового зразка
 
             public double SemplWeight { get; set; }      //середня вага однієї гранули
+
+
         }
+
 
 
 
@@ -92,38 +96,51 @@ namespace MVision
 
             public int[] ConturMax = new int[2];
             public int[] ConturMin = new int[2];
-
                                  
             public int DoubleFlaps;  //Відступ від країв видимості ширини поля в (пікселях по осі(Х))
-
             public int Shifting { get; set; }   // Deviation along "X" which defines the trajectory to determine the doubling.
             public bool SelectPS;
             public int PositionErrorX;
 
             // шлях папкі картинок для симуляції
-               public string PathSimulation; //Pash Simulation for Images
-
-
-
+            public string PathSimulation; //Pash Simulation for Images
             public bool AutoReportPDF;    // Автоматичне генеровання репорта після сортування
+
+            public List<ClasSempl> ClasSempl = new List<ClasSempl>();
+        }
+
+    
+
+
+    public class ClasSempl
+    {
+
+        /*****  REPORT  ***********/
+        public string Name;
+        public int SampleSize;
+        public string NameSmaller ="_S";
+        public string NameLarged  ="_L";
+        public bool   SubGroups;    // Активація під груп
+        public int   IdxGrp;       //індикс першого значення підгрупи в Image List.(для індексації Mosaic)
+
+ static   public short   IdxGrpleng;         // довжина List з групами  та активованими підгрупами.
+
+            //public bool   TypeOn;
 
         }
 
-    }
-
-
-
+}
 
 
 
     [Serializable()]
     public class SaveClassDT{
 
-         public SV.Analys    Analys    = new SV.Analys();
-         public SV.ColourMax ColourMax = new SV.ColourMax();
-         public SV.ColourMin ColourMin = new SV.ColourMin();
-         public SV.Device    Device    = new SV.Device();
-         public SV.Report    Report    = new SV.Report();
+         public SV.Analys     Analys    = new SV.Analys();
+         public SV.ColourMax  ColourMax = new SV.ColourMax();
+         public SV.ColourMin  ColourMin = new SV.ColourMin();
+         public SV.Device     Device    = new SV.Device();
+         public SV.Report     Report    = new SV.Report();
 
         public USB_HID.SENSOR.SensorDT SensorsDT = new USB_HID.SENSOR.SensorDT();
         public USB_HID.MOTOR.DT[]      Motor     = new USB_HID.MOTOR.DT[2];
