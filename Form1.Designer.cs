@@ -89,6 +89,13 @@ namespace MVision
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.UnderType = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button52 = new System.Windows.Forms.Button();
+            this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
+            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subgroups = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
             this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -327,7 +334,8 @@ namespace MVision
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button52 = new System.Windows.Forms.Button();
+            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subgroups = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -1078,8 +1086,8 @@ namespace MVision
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.UnderType);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.UnderType);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -1104,8 +1112,6 @@ namespace MVision
             this.UnderType.Text = "Under Type";
             this.UnderType.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
-            // 
             this.groupBox5.Controls.Add(this.button52);
             this.groupBox5.Controls.Add(this.dataGridViewUnderType);
             this.groupBox5.Controls.Add(this.label2);
@@ -1118,6 +1124,19 @@ namespace MVision
             this.groupBox5.TabIndex = 389;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Setting Measurements";
+            // 
+            // button52
+            // 
+            this.button52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button52.Location = new System.Drawing.Point(801, 131);
+            this.button52.Name = "button52";
+            this.button52.Size = new System.Drawing.Size(73, 24);
+            this.button52.TabIndex = 389;
+            this.button52.Text = "Resrt";
+            this.button52.UseVisualStyleBackColor = true;
+            this.button52.Click += new System.EventHandler(this.button52_Click);
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridViewUnderType
             // 
@@ -4260,18 +4279,23 @@ namespace MVision
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameSmpl.Width = 200;
             // 
-            // button52
+            // SampleSize
             // 
-            this.button52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button52.Location = new System.Drawing.Point(801, 131);
-            this.button52.Name = "button52";
-            this.button52.Size = new System.Drawing.Size(73, 24);
-            this.button52.TabIndex = 389;
-            this.button52.Text = "Resrt";
-            this.button52.UseVisualStyleBackColor = true;
-            this.button52.Click += new System.EventHandler(this.button52_Click);
+            this.SampleSize.HeaderText = "Sample Size";
+            this.SampleSize.Name = "SampleSize";
+            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Subgroups
+            // 
+            this.Subgroups.HeaderText = "Sub Groups";
+            this.Subgroups.Name = "Subgroups";
+            this.Subgroups.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Subgroups.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Form1
             // 
