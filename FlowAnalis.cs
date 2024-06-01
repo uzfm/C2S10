@@ -279,8 +279,14 @@ namespace MVision
                         // відступ центрування зразків
                         /****************************/
                         int ScaleNorm = 22;
-
+                        Elongated Elong_Save = new Elongated();
+                   
+                        //ROI fo Save
+                        Elong_Save.Height = CutCTR_SV.ROI[i].Height* Rosolution;
+                        Elong_Save.Width = CutCTR_SV.ROI[i].Width* Rosolution;
                       
+
+
                         if ((CutCTR_SV.ROI[i].Width >= ScaleNorm) ||  (CutCTR_SV.ROI[i].Height >= ScaleNorm))  {
 
                             if (CutCTR_SV.ROI[i].Width > CutCTR_SV.ROI[i].Height)
@@ -325,7 +331,7 @@ namespace MVision
                             //===========  IMG CATING =============================
                             if ((CatLeng >= CatHeight) && (CutCTR_SV.ROI[i].Y < CatHeight))
                             {
-                                 Elongated Elong_Save = new Elongated();
+                                
 
                                 ROI = CutCTR_SV.ROI[i];
 
@@ -342,9 +348,7 @@ namespace MVision
                                 //CvInvoke.Rectangle(ImagsCam[0], ROI, new Bgr(Color.Blue).MCvScalar, Rosolution);
                                 ImagsCam[ID].ROI = ROI;
                                 
-                                //ROI fo Save
-                                Elong_Save.Height = ROI.Height;
-                                Elong_Save.Width = ROI.Width;
+                           
 
                                 //Bottom IMG
                                 ROI = CutCTR_SV.ROI[i];
@@ -357,9 +361,7 @@ namespace MVision
                                 if (Old_IMG[ID] == null) { Old_IMG[ID] = new Image<Bgr, byte>(ROI_Main.Width, ROI_Main.Height);  }
 
                                 Old_IMG[ID].ROI = ROI;
-                                //ROI fo Save
-                                Elong_Save.Height = Elong_Save.Height + ROI.Height;
-                                Elong_Save.Width = ROI.Width;
+                
 
 
 
@@ -436,9 +438,9 @@ namespace MVision
                                     TempColl.Aria[ID] = (CutCTR_SV.Aria[i] * (double)Rosolution);
                                     TempColl.Img[ID] = ImagsCam[ID].Copy().Resize(64, 64, Inter.Linear).Mat;
                                     TempColl.ROI[ID] = ROI;
-                                    TempColl.Elong[ID].Height = ROI.Height;
-                                    TempColl.Elong[ID].Width = ROI.Width;
-
+                                     //ROI fo Save
+                                    TempColl.Elong[ID] = Elong_Save;
+             
 
                                     /************************    Тут вирізає картинки з Master CAM    *****************************************/
                                     if (ID == Master) {
@@ -488,8 +490,8 @@ namespace MVision
                                                     ListCutImg[IdxJ].Aria[Slave] = TempColl.Aria[Slave];
                                                     ListCutImg[IdxJ].Img[Slave]  = TempColl.Img [Slave];
                                                     ListCutImg[IdxJ].ROI[Slave]  = TempColl.ROI [Slave];
-                                                    ListCutImg[IdxJ].Elong[Slave].Height = TempColl.ROI[Slave].Height;
-                                                    ListCutImg[IdxJ].Elong[Slave].Width  = TempColl.ROI[Slave].Width;
+                                                    ListCutImg[IdxJ].Elong[Slave] = TempColl.Elong[Slave];
+                                                   
 
 
                                                 ImagsCam[ID].ROI = ROI_Main;
@@ -538,8 +540,8 @@ namespace MVision
                                                         ListCutImg[j].Aria[Slave] = TempColl.Aria[Slave];
                                                         ListCutImg[j].Img[Slave] = TempColl.Img[Slave];
                                                         ListCutImg[j].ROI[Slave] = TempColl.ROI[Slave];
-                                                        ListCutImg[j].Elong[Slave].Height = TempColl.ROI[Slave].Height;
-                                                        ListCutImg[j].Elong[Slave].Width = TempColl.ROI[Slave].Width;
+                                                        ListCutImg[j].Elong[Slave] = TempColl.Elong[Slave];
+                                         
 
                                                     Old_IMG[ID].ROI = ROI_Main;
                                                         //CvInvoke.Rectangle(ImagsCam[Slave], ROI, new Bgr(Color.Blue).MCvScalar, 9);
@@ -1146,7 +1148,9 @@ namespace MVision
 
           double widthInPixels = 8192; // ширина поля в пікселях
            double widthInCm = 200; // ширина поля в см
-         double Areamm2(double Aria)
+        double Kofic = 1.06; // ширина поля в см
+
+        double Areamm2(double Aria)
         {
 
            double  data1=  ( widthInCm/ widthInPixels );
@@ -1170,7 +1174,7 @@ namespace MVision
             // Знайдемо площу в мм²
             // double    data=Aria * (widthInPixels / widthInCm) ;      // 1 см = 10 мм
 
-            return Math.Round(data3, 2); ;
+            return Math.Round(Kofic * data3, 2); ;
         }
 
 

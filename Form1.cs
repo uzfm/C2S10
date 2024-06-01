@@ -112,7 +112,7 @@ STGS STGS = new STGS();
 
             //*************  initialization of cameras  *********************
             try { 
-             DLS = new DLS(_DLS.HowMany.CAM1_CAM2);
+             DLS = new DLS(_DLS.HowMany.NO);
             }catch { Help.Mesag("Cameras are not connected"); }
             ////*****************
 
