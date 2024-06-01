@@ -729,8 +729,8 @@ namespace MVision
             report = Report;
             ReportDT reportDTrw;
 
-            try
-            {
+            try {
+           
                   int i = 0;
                 if (report == null)
                 {
@@ -769,7 +769,7 @@ namespace MVision
                
                 for (i=0; i < report.IMG.Length; i++)
                 {
-                    if (report.Name[i] == "Good")
+                    if((report.IMG[i].Count != 0) && (report.Name[i] == "Good"))
                     {
                         reportDTrw.Name[cot] = report.Name[i];
                         reportDTrw.DataPct[cot] = report.DataPct[i];
@@ -787,8 +787,8 @@ namespace MVision
                 report = reportDTrw;
                 CreateDocument(report);
 
-            }
-            catch { Help.ErrorMesag(" Experiment cannot be empty ! "); }
+            }catch { Help.ErrorMesag(" Experiment cannot be empty ! "); }
+            
 
         }
 

@@ -1003,7 +1003,9 @@ STGS STGS = new STGS();
 
             public ImageList[] IMG;       // Images масив просортований по іменах ([Name] [Images])
             public List<int>[] IdxName;   // iндек назви зразка ([Name] [Idx])
-     static public int OLL;               // індек останього рядка в таблиці зразків який по замовчувані є ( показувати усі Show Oll)
+            public List<double>[] Aria;      // iндек назви зразка ([Name] [Idx])
+
+            static public int OLL;               // індек останього рядка в таблиці зразків який по замовчувані є ( показувати усі Show Oll)
      static public int SELECT;            // Виділиний в таблиці зліва зразок (принажаті кнопки в таблиці вибирається зразок)
 
         }
@@ -1075,47 +1077,56 @@ STGS STGS = new STGS();
                     if (OutDT.Img != null){
 
                       int IdxM  = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp ;
-                      int IdxS  = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp ;
+                      int IdxS  = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp ;
 
 
                         //MSC[Slave].IMG //
 
      
 
-                        bool NOT_GOOD = true;
+                        bool GOOD_Ok = true;
                         if (OutDT.Name[Master] != GridData.GOOD) {
 
                             if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SubGroups)
                             {
 
-                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize < OutDT.Aria[Master])
-                                {    // S
-                                    dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count + 1).ToString();
+                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize > OutDT.Aria[Master])
+                                {    // L
+                                    
                                     MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
                                     MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                    BAD_SplCont++;
+                                    dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count ).ToString();
                                     MSC[Master].IdxName[IdxM].Add(IdxM);
                                     MSC[Slave].IdxName[IdxM].Add(IdxS);
-                                }
-                                else
-                                {   // L
+                                    MSC[Master].Aria[IdxM].Add(OutDT.Aria[Master]);
+                                    MSC[Slave].Aria[IdxM].Add(OutDT.Aria[Slave]);
+                                    BAD_SplCont++;
+                                } else{ 
+                               
+                                     // S
                                     IdxM++;
-                                    dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM - 1].Images.Count + 1).ToString();
+                                    
                                     MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
                                     MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                    BAD_SplCont++;
+                                    dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count).ToString();
                                     MSC[Master].IdxName[IdxM].Add(IdxM);
                                     MSC[Slave].IdxName[IdxM].Add(IdxS);
+                                    MSC[Master].Aria[IdxM].Add(OutDT.Aria[Master]);
+                                    MSC[Slave].Aria[IdxM].Add(OutDT.Aria[Slave]);
+                                    BAD_SplCont++;
 
                                 }
                             }else { 
                                //Norm
-                                dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count + 1).ToString();
+                                
                                 MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
                                 MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                BAD_SplCont++;
+                                dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count).ToString();
                                 MSC[Master].IdxName[IdxM].Add(IdxM);
                                 MSC[Slave].IdxName[IdxM].Add(IdxS);
+                                MSC[Master].Aria[IdxM].Add(OutDT.Aria[Master]);
+                                MSC[Slave].Aria[IdxM].Add(OutDT.Aria[Slave]);
+                                BAD_SplCont++;
                             }
 
 
@@ -1126,35 +1137,42 @@ STGS STGS = new STGS();
                                 if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SubGroups){
                                 
                                
-                                     if  (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize < OutDT.Aria[Slave])
-                                {
+                                     if  (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize > OutDT.Aria[Slave]){
+                                
 
                                     MSC[Master].IMG[IdxS].Images.Add(OutDT.Img[Master].ToBitmap());
                                     MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
                                     dataGridViewSempls.Rows[IdxS].Cells[1].Value = (MSC[Master].IMG[IdxS].Images.Count).ToString();
-                                    BAD_SplCont++;
                                     MSC[Master].IdxName[IdxS].Add(IdxM);
                                     MSC[Slave].IdxName[IdxS].Add(IdxS);
-                                }
+                                    MSC[Master].Aria[IdxS].Add(OutDT.Aria[Master]);
+                                    MSC[Slave].Aria[IdxS].Add(OutDT.Aria[Slave]);
+                                    BAD_SplCont++;
+                                    }
                                 else
                                 {
                                     IdxS++;
                                     MSC[Master].IMG[IdxS].Images.Add(OutDT.Img[Master].ToBitmap());
                                     MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
                                     dataGridViewSempls.Rows[IdxS].Cells[1].Value = (MSC[Master].IMG[IdxS].Images.Count).ToString();
-                                    BAD_SplCont++;
                                     MSC[Master].IdxName[IdxS].Add(IdxM);
                                     MSC[Slave].IdxName[IdxS].Add(IdxS);
+                                    MSC[Master].Aria[IdxS].Add(OutDT.Aria[Master]);
+                                    MSC[Slave].Aria[IdxS].Add(OutDT.Aria[Slave]);
+                                    BAD_SplCont++;
 
-                                }
+                                    }
                                  }else{
                                      //Norm
-                                    dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Slave].IMG[IdxM].Images.Count + 1).ToString();
-                                    MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
-                                    MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
+                                    
+                                    MSC[Master].IMG[IdxS].Images.Add(OutDT.Img[Master].ToBitmap());
+                                    MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
+                                    dataGridViewSempls.Rows[IdxS].Cells[1].Value = (MSC[Slave].IMG[IdxS].Images.Count).ToString();
+                                    MSC[Master].IdxName[IdxS].Add(IdxM);
+                                    MSC[Slave].IdxName[IdxS].Add(IdxS);
+                                    MSC[Master].Aria[IdxS].Add(OutDT.Aria[Master]);
+                                    MSC[Slave].Aria[IdxS].Add(OutDT.Aria[Slave]);
                                     BAD_SplCont++;
-                                    MSC[Master].IdxName[IdxM].Add(IdxM);
-                                    MSC[Slave].IdxName[IdxM].Add(IdxS);
                                 }
 
 
@@ -1168,14 +1186,21 @@ STGS STGS = new STGS();
                                 
                                 MSC[Master].IdxName[IdxM].Add(IdxM);
                                 MSC[Slave].IdxName[IdxS].Add(IdxS);}
-                             
-                             GOOD_SplCont++;
+                                MSC[Master].Aria[IdxM].Add(OutDT.Aria[Master]);
+                                MSC[Slave].Aria[IdxS].Add(OutDT.Aria[Slave]);
+
+                                GOOD_SplCont++;
                              dataGridViewSempls.Rows[IdxM].Cells[1].Value = (GOOD_SplCont.ToString());
-                              NOT_GOOD = false;
+                                GOOD_Ok = false;
                         } }
 
 
-                        if ((NOT_GOOD)||(Goot_Show_Mosaic.Checked)) {
+
+
+
+
+
+                        if (( GOOD_Ok ) ||(Goot_Show_Mosaic.Checked)) {
 
                         MSC[Master].IMG[MSIC.OLL].Images.Add(OutDT.Img[Master].ToBitmap());
                         MSC[Slave].IMG[MSIC.OLL].Images.Add(OutDT.Img[Slave].ToBitmap());
@@ -1190,8 +1215,10 @@ STGS STGS = new STGS();
 
                          MSC[Master].IdxName[MSIC.OLL].Add(IdxM);
                          MSC[Slave].IdxName[MSIC.OLL].Add(IdxS);
-                        
-                         ImgListCoutMosaic++;
+                         MSC[Master].Aria[MSIC.OLL].Add(OutDT.Aria[Master]);
+                         MSC[Slave].Aria[MSIC.OLL].Add(OutDT.Aria[Slave]);
+
+                            ImgListCoutMosaic++;
                         
                         }
 
@@ -1443,6 +1470,12 @@ STGS STGS = new STGS();
             for (int Q = 0; Q < MSC[Master].IMG.Length; Q++) {
                 MSC[Master].IMG[Q].Images.Clear();
                 MSC[Slave].IMG[Q].Images.Clear();
+                MSC[Master].Aria[Q].Clear();
+                MSC[Slave].Aria[Q].Clear();
+                MSC[Master].IdxName[Q].Clear();
+                MSC[Slave].IdxName[Q].Clear();
+
+
             }
 
             ImgListCoutMosaic = 0;
@@ -1775,9 +1808,11 @@ STGS STGS = new STGS();
 
                     pictureBoxMaster.Image = MSC[Master].IMG[NameSampleSelect].Images[SelectITMs];
                     LearnImg =  (Bitmap) MSC[Master].IMG[NameSampleSelect].Images[SelectITMs];
+                        richTextBoxArea.Text = MSC[Master].Aria[NameSampleSelect][SelectITMs].ToString();
 
                 }
-                }catch { Help.ErrorMesag("Choose the type of sample"); }
+                }catch {
+                    Help.ErrorMesag("Choose the type of sample"); }
 
             }
         }
@@ -1806,6 +1841,7 @@ STGS STGS = new STGS();
                     }else{
                             pictureBoxSlave.Image = MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
                             LearnImg = (Bitmap)MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
+                            richTextBoxArea.Text = MSC[Slave].Aria[NameSampleSelect][SelectITMs].ToString();
                     }
                 }
                 catch { Help.ErrorMesag("Choose the type of sample"); }
@@ -2173,9 +2209,10 @@ STGS STGS = new STGS();
                     { pathSmpl[idx] += Path.GetFileName(SamlCatalogPath[idx]); }
 
                     listBox1.Items.Clear();
+                    treeView1.Nodes.Clear();
+                    dataGridViewUnderType.Rows.Clear();
 
-           
-                    string[] NemSmpls = new string[pathSmpl.Length];
+                string[] NemSmpls = new string[pathSmpl.Length];
                     MLD.Names = new string[Directory.GetDirectories(MLD.PathSamples).Length];
 
 
@@ -2272,11 +2309,17 @@ STGS STGS = new STGS();
                     MSC[Slave].IMG  = new ImageList[MLD.TypeALL.Length+1];
                     MSC[Master].IdxName = new List<int>[MLD.TypeALL.Length + 1];
                     MSC[Slave].IdxName  = new List<int>[MLD.TypeALL.Length + 1];
+                      //Aria
+                    MSC[Master].Aria= new List<double>[MLD.TypeALL.Length + 1];
+                    MSC[Slave].Aria= new List<double>[MLD.TypeALL.Length + 1];
 
-                 for (idx = 0; idx < MLD.TypeALL.Length; idx++){
+                    for (idx = 0; idx < MLD.TypeALL.Length; idx++){
                  
                     MSC[Master].IdxName[idx] = new List<int>();
                     MSC[Slave].IdxName [idx] = new List<int>();
+
+                    MSC[Master].Aria[idx] = new List<double>();
+                    MSC[Slave].Aria[idx] = new List<double>();
 
                     MSC[Master].IMG[idx] = new ImageList();
                     MSC[Slave].IMG [idx] = new ImageList();
@@ -2297,6 +2340,9 @@ STGS STGS = new STGS();
                     MSC[Master].IdxName[idx] = new List<int>();
                     MSC[Slave].IdxName[idx]  = new List<int>();
 
+                    MSC[Master].Aria[idx] = new List<double>();
+                    MSC[Slave].Aria[idx] = new List<double>();
+
                     MSC[Master].IMG[idx] = new ImageList();
                     MSC[Slave].IMG[idx] = new ImageList();
 
@@ -2312,8 +2358,7 @@ STGS STGS = new STGS();
 
                // ManualCorrection();
 
-            }
-            catch { Help.ErrorMesag(" problem with configuration Model "); }
+            }catch { Help.ErrorMesag(" problem with configuration Model "); }
         }
 
 
@@ -2806,10 +2851,14 @@ STGS STGS = new STGS();
                             {
                             MSC[Master].IMG[Q].Images.Add( MSC[Master].IMG[MSIC.SELECT].Images[DTLimg.SelectITM[d]]);
                             MSC[Slave].IMG[Q].Images.Add(MSC[Slave].IMG[MSIC.SELECT].Images[DTLimg.SelectITM[d]]);
+
                             MSC[Master].IdxName[Q].Add(Q);
                             MSC[Slave].IdxName[Q].Add(Q);
-                      
-                             }
+
+                            MSC[Master].Aria[Q].Add(MSC[Master].Aria[MSIC.SELECT][DTLimg.SelectITM[d]]);
+                            MSC[Slave].Aria[Q].Add(MSC[Slave].Aria[MSIC.SELECT][DTLimg.SelectITM[d]]);
+
+                            }
 
                             for (int d = 0; d < DTLimg.SelectITM.Count; d++)
                             {
@@ -2817,6 +2866,10 @@ STGS STGS = new STGS();
                             MSC[Slave].IMG[MSIC.SELECT].Images.RemoveAt(DTLimg.SelectITM[d]-d);
                                 MSC[Master].IdxName[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
                                 MSC[Slave].IdxName[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
+
+                                MSC[Master].Aria[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
+                                MSC[Slave].Aria[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
+
                             }
                                
                                 dataGridViewSempls.Rows[Q].Cells[1].Value = (MSC[Master].IMG[Q].Images.Count).ToString();
@@ -2907,14 +2960,7 @@ STGS STGS = new STGS();
                             } else {
                             listView4.Items.Add(new ListViewItem { ImageIndex = i, Text = SAV.DT.Analys.ClasSempl[i].Name,  /*BackColor = Color.Blue,*/  });
                             dataGridViewSempls.Rows.Add(SAV.DT.Analys.ClasSempl[i].Name, "0", new Bitmap(OpenImag, new Size(50, 50))); }
-                           
-
-
-
-
-
-
-
+                        try {
                             // Отримати комірку
                             DataGridViewCell cell = dataGridViewSempls.Rows[i].Cells[0];
                             // Встановити колір заливки
@@ -2922,6 +2968,9 @@ STGS STGS = new STGS();
                             cell.Style.SelectionBackColor = MLD.NameColor[i];
                             // Встановити колір тексту
                             cell.Style.SelectionForeColor = MLD.NameColor[i];
+                        }
+                        catch { Help.ErrorMesag("The maximum number of types has been exceeded - " + i.ToString()); }
+
                             break;
                         }
                     
@@ -4056,8 +4105,11 @@ STGS STGS = new STGS();
 
         private void button2_Click(object sender, EventArgs e)
         {
-            for (int idx = 0; idx < dataGridViewUnderType.Rows.Count; idx++)
+           
+
+            for (int idx = 0; idx < SAV.DT.Analys.ClasSempl.Count; idx++)
             {
+               
 
                 SAV.DT.Analys.ClasSempl[idx].Name = (string)dataGridViewUnderType.Rows[idx].Cells[0].Value;
                 SAV.DT.Analys.ClasSempl[idx].SampleSize = Convert.ToInt32(dataGridViewUnderType.Rows[idx].Cells[1].Value);
@@ -4066,6 +4118,19 @@ STGS STGS = new STGS();
                 SAV.DT.Analys.ClasSempl[idx].SubGroups = (bool)dataGridViewUnderType.Rows[idx].Cells[2].Value;
 
             }
+        }
+
+        private void button49_Click(object sender, EventArgs e)
+        {
+            Save_Report_Button.Enabled = true;
+        }
+
+        private void button52_Click(object sender, EventArgs e)
+        {
+            SAV.DT.Analys.ClasSempl.Clear();
+            dataGridViewUnderType.Rows.Clear();
+            
+
         }
     }
 }
