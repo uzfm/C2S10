@@ -211,7 +211,7 @@ namespace MVision
             section.PageSetup.StartingNumber = 1;
 
             // Put a logo in the header
-            image = section.Headers.Primary.AddImage("MicroOptik.tif");      //                   section.Headers.Primary.AddImage("../../PowerBooks.png");
+            image = section.Headers.Primary.AddImage("..//..//..//README//File add to DEBUG//MicroOptik.tif");      //                   section.Headers.Primary.AddImage("../../PowerBooks.png");
 
 
             image.Height = "2cm";
@@ -582,7 +582,7 @@ namespace MVision
 
 
             //// Put a logo in the header
-            image = section.Headers.Primary.AddImage("MicroOptik.tif");      //                   section.Headers.Primary.AddImage("../../PowerBooks.png");
+            image = section.Headers.Primary.AddImage("..//..//..//README//File add to DEBUG//MicroOptik.tif");      //                   section.Headers.Primary.AddImage("../../PowerBooks.png");
             image.Height = "2cm";
             image.LockAspectRatio = true;
             image.RelativeVertical = RelativeVertical.Line;
@@ -729,8 +729,8 @@ namespace MVision
             report = Report;
             ReportDT reportDTrw;
 
-            try
-            {
+            try {
+           
                   int i = 0;
                 if (report == null)
                 {
@@ -769,7 +769,7 @@ namespace MVision
                
                 for (i=0; i < report.IMG.Length; i++)
                 {
-                    if (report.Name[i] == "Good")
+                    if((report.IMG[i].Count != 0) && (report.Name[i] == "Good"))
                     {
                         reportDTrw.Name[cot] = report.Name[i];
                         reportDTrw.DataPct[cot] = report.DataPct[i];
@@ -787,8 +787,8 @@ namespace MVision
                 report = reportDTrw;
                 CreateDocument(report);
 
-            }
-            catch { Help.ErrorMesag(" Experiment cannot be empty ! "); }
+            }catch { Help.ErrorMesag(" Experiment cannot be empty ! "); }
+            
 
         }
 
