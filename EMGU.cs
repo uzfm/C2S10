@@ -732,7 +732,8 @@ namespace MVision
         public Rectangle[] ROI_Slave;
         public double   [] AriaM ;
         public double   [] AriaS;
-
+        public Elongated[] ElongM;
+        public Elongated[] ElongS;
 
     }
 

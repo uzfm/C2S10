@@ -88,9 +88,16 @@ namespace MVision
             this.listView3 = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.UnderType = new System.Windows.Forms.TabPage();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button52 = new System.Windows.Forms.Button();
             this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
+            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subgroups = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.richTextBoxArea = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Goot_Show_Mosaic = new System.Windows.Forms.CheckBox();
@@ -109,6 +116,7 @@ namespace MVision
             this.NameModelML = new System.Windows.Forms.RichTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.button49 = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.GenerateReportAuto = new System.Windows.Forms.CheckBox();
@@ -320,9 +328,6 @@ namespace MVision
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subgroups = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -359,6 +364,7 @@ namespace MVision
             this.splitContainer5.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.UnderType.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1072,8 +1078,8 @@ namespace MVision
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.UnderType);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.UnderType);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -1090,9 +1096,7 @@ namespace MVision
             // 
             // UnderType
             // 
-            this.UnderType.Controls.Add(this.treeView1);
-            this.UnderType.Controls.Add(this.button2);
-            this.UnderType.Controls.Add(this.dataGridViewUnderType);
+            this.UnderType.Controls.Add(this.groupBox5);
             this.UnderType.Location = new System.Drawing.Point(4, 25);
             this.UnderType.Name = "UnderType";
             this.UnderType.Size = new System.Drawing.Size(1560, 277);
@@ -1100,25 +1104,31 @@ namespace MVision
             this.UnderType.Text = "Under Type";
             this.UnderType.UseVisualStyleBackColor = true;
             // 
-            // treeView1
+            // groupBox5
             // 
-            this.treeView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.treeView1.Location = new System.Drawing.Point(1123, 3);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(424, 259);
-            this.treeView1.TabIndex = 280;
+            this.groupBox5.Controls.Add(this.button52);
+            this.groupBox5.Controls.Add(this.dataGridViewUnderType);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.treeView1);
+            this.groupBox5.Controls.Add(this.richTextBoxArea);
+            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Location = new System.Drawing.Point(3, 7);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1034, 267);
+            this.groupBox5.TabIndex = 389;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Setting Measurements";
             // 
-            // button2
+            // button52
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(526, 18);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 47);
-            this.button2.TabIndex = 279;
-            this.button2.Text = "Apply Changes";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button52.Location = new System.Drawing.Point(801, 131);
+            this.button52.Name = "button52";
+            this.button52.Size = new System.Drawing.Size(73, 24);
+            this.button52.TabIndex = 389;
+            this.button52.Text = "Resrt";
+            this.button52.UseVisualStyleBackColor = true;
+            this.button52.Click += new System.EventHandler(this.button52_Click);
             // 
             // dataGridViewUnderType
             // 
@@ -1130,15 +1140,90 @@ namespace MVision
             this.SampleSize,
             this.Subgroups});
             this.dataGridViewUnderType.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridViewUnderType.Location = new System.Drawing.Point(8, 5);
+            this.dataGridViewUnderType.Location = new System.Drawing.Point(6, 15);
             this.dataGridViewUnderType.Name = "dataGridViewUnderType";
             this.dataGridViewUnderType.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridViewUnderType.RowHeadersVisible = false;
             this.dataGridViewUnderType.RowHeadersWidth = 40;
             this.dataGridViewUnderType.RowTemplate.Height = 25;
-            this.dataGridViewUnderType.Size = new System.Drawing.Size(482, 269);
+            this.dataGridViewUnderType.Size = new System.Drawing.Size(404, 246);
             this.dataGridViewUnderType.TabIndex = 1;
             this.dataGridViewUnderType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnderType_CellClick);
+            // 
+            // NameSmpl
+            // 
+            this.NameSmpl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NameSmpl.FillWeight = 200F;
+            this.NameSmpl.HeaderText = "Names";
+            this.NameSmpl.MaxInputLength = 100;
+            this.NameSmpl.MinimumWidth = 6;
+            this.NameSmpl.Name = "NameSmpl";
+            this.NameSmpl.ReadOnly = true;
+            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameSmpl.Width = 200;
+            // 
+            // SampleSize
+            // 
+            this.SampleSize.HeaderText = "Sample Elongated mm";
+            this.SampleSize.Name = "SampleSize";
+            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Subgroups
+            // 
+            this.Subgroups.HeaderText = "Sub Groups";
+            this.Subgroups.Name = "Subgroups";
+            this.Subgroups.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Subgroups.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(812, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 16);
+            this.label2.TabIndex = 388;
+            this.label2.Text = "Elongated / mm ";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.treeView1.Location = new System.Drawing.Point(416, 15);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(379, 246);
+            this.treeView1.TabIndex = 280;
+            // 
+            // richTextBoxArea
+            // 
+            this.richTextBoxArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBoxArea.BackColor = System.Drawing.Color.AliceBlue;
+            this.richTextBoxArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.richTextBoxArea.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.richTextBoxArea.HideSelection = false;
+            this.richTextBoxArea.Location = new System.Drawing.Point(936, 28);
+            this.richTextBoxArea.MaxLength = 20;
+            this.richTextBoxArea.Multiline = false;
+            this.richTextBoxArea.Name = "richTextBoxArea";
+            this.richTextBoxArea.ReadOnly = true;
+            this.richTextBoxArea.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.richTextBoxArea.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBoxArea.Size = new System.Drawing.Size(81, 35);
+            this.richTextBoxArea.TabIndex = 387;
+            this.richTextBoxArea.Text = "0";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(801, 210);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(104, 51);
+            this.button2.TabIndex = 279;
+            this.button2.Text = "Apply Changes";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tabPage5
             // 
@@ -1373,6 +1458,7 @@ namespace MVision
             // groupBox12
             // 
             this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox12.Controls.Add(this.button49);
             this.groupBox12.Controls.Add(this.label30);
             this.groupBox12.Controls.Add(this.label27);
             this.groupBox12.Controls.Add(this.GenerateReportAuto);
@@ -1395,6 +1481,16 @@ namespace MVision
             this.groupBox12.TabIndex = 2002;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Report Settings PDF";
+            // 
+            // button49
+            // 
+            this.button49.Location = new System.Drawing.Point(703, 25);
+            this.button49.Name = "button49";
+            this.button49.Size = new System.Drawing.Size(87, 23);
+            this.button49.TabIndex = 2025;
+            this.button49.Text = "RST Report";
+            this.button49.UseVisualStyleBackColor = true;
+            this.button49.Click += new System.EventHandler(this.button49_Click);
             // 
             // label30
             // 
@@ -4177,33 +4273,6 @@ namespace MVision
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // NameSmpl
-            // 
-            this.NameSmpl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NameSmpl.FillWeight = 200F;
-            this.NameSmpl.HeaderText = "Names";
-            this.NameSmpl.MaxInputLength = 100;
-            this.NameSmpl.MinimumWidth = 6;
-            this.NameSmpl.Name = "NameSmpl";
-            this.NameSmpl.ReadOnly = true;
-            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameSmpl.Width = 200;
-            // 
-            // SampleSize
-            // 
-            this.SampleSize.HeaderText = "Sample Size";
-            this.SampleSize.Name = "SampleSize";
-            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Subgroups
-            // 
-            this.Subgroups.HeaderText = "Sub Groups";
-            this.Subgroups.Name = "Subgroups";
-            this.Subgroups.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Subgroups.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -4262,6 +4331,8 @@ namespace MVision
             this.splitContainer5.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.UnderType.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -4656,9 +4727,14 @@ namespace MVision
         private System.Windows.Forms.DataGridView dataGridViewUnderType;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox richTextBoxArea;
+        private System.Windows.Forms.Button button49;
+        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameSmpl;
         private System.Windows.Forms.DataGridViewTextBoxColumn SampleSize;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Subgroups;
+        private System.Windows.Forms.Button button52;
     }
 }
 
