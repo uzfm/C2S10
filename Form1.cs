@@ -112,7 +112,7 @@ STGS STGS = new STGS();
 
             //*************  initialization of cameras  *********************
             try { 
-             DLS = new DLS(_DLS.HowMany.NO);
+             DLS = new DLS(_DLS.HowMany.CAM1_CAM2);
             }catch { Help.Mesag("Cameras are not connected"); }
             ////*****************
 
@@ -164,7 +164,7 @@ STGS STGS = new STGS();
 
 
 
-            if (DLS.DLS_HowManyCAMERAS != _DLS.HowMany.CAM1_CAM2)
+            if (DLS.DLS_HowManyCAMERAS != _DLS.HowMany.NO)
             {
                 PaswordLock_Click(null, null);   // Lock MENU
             }
