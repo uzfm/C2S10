@@ -164,7 +164,7 @@ STGS STGS = new STGS();
 
 
 
-            if (DLS.DLS_HowManyCAMERAS != _DLS.HowMany.NO)
+            if (DLS.DLS_HowManyCAMERAS != _DLS.HowMany.CAM1_CAM2)
             {
                 PaswordLock_Click(null, null);   // Lock MENU
             }
