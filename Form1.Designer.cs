@@ -87,23 +87,6 @@ namespace MVision
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.listView3 = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.UnderType = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button52 = new System.Windows.Forms.Button();
-            this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
-            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subgroups = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
-            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subgroups = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.richTextBoxArea = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Goot_Show_Mosaic = new System.Windows.Forms.CheckBox();
@@ -139,6 +122,18 @@ namespace MVision
             this.PathFileSave = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.MakeReportButton = new System.Windows.Forms.Button();
+            this.UnderType = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button52 = new System.Windows.Forms.Button();
+            this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
+            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubgroupsOutside = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SurveyInside = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.richTextBoxArea = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -327,6 +322,39 @@ namespace MVision
             this.button33 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.VisionSettings = new System.Windows.Forms.GroupBox();
+            this.groupBox32 = new System.Windows.Forms.GroupBox();
+            this.numericUpDownWhite = new System.Windows.Forms.NumericUpDown();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.comboBoxImgTypTest = new System.Windows.Forms.ComboBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.labelDectContur = new System.Windows.Forms.Label();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label38 = new System.Windows.Forms.Label();
+            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
+            this.label42 = new System.Windows.Forms.Label();
+            this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.button55 = new System.Windows.Forms.Button();
+            this.button56 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button57 = new System.Windows.Forms.Button();
+            this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
+            this.label50 = new System.Windows.Forms.Label();
+            this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.AnalysisTest = new System.Windows.Forms.RadioButton();
             this.Save_Report_Button = new System.Windows.Forms.Button();
             this.ClearExperimentButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
@@ -334,8 +362,6 @@ namespace MVision
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subgroups = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -371,9 +397,6 @@ namespace MVision
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.UnderType.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxWeight.SuspendLayout();
@@ -381,6 +404,9 @@ namespace MVision
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowGoodNumeric)).BeginInit();
+            this.UnderType.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -447,6 +473,25 @@ namespace MVision
             this.AddColumn.SuspendLayout();
             this.DeleteColumn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.VisionSettings.SuspendLayout();
+            this.groupBox32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWhite)).BeginInit();
+            this.groupBox23.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
+            this.groupBox28.SuspendLayout();
+            this.groupBox29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
+            this.groupBox30.SuspendLayout();
             this.SuspendLayout();
             // 
             // usersBindingSource
@@ -1093,6 +1138,7 @@ namespace MVision
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -1101,137 +1147,6 @@ namespace MVision
             this.tabControl1.Size = new System.Drawing.Size(1568, 306);
             this.tabControl1.TabIndex = 45;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
-            // 
-            // UnderType
-            // 
-            this.UnderType.Controls.Add(this.groupBox5);
-            this.UnderType.Location = new System.Drawing.Point(4, 25);
-            this.UnderType.Name = "UnderType";
-            this.UnderType.Size = new System.Drawing.Size(1560, 277);
-            this.UnderType.TabIndex = 10;
-            this.UnderType.Text = "Under Type";
-            this.UnderType.UseVisualStyleBackColor = true;
-            // 
-            this.groupBox5.Controls.Add(this.button52);
-            this.groupBox5.Controls.Add(this.dataGridViewUnderType);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.treeView1);
-            this.groupBox5.Controls.Add(this.richTextBoxArea);
-            this.groupBox5.Controls.Add(this.button2);
-            this.groupBox5.Location = new System.Drawing.Point(3, 7);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1034, 267);
-            this.groupBox5.TabIndex = 389;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Setting Measurements";
-            // 
-            // button52
-            // 
-            this.button52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button52.Location = new System.Drawing.Point(801, 131);
-            this.button52.Name = "button52";
-            this.button52.Size = new System.Drawing.Size(73, 24);
-            this.button52.TabIndex = 389;
-            this.button52.Text = "Resrt";
-            this.button52.UseVisualStyleBackColor = true;
-            this.button52.Click += new System.EventHandler(this.button52_Click);
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // dataGridViewUnderType
-            // 
-            this.dataGridViewUnderType.AllowUserToAddRows = false;
-            this.dataGridViewUnderType.AllowUserToDeleteRows = false;
-            this.dataGridViewUnderType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUnderType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NameSmpl,
-            this.SampleSize,
-            this.Subgroups});
-            this.dataGridViewUnderType.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridViewUnderType.Location = new System.Drawing.Point(6, 15);
-            this.dataGridViewUnderType.Name = "dataGridViewUnderType";
-            this.dataGridViewUnderType.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridViewUnderType.RowHeadersVisible = false;
-            this.dataGridViewUnderType.RowHeadersWidth = 40;
-            this.dataGridViewUnderType.RowTemplate.Height = 25;
-            this.dataGridViewUnderType.Size = new System.Drawing.Size(404, 246);
-            this.dataGridViewUnderType.TabIndex = 1;
-            this.dataGridViewUnderType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnderType_CellClick);
-            // 
-            // NameSmpl
-            // 
-            this.NameSmpl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NameSmpl.FillWeight = 200F;
-            this.NameSmpl.HeaderText = "Names";
-            this.NameSmpl.MaxInputLength = 100;
-            this.NameSmpl.MinimumWidth = 6;
-            this.NameSmpl.Name = "NameSmpl";
-            this.NameSmpl.ReadOnly = true;
-            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameSmpl.Width = 200;
-            // 
-            // SampleSize
-            // 
-            this.SampleSize.HeaderText = "Sample Elongated mm";
-            this.SampleSize.Name = "SampleSize";
-            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Subgroups
-            // 
-            this.Subgroups.HeaderText = "Sub Groups";
-            this.Subgroups.Name = "Subgroups";
-            this.Subgroups.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Subgroups.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(812, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 16);
-            this.label2.TabIndex = 388;
-            this.label2.Text = "Elongated / mm ";
-            // 
-            // treeView1
-            // 
-            this.treeView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.treeView1.Location = new System.Drawing.Point(416, 15);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(379, 246);
-            this.treeView1.TabIndex = 280;
-            // 
-            // richTextBoxArea
-            // 
-            this.richTextBoxArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBoxArea.BackColor = System.Drawing.Color.AliceBlue;
-            this.richTextBoxArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.richTextBoxArea.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.richTextBoxArea.HideSelection = false;
-            this.richTextBoxArea.Location = new System.Drawing.Point(936, 28);
-            this.richTextBoxArea.MaxLength = 20;
-            this.richTextBoxArea.Multiline = false;
-            this.richTextBoxArea.Name = "richTextBoxArea";
-            this.richTextBoxArea.ReadOnly = true;
-            this.richTextBoxArea.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.richTextBoxArea.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBoxArea.Size = new System.Drawing.Size(81, 35);
-            this.richTextBoxArea.TabIndex = 387;
-            this.richTextBoxArea.Text = "0";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(801, 210);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 51);
-            this.button2.TabIndex = 279;
-            this.button2.Text = "Apply Changes";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tabPage5
             // 
@@ -1702,6 +1617,146 @@ namespace MVision
             this.MakeReportButton.UseCompatibleTextRendering = true;
             this.MakeReportButton.UseVisualStyleBackColor = false;
             this.MakeReportButton.Click += new System.EventHandler(this.MakeReportButton_Click_1);
+            // 
+            // UnderType
+            // 
+            this.UnderType.Controls.Add(this.groupBox5);
+            this.UnderType.Location = new System.Drawing.Point(4, 25);
+            this.UnderType.Name = "UnderType";
+            this.UnderType.Size = new System.Drawing.Size(1560, 277);
+            this.UnderType.TabIndex = 10;
+            this.UnderType.Text = "Under Type";
+            this.UnderType.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.button52);
+            this.groupBox5.Controls.Add(this.dataGridViewUnderType);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.treeView1);
+            this.groupBox5.Controls.Add(this.richTextBoxArea);
+            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Location = new System.Drawing.Point(3, 7);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1034, 267);
+            this.groupBox5.TabIndex = 389;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Setting Measurements";
+            // 
+            // button52
+            // 
+            this.button52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button52.Location = new System.Drawing.Point(944, 79);
+            this.button52.Name = "button52";
+            this.button52.Size = new System.Drawing.Size(73, 24);
+            this.button52.TabIndex = 389;
+            this.button52.Text = "Resеt";
+            this.button52.UseVisualStyleBackColor = true;
+            this.button52.Click += new System.EventHandler(this.button52_Click);
+            // 
+            // dataGridViewUnderType
+            // 
+            this.dataGridViewUnderType.AllowUserToDeleteRows = false;
+            this.dataGridViewUnderType.AllowUserToOrderColumns = true;
+            this.dataGridViewUnderType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUnderType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameSmpl,
+            this.SampleSize,
+            this.SubgroupsOutside,
+            this.SurveyInside});
+            this.dataGridViewUnderType.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridViewUnderType.Location = new System.Drawing.Point(6, 15);
+            this.dataGridViewUnderType.Name = "dataGridViewUnderType";
+            this.dataGridViewUnderType.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGridViewUnderType.RowHeadersVisible = false;
+            this.dataGridViewUnderType.RowHeadersWidth = 40;
+            this.dataGridViewUnderType.RowTemplate.Height = 25;
+            this.dataGridViewUnderType.Size = new System.Drawing.Size(508, 246);
+            this.dataGridViewUnderType.TabIndex = 1;
+            this.dataGridViewUnderType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnderType_CellClick);
+            // 
+            // NameSmpl
+            // 
+            this.NameSmpl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NameSmpl.FillWeight = 200F;
+            this.NameSmpl.HeaderText = "Names";
+            this.NameSmpl.MinimumWidth = 6;
+            this.NameSmpl.Name = "NameSmpl";
+            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameSmpl.Width = 200;
+            // 
+            // SampleSize
+            // 
+            this.SampleSize.HeaderText = "Sample Size";
+            this.SampleSize.Name = "SampleSize";
+            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SampleSize.Width = 60;
+            // 
+            // SubgroupsOutside
+            // 
+            this.SubgroupsOutside.HeaderText = "SubGroups";
+            this.SubgroupsOutside.Name = "SubgroupsOutside";
+            this.SubgroupsOutside.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SubgroupsOutside.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SubgroupsOutside.Width = 80;
+            // 
+            // SurveyInside
+            // 
+            this.SurveyInside.HeaderText = "Survey Inside";
+            this.SurveyInside.Name = "SurveyInside";
+            this.SurveyInside.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SurveyInside.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SurveyInside.Width = 80;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(812, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 16);
+            this.label2.TabIndex = 388;
+            this.label2.Text = "Elongated / mm ";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.treeView1.Location = new System.Drawing.Point(520, 15);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(286, 246);
+            this.treeView1.TabIndex = 280;
+            // 
+            // richTextBoxArea
+            // 
+            this.richTextBoxArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBoxArea.BackColor = System.Drawing.Color.AliceBlue;
+            this.richTextBoxArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.richTextBoxArea.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.richTextBoxArea.HideSelection = false;
+            this.richTextBoxArea.Location = new System.Drawing.Point(936, 28);
+            this.richTextBoxArea.MaxLength = 20;
+            this.richTextBoxArea.Multiline = false;
+            this.richTextBoxArea.Name = "richTextBoxArea";
+            this.richTextBoxArea.ReadOnly = true;
+            this.richTextBoxArea.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.richTextBoxArea.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBoxArea.Size = new System.Drawing.Size(81, 35);
+            this.richTextBoxArea.TabIndex = 387;
+            this.richTextBoxArea.Text = "0";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(924, 216);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(104, 51);
+            this.button2.TabIndex = 279;
+            this.button2.Text = "Apply Changes";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tabPage1
             // 
@@ -4229,6 +4284,438 @@ namespace MVision
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.pictureBox2);
+            this.tabPage6.Controls.Add(this.pictureBox1);
+            this.tabPage6.Controls.Add(this.VisionSettings);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1560, 277);
+            this.tabPage6.TabIndex = 11;
+            this.tabPage6.Text = "tabPage6";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(761, 45);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(225, 207);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2022;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(992, 44);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(210, 208);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2021;
+            this.pictureBox1.TabStop = false;
+            // 
+            // VisionSettings
+            // 
+            this.VisionSettings.Controls.Add(this.groupBox32);
+            this.VisionSettings.Controls.Add(this.groupBox23);
+            this.VisionSettings.Controls.Add(this.groupBox7);
+            this.VisionSettings.Controls.Add(this.groupBox20);
+            this.VisionSettings.Controls.Add(this.groupBox28);
+            this.VisionSettings.Controls.Add(this.groupBox29);
+            this.VisionSettings.Controls.Add(this.groupBox30);
+            this.VisionSettings.Location = new System.Drawing.Point(21, 33);
+            this.VisionSettings.Name = "VisionSettings";
+            this.VisionSettings.Size = new System.Drawing.Size(724, 226);
+            this.VisionSettings.TabIndex = 40;
+            this.VisionSettings.TabStop = false;
+            this.VisionSettings.Text = "Vision Settings";
+            // 
+            // groupBox32
+            // 
+            this.groupBox32.Controls.Add(this.numericUpDownWhite);
+            this.groupBox32.Location = new System.Drawing.Point(414, 148);
+            this.groupBox32.Name = "groupBox32";
+            this.groupBox32.Size = new System.Drawing.Size(132, 61);
+            this.groupBox32.TabIndex = 49;
+            this.groupBox32.TabStop = false;
+            this.groupBox32.Text = "White Bekgraund";
+            // 
+            // numericUpDownWhite
+            // 
+            this.numericUpDownWhite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.numericUpDownWhite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDownWhite.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.numericUpDownWhite.Location = new System.Drawing.Point(24, 21);
+            this.numericUpDownWhite.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownWhite.Name = "numericUpDownWhite";
+            this.numericUpDownWhite.Size = new System.Drawing.Size(76, 26);
+            this.numericUpDownWhite.TabIndex = 45;
+            this.numericUpDownWhite.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownWhite.ValueChanged += new System.EventHandler(this.numericUpDownWhite_ValueChanged);
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.comboBoxImgTypTest);
+            this.groupBox23.Location = new System.Drawing.Point(211, 148);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(197, 65);
+            this.groupBox23.TabIndex = 2031;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Selecting  Image Type";
+            // 
+            // comboBoxImgTypTest
+            // 
+            this.comboBoxImgTypTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxImgTypTest.FormattingEnabled = true;
+            this.comboBoxImgTypTest.Location = new System.Drawing.Point(19, 22);
+            this.comboBoxImgTypTest.Name = "comboBoxImgTypTest";
+            this.comboBoxImgTypTest.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxImgTypTest.Size = new System.Drawing.Size(172, 32);
+            this.comboBoxImgTypTest.TabIndex = 2033;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.labelDectContur);
+            this.groupBox7.Location = new System.Drawing.Point(568, 158);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(150, 60);
+            this.groupBox7.TabIndex = 1;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Bad blobs";
+            // 
+            // labelDectContur
+            // 
+            this.labelDectContur.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelDectContur.AutoSize = true;
+            this.labelDectContur.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDectContur.ForeColor = System.Drawing.Color.Green;
+            this.labelDectContur.Location = new System.Drawing.Point(24, 26);
+            this.labelDectContur.Name = "labelDectContur";
+            this.labelDectContur.Size = new System.Drawing.Size(117, 24);
+            this.labelDectContur.TabIndex = 2030;
+            this.labelDectContur.Text = "Not detected";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.groupBox24);
+            this.groupBox20.Controls.Add(this.label33);
+            this.groupBox20.Controls.Add(this.numericUpDown1);
+            this.groupBox20.Controls.Add(this.label38);
+            this.groupBox20.Controls.Add(this.numericUpDown12);
+            this.groupBox20.Controls.Add(this.numericUpDown13);
+            this.groupBox20.Controls.Add(this.label42);
+            this.groupBox20.Location = new System.Drawing.Point(8, 12);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.groupBox20.Size = new System.Drawing.Size(197, 197);
+            this.groupBox20.TabIndex = 2028;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Segmentation Black ";
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.label29);
+            this.groupBox24.Controls.Add(this.numericUpDown9);
+            this.groupBox24.Location = new System.Drawing.Point(12, 125);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(179, 60);
+            this.groupBox24.TabIndex = 48;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Flaps Test";
+            // 
+            // label29
+            // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(6, 26);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(80, 16);
+            this.label29.TabIndex = 46;
+            this.label29.Text = "Contour size";
+            // 
+            // numericUpDown9
+            // 
+            this.numericUpDown9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.numericUpDown9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown9.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.numericUpDown9.Location = new System.Drawing.Point(92, 21);
+            this.numericUpDown9.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown9.Name = "numericUpDown9";
+            this.numericUpDown9.Size = new System.Drawing.Size(76, 26);
+            this.numericUpDown9.TabIndex = 45;
+            this.numericUpDown9.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label33
+            // 
+            this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(12, 82);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(80, 16);
+            this.label33.TabIndex = 44;
+            this.label33.Text = "Contour size";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.numericUpDown1.Location = new System.Drawing.Point(98, 81);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(76, 26);
+            this.numericUpDown1.TabIndex = 43;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label38
+            // 
+            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(2, 54);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(90, 16);
+            this.label38.TabIndex = 42;
+            this.label38.Text = "Segmentation";
+            // 
+            // numericUpDown12
+            // 
+            this.numericUpDown12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.numericUpDown12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown12.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.numericUpDown12.Location = new System.Drawing.Point(98, 18);
+            this.numericUpDown12.Name = "numericUpDown12";
+            this.numericUpDown12.Size = new System.Drawing.Size(76, 26);
+            this.numericUpDown12.TabIndex = 38;
+            this.numericUpDown12.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown13
+            // 
+            this.numericUpDown13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.numericUpDown13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown13.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.numericUpDown13.Location = new System.Drawing.Point(98, 49);
+            this.numericUpDown13.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown13.Name = "numericUpDown13";
+            this.numericUpDown13.Size = new System.Drawing.Size(76, 26);
+            this.numericUpDown13.TabIndex = 39;
+            this.numericUpDown13.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+
+            // 
+            // label42
+            // 
+            this.label42.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(62, 25);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(30, 16);
+            this.label42.TabIndex = 41;
+            this.label42.Text = "Blur";
+            // 
+            // groupBox28
+            // 
+            this.groupBox28.Controls.Add(this.button55);
+            this.groupBox28.Controls.Add(this.button56);
+            this.groupBox28.Controls.Add(this.textBox3);
+            this.groupBox28.Controls.Add(this.button57);
+            this.groupBox28.Location = new System.Drawing.Point(537, 21);
+            this.groupBox28.Name = "groupBox28";
+            this.groupBox28.Size = new System.Drawing.Size(166, 114);
+            this.groupBox28.TabIndex = 2032;
+            this.groupBox28.TabStop = false;
+            this.groupBox28.Text = "Views";
+            // 
+            // button55
+            // 
+            this.button55.Location = new System.Drawing.Point(10, 71);
+            this.button55.Name = "button55";
+            this.button55.Size = new System.Drawing.Size(71, 29);
+            this.button55.TabIndex = 2027;
+            this.button55.Text = "BACK";
+            this.button55.UseVisualStyleBackColor = true;
+            this.button55.Click += new System.EventHandler(this.button55_Click);
+            // 
+            // button56
+            // 
+            this.button56.Location = new System.Drawing.Point(87, 70);
+            this.button56.Name = "button56";
+            this.button56.Size = new System.Drawing.Size(71, 30);
+            this.button56.TabIndex = 2026;
+            this.button56.Text = "NEXT";
+            this.button56.UseVisualStyleBackColor = true;
+            this.button56.Click += new System.EventHandler(this.button56_Click);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox3.Location = new System.Drawing.Point(10, 25);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(71, 26);
+            this.textBox3.TabIndex = 2023;
+            // 
+            // button57
+            // 
+            this.button57.Location = new System.Drawing.Point(87, 29);
+            this.button57.Name = "button57";
+            this.button57.Size = new System.Drawing.Size(71, 23);
+            this.button57.TabIndex = 2025;
+            this.button57.Text = "Clear";
+            this.button57.UseVisualStyleBackColor = true;
+            this.button57.Click += new System.EventHandler(this.button57_Click);
+            // 
+            // groupBox29
+            // 
+            this.groupBox29.Controls.Add(this.label49);
+            this.groupBox29.Controls.Add(this.numericUpDown10);
+            this.groupBox29.Controls.Add(this.numericUpDown11);
+            this.groupBox29.Controls.Add(this.label50);
+            this.groupBox29.Location = new System.Drawing.Point(211, 12);
+            this.groupBox29.Name = "groupBox29";
+            this.groupBox29.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.groupBox29.Size = new System.Drawing.Size(197, 93);
+            this.groupBox29.TabIndex = 2018;
+            this.groupBox29.TabStop = false;
+            this.groupBox29.Text = "Segmentation Adaptive";
+            // 
+            // label49
+            // 
+            this.label49.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(19, 54);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(90, 16);
+            this.label49.TabIndex = 42;
+            this.label49.Text = "Segmentation";
+            // 
+            // numericUpDown10
+            // 
+            this.numericUpDown10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.numericUpDown10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown10.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.numericUpDown10.Location = new System.Drawing.Point(115, 18);
+            this.numericUpDown10.Name = "numericUpDown10";
+            this.numericUpDown10.Size = new System.Drawing.Size(76, 26);
+            this.numericUpDown10.TabIndex = 38;
+            this.numericUpDown10.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown10.ValueChanged += new System.EventHandler(this.numericUpDown10_ValueChanged);
+            // 
+            // numericUpDown11
+            // 
+            this.numericUpDown11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.numericUpDown11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown11.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.numericUpDown11.Location = new System.Drawing.Point(115, 49);
+            this.numericUpDown11.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown11.Name = "numericUpDown11";
+            this.numericUpDown11.Size = new System.Drawing.Size(76, 26);
+            this.numericUpDown11.TabIndex = 39;
+            this.numericUpDown11.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label50
+            // 
+            this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(79, 25);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(30, 16);
+            this.label50.TabIndex = 41;
+            this.label50.Text = "Blur";
+            // 
+            // groupBox30
+            // 
+            this.groupBox30.Controls.Add(this.radioButton1);
+            this.groupBox30.Controls.Add(this.AnalysisTest);
+            this.groupBox30.Location = new System.Drawing.Point(414, 11);
+            this.groupBox30.Name = "groupBox30";
+            this.groupBox30.Size = new System.Drawing.Size(117, 94);
+            this.groupBox30.TabIndex = 2029;
+            this.groupBox30.TabStop = false;
+            this.groupBox30.Text = "Analysis Test";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(41, 49);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(59, 20);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Black";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // AnalysisTest
+            // 
+            this.AnalysisTest.AutoSize = true;
+            this.AnalysisTest.Location = new System.Drawing.Point(21, 24);
+            this.AnalysisTest.Name = "AnalysisTest";
+            this.AnalysisTest.Size = new System.Drawing.Size(79, 20);
+            this.AnalysisTest.TabIndex = 0;
+            this.AnalysisTest.Text = "Adaptive";
+            this.AnalysisTest.UseVisualStyleBackColor = true;
+            // 
             // Save_Report_Button
             // 
             this.Save_Report_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -4279,23 +4766,7 @@ namespace MVision
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameSmpl.Width = 200;
-            // 
-            // SampleSize
-            // 
-            this.SampleSize.HeaderText = "Sample Size";
-            this.SampleSize.Name = "SampleSize";
-            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Subgroups
-            // 
-            this.Subgroups.HeaderText = "Sub Groups";
-            this.Subgroups.Name = "Subgroups";
-            this.Subgroups.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Subgroups.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
@@ -4354,10 +4825,6 @@ namespace MVision
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.UnderType.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -4368,6 +4835,10 @@ namespace MVision
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowGoodNumeric)).EndInit();
+            this.UnderType.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox14.ResumeLayout(false);
@@ -4453,6 +4924,31 @@ namespace MVision
             this.AddColumn.ResumeLayout(false);
             this.DeleteColumn.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.VisionSettings.ResumeLayout(false);
+            this.groupBox32.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWhite)).EndInit();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
+            this.groupBox28.ResumeLayout(false);
+            this.groupBox28.PerformLayout();
+            this.groupBox29.ResumeLayout(false);
+            this.groupBox29.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
+            this.groupBox30.ResumeLayout(false);
+            this.groupBox30.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4755,10 +5251,44 @@ namespace MVision
         private System.Windows.Forms.RichTextBox richTextBoxArea;
         private System.Windows.Forms.Button button49;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button button52;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameSmpl;
         private System.Windows.Forms.DataGridViewTextBoxColumn SampleSize;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Subgroups;
-        private System.Windows.Forms.Button button52;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SubgroupsOutside;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SurveyInside;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox VisionSettings;
+        private System.Windows.Forms.GroupBox groupBox23;
+        private System.Windows.Forms.ComboBox comboBoxImgTypTest;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label labelDectContur;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.GroupBox groupBox24;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.NumericUpDown numericUpDown9;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.NumericUpDown numericUpDown12;
+        private System.Windows.Forms.NumericUpDown numericUpDown13;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.GroupBox groupBox28;
+        private System.Windows.Forms.Button button55;
+        private System.Windows.Forms.Button button56;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button57;
+        private System.Windows.Forms.GroupBox groupBox29;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.NumericUpDown numericUpDown10;
+        private System.Windows.Forms.NumericUpDown numericUpDown11;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.GroupBox groupBox30;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton AnalysisTest;
+        private System.Windows.Forms.GroupBox groupBox32;
+        private System.Windows.Forms.NumericUpDown numericUpDownWhite;
     }
 }
 

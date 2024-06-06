@@ -49,8 +49,6 @@ namespace MVision
         [Serializable()]
         public class Device{
 
-            
-
             public int ID { get; set; }
             public int MasterID { get; set; }
             public int SlaveID { get; set; }
@@ -120,10 +118,13 @@ namespace MVision
         public int SampleSize;
         public string NameSmaller ="_S";
         public string NameLarged  ="_L";
-        public bool   SubGroups;    // Активація під груп
-        public int   IdxGrp;       //індикс першого значення підгрупи в Image List.(для індексації Mosaic)
+        public bool   SubGroups;    // Активація під груа вимірювання по зовнішньому 
+        public bool   SurveyIn;    // Активація під груп вимірювання по внутрішньому контурі.
 
- static   public short   IdxGrpleng;         // довжина List з групами  та активованими підгрупами.
+
+            public int   IdxGrp;       //індикс першого значення підгрупи в Image List.(для індексації Mosaic)
+
+        static   public short   IdxGrpleng;         // довжина List з групами  та активованими підгрупами.
 
             //public bool   TypeOn;
 
@@ -146,6 +147,8 @@ namespace MVision
         public USB_HID.MOTOR.DT[]      Motor     = new USB_HID.MOTOR.DT[2];
         public _DLS.DT                 DALSA     = new _DLS.DT();
 
+        public  VIS.DATA_Save         VIS      = new VIS.DATA_Save();
+
     }
 
 
@@ -157,11 +160,13 @@ namespace MVision
     {
      static public SaveClassDT DT = new SaveClassDT();
 
+        
+
         string FileName = "Settings.json";
 
         public bool Serialize(string url)
         {
-
+              DT.VIS = VIS.Data;
 
             try
             {
@@ -191,6 +196,10 @@ namespace MVision
                     string json = File.ReadAllText(filePath);
                     DT = JsonConvert.DeserializeObject<SaveClassDT>(json);
                     Console.WriteLine("Deserialize JSON OK");
+
+                    VIS.Data = DT.VIS;
+
+
                     return true;
                 }
             }
@@ -198,6 +207,9 @@ namespace MVision
             {
                 Console.WriteLine("Deserialize JSON ERROR");
             }
+
+
+
 
 
             return false;

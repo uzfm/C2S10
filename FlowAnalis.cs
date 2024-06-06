@@ -38,7 +38,7 @@ namespace MVision
             public Rectangle[] ROI = new Rectangle[2];
             public double[] SizeCorect = new double[2];
             public double[] Aria = new double[2];
-            public Elongated[] Elong = new Elongated[2];
+            public AnalisSMP[] AnalSMP = new AnalisSMP[2];
             public int ID { get; set; }
         }
 
@@ -110,10 +110,15 @@ namespace MVision
 
 
 
-    struct Elongated
+    struct AnalisSMP
     {
-        public int Height;
-        public int Width;
+        public int ElongHeight;
+        public int ElongWidth;
+        public double ElongMax;
+        public double Scale;
+        public double Aria;
+
+
     }
 
 
@@ -160,7 +165,7 @@ namespace MVision
         {
             public Mat[] Img = new Mat[2];
             public double[] Aria = new double[2];
-            public Elongated [] Elong = new Elongated[2];
+            public AnalisSMP[] AnalSMP = new AnalisSMP[2];
             public double[] SizeCorect = new double[2];
             public Rectangle [] ROI = new Rectangle[2];
             public int ID { get; set; }
@@ -279,12 +284,13 @@ namespace MVision
                         // відступ центрування зразків
                         /****************************/
                         int ScaleNorm = 22;
-                        Elongated Elong_Save = new Elongated();
-                   
+                        AnalisSMP AnalSMP_Save = new AnalisSMP();
+
                         //ROI fo Save
-                        Elong_Save.Height = CutCTR_SV.ROI[i].Height* Rosolution;
-                        Elong_Save.Width = CutCTR_SV.ROI[i].Width* Rosolution;
-                      
+                        AnalSMP_Save.ElongHeight = CutCTR_SV.ROI[i].Height* Rosolution;
+                        AnalSMP_Save.ElongWidth = CutCTR_SV.ROI[i].Width* Rosolution;
+                        AnalSMP_Save.ElongMax = Large_mm(Math.Max(AnalSMP_Save.ElongWidth, AnalSMP_Save.ElongHeight));
+                 
 
 
                         if ((CutCTR_SV.ROI[i].Width >= ScaleNorm) ||  (CutCTR_SV.ROI[i].Height >= ScaleNorm))  {
@@ -318,8 +324,9 @@ namespace MVision
                              }
 
 
-
                         Rectangle ROI = CutCTR_SV.ROI[i];
+                        
+
 
                         if (CutCTR_SV.CUT[i]){
                         
@@ -374,7 +381,9 @@ namespace MVision
                                 TempColl.Aria[ID]    = (CutCTR_SV.Aria[i] * (double)Rosolution);
                                 TempColl.Img[ID] = NewMatAI.ToImage<Bgr, byte>().Copy().Resize(64, 64, Inter.Linear).Mat;
                                 TempColl.ROI[ID] = ROI;
-                                TempColl.Elong[ID] = Elong_Save;
+                                AnalSMP_Save.Scale = (double)(((double)ROI.Height * (double)ROI.Width) / (double)4096);
+                                TempColl.AnalSMP[ID] = AnalSMP_Save;
+
 
                                 if (ID==Master) {
                                     if ((SAV.DT.Analys.SelectPS) && (SAV.DT.Device.LiveView)) { 
@@ -398,7 +407,8 @@ namespace MVision
                                                 CvInvoke.Rectangle(imgAVT[ID].Mat, ROIT, new Bgr(Color.Blue).MCvScalar, 1);
                                                 CvInvoke.Rectangle(imgAVT[ID].Mat, ROIB, new Bgr(Color.Red).MCvScalar, 1);}
                                                 ListCutImg[j].Aria[Slave] = TempColl.Aria[Slave];
-                                                ListCutImg[j].Elong[Slave] = Elong_Save;
+                                               
+                                                ListCutImg[j].AnalSMP[Slave] = AnalSMP_Save;
                                                 ListCutImg[j].Img[Slave] = TempColl.Img[Slave];
                                                 ListCutImg[j].ROI[Slave] = TempColl.ROI[Slave];
                                                 break;
@@ -438,8 +448,9 @@ namespace MVision
                                     TempColl.Aria[ID] = (CutCTR_SV.Aria[i] * (double)Rosolution);
                                     TempColl.Img[ID] = ImagsCam[ID].Copy().Resize(64, 64, Inter.Linear).Mat;
                                     TempColl.ROI[ID] = ROI;
-                                     //ROI fo Save
-                                    TempColl.Elong[ID] = Elong_Save;
+                                    AnalSMP_Save.Scale = (double)(((double)ROI.Height * (double)ROI.Width) / (double)4096);
+                                    //ROI fo Save
+                                    TempColl.AnalSMP[ID] = AnalSMP_Save;
              
 
                                     /************************    Тут вирізає картинки з Master CAM    *****************************************/
@@ -490,7 +501,7 @@ namespace MVision
                                                     ListCutImg[IdxJ].Aria[Slave] = TempColl.Aria[Slave];
                                                     ListCutImg[IdxJ].Img[Slave]  = TempColl.Img [Slave];
                                                     ListCutImg[IdxJ].ROI[Slave]  = TempColl.ROI [Slave];
-                                                    ListCutImg[IdxJ].Elong[Slave] = TempColl.Elong[Slave];
+                                                    ListCutImg[IdxJ].AnalSMP[Slave] = TempColl.AnalSMP[Slave];
                                                    
 
 
@@ -540,7 +551,7 @@ namespace MVision
                                                         ListCutImg[j].Aria[Slave] = TempColl.Aria[Slave];
                                                         ListCutImg[j].Img[Slave] = TempColl.Img[Slave];
                                                         ListCutImg[j].ROI[Slave] = TempColl.ROI[Slave];
-                                                        ListCutImg[j].Elong[Slave] = TempColl.Elong[Slave];
+                                                        ListCutImg[j].AnalSMP[Slave] = TempColl.AnalSMP[Slave];
                                          
 
                                                     Old_IMG[ID].ROI = ROI_Main;
@@ -590,8 +601,8 @@ namespace MVision
                         cutImg.ROI[1] = ListCutImg[idx].ROI[1];
                         cutImg.Aria[0] = ListCutImg[idx].Aria[0];
                         cutImg.Aria[1] = ListCutImg[idx].Aria[1];
-                        cutImg.Elong[0] = ListCutImg[idx].Elong[0];
-                        cutImg.Elong[1] = ListCutImg[idx].Elong[1];
+                        cutImg.AnalSMP[0] = ListCutImg[idx].AnalSMP[0];
+                        cutImg.AnalSMP[1] = ListCutImg[idx].AnalSMP[1];
                         cutImg.SizeCorect[0] = ListCutImg[idx].SizeCorect[0];
                         cutImg.SizeCorect[1] = ListCutImg[idx].SizeCorect[1];
 
@@ -677,9 +688,31 @@ namespace MVision
 
 
 
+        /********************   для аналізу розрахунки   **************************************/
+
+        double widthInPixels = 8192; // ширина поля в пікселях
+        double widthInCm = 200; // ширина поля в см
+        double Kofic = 1.06; // ширина поля в см
+
+        double Areamm2(double Aria)
+        {
+            double data1 = (widthInCm / widthInPixels);
+            double data3 = Aria * data1;
+            // Знайдемо площу в мм²
+            // double    data=Aria * (widthInPixels / widthInCm) ;      // 1 см = 10 мм
+            return data3;
+        }
 
 
-
+        double Large_mm(double Aria)
+        {
+            double data1 = (widthInCm / widthInPixels);
+            double data3 = Aria * data1;
+            // Знайдемо площу в мм²
+            // double    data=Aria * (widthInPixels / widthInCm) ;      // 1 см = 10 мм
+            return Math.Round(Kofic * data3, 2); ;
+        }
+       /**********************************************************/
 
 
 
@@ -985,8 +1018,8 @@ namespace MVision
                     IMG_CUT.ROI_Slave  = new Rectangle[CountBF];
                     IMG_CUT.AriaM = new double[CountBF];
                     IMG_CUT.AriaS = new double[CountBF];
-                    IMG_CUT.ElongM = new Elongated[CountBF];
-                    IMG_CUT.ElongS = new Elongated[CountBF];
+                    IMG_CUT.AnalSMP_M = new AnalisSMP[CountBF];
+                    IMG_CUT.AnalSMP_S = new AnalisSMP[CountBF];
 
                     ReadIng = 0;
 
@@ -1004,8 +1037,8 @@ namespace MVision
                             IMG_CUT.ROI_Slave[i]  = ListDT.ROI[1];
                             IMG_CUT.AriaM[i] = ListDT.Aria[0];
                             IMG_CUT.AriaS[i] = ListDT.Aria[1];
-                            IMG_CUT.ElongM[i] = ListDT.Elong[0];
-                            IMG_CUT.ElongS[i] = ListDT.Elong[1];
+                            IMG_CUT.AnalSMP_M[i] = ListDT.AnalSMP[0];
+                            IMG_CUT.AnalSMP_S[i] = ListDT.AnalSMP[1];
                         }
                         else { break; };
 
@@ -1038,8 +1071,10 @@ namespace MVision
                           //  ---наповнюєм-- -
                            DTLimg[i].Img[0]  = IMG_CUT.ImgMaster[i];
                            DTLimg[i].Img[1]  = IMG_CUT.ImgSlave[i];
-                           DTLimg[i].Aria[0] = Large_mm(Math.Max(IMG_CUT.ElongM[i].Width, IMG_CUT.ElongM[i].Height));
-                           DTLimg[i].Aria[1] = Large_mm(Math.Max(IMG_CUT.ElongS[i].Width, IMG_CUT.ElongS[i].Height));
+
+
+                           DTLimg[i].AnalisSMP[0] = IMG_CUT.AnalSMP_M[i];
+                           DTLimg[i].AnalisSMP[1] = IMG_CUT.AnalSMP_S[i];
                         }
 
 
@@ -1146,36 +1181,6 @@ namespace MVision
         }
 
 
-          double widthInPixels = 8192; // ширина поля в пікселях
-           double widthInCm = 200; // ширина поля в см
-        double Kofic = 1.06; // ширина поля в см
-
-        double Areamm2(double Aria)
-        {
-
-           double  data1=  ( widthInCm/ widthInPixels );
-            double data3  = Aria * data1;
-
-
-            // Знайдемо площу в мм²
-           // double    data=Aria * (widthInPixels / widthInCm) ;      // 1 см = 10 мм
-            
-       
-            return data3;
-        }
-
-
-        double Large_mm(double Aria)
-        {
-
-            double data1 = (widthInCm / widthInPixels);
-            double data3 = Aria * data1;
-
-            // Знайдемо площу в мм²
-            // double    data=Aria * (widthInPixels / widthInCm) ;      // 1 см = 10 мм
-
-            return Math.Round(Kofic * data3, 2); ;
-        }
 
 
 

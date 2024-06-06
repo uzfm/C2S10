@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -108,24 +109,7 @@ namespace MVision
         static public Image<Bgr, byte>[] Origenal_img_Camera = new Image<Bgr, byte>[2];
         static public Image<Bgr, byte>[] Origenal_Img_Mosaics = new Image<Bgr, byte>[2];
 
-        //public static double[,] ColorMaxB = new double[2, 5] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } };
-        //public static double[,] ColorMaxG = new double[2, 5] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } };
-        //public static double[,] ColorMaxR = new double[2, 5] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } };
-
-      // public static double[] ColorMaxB = SAV.DT.ColourMax.B;
-       // public static double[] ColorMaxG = SAV.DT.ColourMax.G;
-        //public static double[] ColorMaxR = SAV.DT.ColourMax.R;
-
-        //public static double[,] ColorMinB = new double[2, 5] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } };
-        //public static double[,] ColorMinG = new double[2, 5] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } };
-        //public static double[,] ColorMinR = new double[2, 5] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } };
-        // public static  int  SetingsID=0;
         public static int[] SetingsID = new int[2];
-
-       // public static int[,] Max_Contur = new int[2, 5] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } };
-       // public static int[,] Min_Contur = new int[2, 5] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 } };
-
-
         public static bool[] SelectConturs = new bool[2] { false, false }; // дозволяє виділити глоби
 
 
@@ -203,43 +187,7 @@ namespace MVision
             return null;
         }
 
-        //============================== Зклеюєм картинку ==============================//
-        //public Bitmap ContactImageMaste(Bitmap ImagCap, bool statart)
-        //{
 
-        //    Image<Bgr, Byte> imageCV = ImagCap.ToImage <Bgr, byte>(); //Image Class from Emgu.CV
-        //    Mat Imag = imageCV.Mat;
-
-        //    if (statart == true)
-        //    {
-        //        if (MatMaster != null)
-        //        {
-        //            CvInvoke.VConcat(MatMaster, Imag, NewMatM);
-        //           // Console.WriteLine("ContactFoto1 OK" + "/" + DateTime.Now.Minute + "/" + DateTime.Now.Millisecond);
-        //            MatMaster = NewMatM;
-        //            //return NewMatM.Bitmap;
-        //        }
-        //        else { MatMaster = Imag; }
-        //    }
-        //    return MatMaster.ToBitmap();
-        //}
-
-        // static Mat MatSlave;
-        // public void ResMat() { MatMaster = null; MatSlave = null; }
-
-        //public Bitmap ContactImageSlave(Bitmap ImagCap, bool statart)
-        //{
-        //    Mat NewMat = new Mat();
-
-        //    if (MatSlave != null)
-        //    {
-        //        CvInvoke.VConcat(MatSlave, Origenal_img_Camera[Slave].Mat, NewMat);
-        //        MatSlave = Origenal_img_Camera[Slave].Mat; ;
-        //        //return MatSlave.Bitmap;
-        //    }
-        //    else { MatSlave = Origenal_img_Camera[Slave].Mat; }
-        //    return NewMat.ToBitmap();
-        //}
 
 
         // Склеює дві картинки
@@ -309,10 +257,6 @@ namespace MVision
             return img1.ToBitmap();
         }
 
-
-
-
-
         //Визначення кaналу для відправки на контролер
         const int ShoulderPic = 20;
         static public int[] SeparationChenal( int Position, int Length) {
@@ -337,11 +281,6 @@ namespace MVision
         static Image<Bgr, byte>[] ImagContact = new Image<Bgr, byte>[2];
 
 
-
-        //static Image<Bgr, byte> ImagContactM  ;
-        //static Image<Bgr, byte> ImagContactS;
-
-
         static int[,,] LocationImg_1 = new int[2, 20, 3]; // ID ,H,W
         static int[,,] LocationImg_2 = new int[2, 20, 3]; // ID ,H,W
         static byte[,] LocationImgIDX = new byte[2, 2];
@@ -353,35 +292,6 @@ namespace MVision
         private static int[] PeletsCount = new int[2] { 0, 0 };     //підраховуємо частинок для синхронізації
                                                                     //  static int                     [] ContName = new int[2];
 
-        //static Rectangle  box = new Rectangle();
-
-
-
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //==============================                                 ВИЗНАЧАЄМ ТА МАЛЮЄМО КОНТУРИ з FOTO                                                      ==============================//
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        //static public int Aperture = 1792; // 896;   //Ширина видимості поля сортування в (пікселях по осі (Х))
-
-        //static public int ApertureZis = 1792; // 1792; // 896;   //Ширина видимості поля сортування в (пікселях по осі (Х))
-        //static public int ShoulderPic = 8;     //Кількість робочих лопаток 1-10шт
-        //static public int Backdown = 0;     //Відступ від країв видимості ширини поля в (пікселях по осі(Х))
-        //public const int Heigh = 150;   //Висота картинкі
-        //public const int HeighWol = 600;   //Висота картинкі початок картинки що не різало
-        //=========================================================================================================//
-   
-
-        // static public int[] CameraCountFPS = new int[2] {0,0};
         static public int   CameraBufer = 0;
         static public int   CameraEroor = 0;
 
@@ -643,7 +553,7 @@ namespace MVision
         }
 
 
-    public  static Image<Bgr, byte> CLAHE(Image<Bgr, byte> image) {
+        public  static Image<Bgr, byte> CLAHE(Image<Bgr, byte> image) {
            // Image<Bgr, byte> image = new Image<Bgr, byte>("your_image_path.jpg");
             Image<Lab, byte> labImage = new Image<Lab, byte>(image.Width, image.Height);
             CvInvoke.CvtColor(image, labImage, ColorConversion.Bgr2Lab);
@@ -719,7 +629,87 @@ namespace MVision
         }
 
 
+
+
+
+
+
+
+
+
+
+        //void TestImgBlb()
+        //{
+        //    string PshData = Path.Combine(PachML.Text, "Data"); //створити шлях до каталога "Data"
+        //    string PshSempls = Path.Combine(PshData, STGS.Data.ML_NAME, comboBoxImgTypTest.Text); //створити шлях до каталога "SAMPLES"
+
+
+        //    try
+        //    {
+        //        string urlMaster = PshSempls + "\\" + "Image" + IdxShouTest++ + ".jpg";
+        //        files = Directory.GetFiles(@PshSempls, "*.jpg");
+
+        //        int count = files.Length;
+
+        //        if (files != null)
+        //        {
+        //            if (IdxShouTest <= files.Length)
+        //            {
+        //                Bitmap imM = new Bitmap(files[IdxShouTest]);
+        //                textBox3.Text = IdxShouTest.ToString();
+
+        //                imOriginalM = imM.ToImage<Bgr, byte>().Resize(64, 64, interpolationType: Inter.Linear).Mat;
+
+        //                Stopwatch watch = Stopwatch.StartNew();
+
+
+
+        //                Image<Bgr, byte> ImagesViw = new Image<Bgr, byte>(100, 100);
+        //                if (AnalysisTest.Checked)
+        //                {
+        //                    ImagesViw = vision.DetectBlob(imOriginalM, labelDectContur);
+        //                }
+        //                else
+        //                {
+        //                    ImagesViw = vision.DetectBlobBlack(imOriginalM, labelDectContur);
+        //                }
+
+
+
+        //                watch.Stop();
+        //                var elapsedMs = watch.ElapsedMilliseconds;
+        //                toolStripStatusLabel5.Text = elapsedMs.ToString();
+        //                // Console.WriteLine("First Prediction took: " + elapsedMs + " ms");
+
+        //                pictureBox1.Image = ImagesViw.ToBitmap();
+        //                pictureBox2.Image = imOriginalM.ToBitmap();
+
+
+
+        //            }
+        //        }
+        //    }
+        //    catch { }
+        //}
+
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
 
 
 
@@ -732,15 +722,10 @@ namespace MVision
         public Rectangle[] ROI_Slave;
         public double   [] AriaM ;
         public double   [] AriaS;
-        public Elongated[] ElongM;
-        public Elongated[] ElongS;
+        public AnalisSMP[] AnalSMP_M;
+        public AnalisSMP[] AnalSMP_S;
 
     }
-
-
-
-
-
 
     class CutImages
     {
@@ -783,13 +768,11 @@ namespace MVision
          public int       [] IdxName = new int [2] ;                       // ідекс розташування в таблиці
         
         public double[] SizeCorect = new double[2];
-        public double[] Aria = new double[2];
+       // public double[] Aria = new double[2];    //
+        public AnalisSMP[] AnalisSMP = new AnalisSMP[2];    //
 
         static public List<int> SelectITM = new List<int>(); // вибираєм семпли та заносим в даний ліст для подальшої обробки.
     };
-
-
-
 
     public  class FPN {
 
@@ -840,117 +823,7 @@ namespace MVision
 
 
 
-            //// Отримання розміру зображення та розрахунок відстані від кожного пікселя до центру
-            //int centerX = image.Width / 2;
-            //int centerY = image.Height / 2;
-            //int maxDistance = Math.Max(centerX, centerY);
-            //double brightnessFactor = 0.5; // Коефіцієнт збільшення яскравості (змінюйте його для досягнення потрібного ефекту)
-            //// Збільшення яскравості пікселів по сторонах від центру
-            //for (int y = 0; y < image.Height; y++)
-            //{
-            //    for (int x = 0; x < image.Width; x++)
-            //    {
-            //        // Обчислення відстані до центру
-            //        int distanceX = Math.Abs(x - centerX);
-            //        int distanceY = Math.Abs(y - centerY);
-
-            //        // Обчислення коефіцієнта збільшення яскравості на основі відстані до центру
-            //        double brightnessMultiplier = 1;
-            //        brightnessMultiplier += (distanceX / (double)maxDistance) * brightnessFactor;
-            //        //brightnessMultiplier += (distanceY / (double)maxDistance) * brightnessFactor;
-
-            //        // Збільшення яскравості пікселя
-            //        Bgr pixel = image[y, x];
-            //        pixel.Blue = (byte)Math.Min(pixel.Blue * brightnessMultiplier, 250);
-            //        pixel.Green = (byte)Math.Min(pixel.Green * brightnessMultiplier, 250);
-            //        pixel.Red = (byte)Math.Min(pixel.Red * brightnessMultiplier, 250);
-            //        image[y, x] = pixel;
-            //    }
-            //}
-
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////*************------------
-            // Отримання розміру зображення та розрахунок відстані від кожного пікселя до центру
-            //int centerX = image.Width / 2;
-            //int centerY = image.Height / 2;
-            //int maxDistance = Math.Max(centerX, centerY);
-            //double brightnessFactor = 0.5; // Коефіцієнт збільшення яскравості (змінюйте його для досягнення потрібного ефекту)
-
-            //Image<Bgr, byte> imageMask = new Image<Bgr, byte>(image.Width, image.Height);
-
-            //// Збільшення яскравості пікселів по сторонах від центру
-            //for (int y = 0; y < image.Height; y++) {
-            //    for (int x = 0; x < image.Width; x++) {
-            //        // Обчислення відстані до центру
-            //        int distanceX = (Math.Abs(x - centerX) * 10);
-            //        int distanceY = Math.Abs(y - centerY);
-            //        // Обчислення коефіцієнта збільшення яскравості на основі відстані до центру
-            //        double brightnessMultiplier = 0.8;
-            //        brightnessMultiplier += (distanceX / (double)maxDistance) * brightnessFactor;
-            //        //brightnessMultiplier += (distanceY / (double)maxDistance) * brightnessFactor;
-            //        // Збільшення яскравості пікселя
-            //        Bgr pixel = imageMask[y, x];
-            //        pixel.Blue = 10;
-            //        pixel.Green = 10;
-            //        pixel.Red = 10;
-            //        pixel.Blue = (byte)Math.Min(pixel.Blue * brightnessMultiplier, 255);
-            //        pixel.Green = (byte)Math.Min(pixel.Green * brightnessMultiplier, 255);
-            //        pixel.Red = (byte)Math.Min(pixel.Red * brightnessMultiplier, 255);
-            //        imageMask[y, x] = pixel;
-            //    }
-            //}
-            //image =   imageMask +image;
-
-            /***********************************************************************************************************************************/
-            // Отримання розміру зображення та розрахунок відстані від кожного пікселя до центру
-            //int centerX = image.Width / 2;
-            //int centerY = image.Height / 2;
-            //int maxDistance = Math.Max(centerX, centerY);
-            //double brightnessFactor = 0.8; // Коефіцієнт збільшення яскравості (змінюйте його для досягнення потрібного ефекту)
-
-            //// Отримання зображення у форматі Bitmap
-            //Bitmap bitmap = image.ToBitmap();
-
-            //// Отримання замоку на зображення для безпосереднього доступу до пікселів
-            //BitmapData bitmapData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
-
-            //// Отримання кількості байтів на кожен піксель у зображенні
-            //int bytesPerPixel = Image.GetPixelFormatSize(bitmap.PixelFormat) / 8;
-
-            //// Отримання вказівника на перший піксель у зображенні
-            //IntPtr scan0 = bitmapData.Scan0;
-
-            //// Обробка пікселів зображення
-            //unsafe{
-
-            //    byte* basePtr = (byte*)scan0.ToPointer();
-
-            //    for (int y = 0; y < bitmap.Height; y++)
-            //    {
-            //        byte* rowPtr = basePtr + (y * bitmapData.Stride);
-
-            //        for (int x = 0; x < bitmap.Width; x++)
-            //        {
-            //            byte* pixelPtr = rowPtr + (x * bytesPerPixel);
-
-            //            // Обчислення відстані до центру
-            //            int distanceX = Math.Abs(x - centerX);
-            //            int distanceY = Math.Abs(y - centerY);
-
-            //            // Обчислення коефіцієнта збільшення яскравості на основі відстані до центру
-            //            double brightnessMultiplier = 1.0;
-            //            brightnessMultiplier += (distanceX / (double)maxDistance) * brightnessFactor;
-            //            brightnessMultiplier += (distanceY / (double)maxDistance) * brightnessFactor;
-
-            //            // Збільшення яскравості пікселя
-            //            pixelPtr[0] = (byte)Math.Min(pixelPtr[0] * brightnessMultiplier, 255);
-            //            pixelPtr[1] = (byte)Math.Min(pixelPtr[1] * brightnessMultiplier, 255);
-            //            pixelPtr[2] = (byte)Math.Min(pixelPtr[2] * brightnessMultiplier, 255);
-            //        }
-            //    }
-            //}
-            // Зняття замку зображення
-            //bitmap.UnlockBits(bitmapData);
-
+    
 
 
             // Отримання розміру зображення та розрахунок відстані від кожного пікселя до центру

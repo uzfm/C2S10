@@ -112,7 +112,7 @@ STGS STGS = new STGS();
 
             //*************  initialization of cameras  *********************
             try { 
-             DLS = new DLS(_DLS.HowMany.CAM1_CAM2);
+             DLS = new DLS(_DLS.HowMany.NO);
             }catch { Help.Mesag("Cameras are not connected"); }
             ////*****************
 
@@ -320,6 +320,17 @@ STGS STGS = new STGS();
                 richTextBox5.Text = SAV.DT.Analys.PathSimulation;
                 СontourSelect.Checked = EMGU.SelectConturs[ID];
 
+
+
+                numericUpDown10.Value = VIS.Data.blurA;
+                numericUpDown11.Value = VIS.Data.ThresholdA;
+                numericUpDown12.Value = VIS.Data.blurB;
+                numericUpDown13.Value = VIS.Data.ThresholdB;
+                numericUpDown5.Value = VIS.Data.ArcLengthB;
+                numericUpDown9.Value = VIS.Data.ArcLengthTest;
+                numericUpDownWhite.Value = VIS.Data.WhiteBekgraun;
+
+
             }
             catch
             {}
@@ -368,16 +379,22 @@ STGS STGS = new STGS();
                 SAV.DT.Analys.PositionErrorX =(int) PositionError_X.Value;
 
 
-                    SAV.DT.Device.PWM_Table = (int) PWM_Table.Value ;
-                    SAV.DT.Device.Hz_Table  = (int) Hz_Table.Value ;
-     
-
-        
-
-
+                SAV.DT.Device.PWM_Table = (int) PWM_Table.Value ;
+                SAV.DT.Device.Hz_Table  = (int) Hz_Table.Value ;
+    
                 SAV.DT.Device.OutputDelay =  (int) OutputDelayFleps.Value;
-               //SAV.DT.Device.URL_Folders = Path.Combine(STGS.DT.URL_Models, STGS.DT.Name_Model);
-             
+
+
+
+                VIS.Data.blurA = (byte)numericUpDown10.Value;
+                VIS.Data.ThresholdA = (byte)numericUpDown11.Value;
+                VIS.Data.blurB = (byte)numericUpDown12.Value;
+                VIS.Data.ThresholdB = (byte)numericUpDown13.Value;
+                VIS.Data.ArcLengthB = (int)numericUpDown5.Value;
+                VIS.Data.ArcLengthTest = (int)numericUpDown9.Value;
+                VIS.Data.WhiteBekgraun = (int)numericUpDownWhite.Value;
+
+
             }
             catch { }
         }
@@ -1003,10 +1020,10 @@ STGS STGS = new STGS();
 
             public ImageList[] IMG;       // Images масив просортований по іменах ([Name] [Images])
             public List<int>[] IdxName;   // iндек назви зразка ([Name] [Idx])
-            public List<double>[] Aria;      // iндек назви зразка ([Name] [Idx])
-
+            public List<AnalisSMP>[] AnalisSMP;      // iндек назви зразка ([Name] [Idx])
+            
             static public int OLL;               // індек останього рядка в таблиці зразків який по замовчувані є ( показувати усі Show Oll)
-     static public int SELECT;            // Виділиний в таблиці зліва зразок (принажаті кнопки в таблиці вибирається зразок)
+            static public int SELECT;            // Виділиний в таблиці зліва зразок (принажаті кнопки в таблиці вибирається зразок)
 
         }
 
@@ -1053,6 +1070,50 @@ STGS STGS = new STGS();
         }
 
 
+        public enum MOD_MSC { Norm, S,L, SML,}
+
+        void FullData(int ID, MOD_MSC MOD) {
+
+            int IdxM = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp;
+            int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
+
+
+            if ((MOD == MOD_MSC.S) && (ID == Master)) { IdxM++; } 
+            if ((MOD == MOD_MSC.S) && (ID == Slave)) { IdxS++; }
+
+
+
+
+
+            if ((ID == Master)) {
+
+            MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
+            MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
+
+            dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count).ToString();
+            MSC[Master].IdxName[IdxM].Add(IdxM);
+            MSC[Slave].IdxName[IdxM].Add(IdxS);
+
+            MSC[Master].AnalisSMP[IdxM].Add(OutDT.AnalisSMP[Master]);
+            MSC[Slave].AnalisSMP[IdxM].Add(OutDT.AnalisSMP[Slave]);
+           
+            }else { 
+
+            MSC[Master].IMG[IdxS].Images.Add(OutDT.Img[Master].ToBitmap());
+            MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
+
+            dataGridViewSempls.Rows[IdxS].Cells[1].Value = (MSC[Master].IMG[IdxS].Images.Count).ToString();
+            MSC[Master].IdxName[IdxS].Add(IdxM);
+            MSC[Slave].IdxName[IdxS].Add(IdxS);
+
+            MSC[Master].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Master]);
+            MSC[Slave].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Slave]);
+            }
+            BAD_SplCont++;
+
+
+        }
+
 /// /////////////////////////////////////////////////////////////////////////////////////
 
         static  int ImgListCout = 0;
@@ -1076,118 +1137,84 @@ STGS STGS = new STGS();
                     if (ImgListCout >= 1000000) { ClearMosaic(); break; }
                     if (OutDT.Img != null){
 
-                      int IdxM  = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp ;
-                      int IdxS  = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp ;
 
 
-                        //MSC[Slave].IMG //
+                        int IdxM = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp;
+                        int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
 
-     
 
                         bool GOOD_Ok = true;
-                        if (OutDT.Name[Master] != GridData.GOOD) {
 
+                        /* MASTER BED */
+                        if (OutDT.Name[Master] != GridData.GOOD) {
+                                // активує додатковий клас
                             if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SubGroups)
                             {
-
-                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize > OutDT.Aria[Master])
-                                {    // L
-                                    
-                                    MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
-                                    MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                    dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count ).ToString();
-                                    MSC[Master].IdxName[IdxM].Add(IdxM);
-                                    MSC[Slave].IdxName[IdxM].Add(IdxS);
-                                    MSC[Master].Aria[IdxM].Add(OutDT.Aria[Master]);
-                                    MSC[Slave].Aria[IdxM].Add(OutDT.Aria[Slave]);
-                                    BAD_SplCont++;
-                                } else{ 
-                               
-                                     // S
-                                    IdxM++;
-                                    
-                                    MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
-                                    MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                    dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count).ToString();
-                                    MSC[Master].IdxName[IdxM].Add(IdxM);
-                                    MSC[Slave].IdxName[IdxM].Add(IdxS);
-                                    MSC[Master].Aria[IdxM].Add(OutDT.Aria[Master]);
-                                    MSC[Slave].Aria[IdxM].Add(OutDT.Aria[Slave]);
-                                    BAD_SplCont++;
-
-                                }
-                            }else { 
-                               //Norm
+                                   //визначити клас по розміру чорної плями
+                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SurveyIn) {
                                 
-                                MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
-                                MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count).ToString();
-                                MSC[Master].IdxName[IdxM].Add(IdxM);
-                                MSC[Slave].IdxName[IdxM].Add(IdxS);
-                                MSC[Master].Aria[IdxM].Add(OutDT.Aria[Master]);
-                                MSC[Slave].Aria[IdxM].Add(OutDT.Aria[Slave]);
-                                BAD_SplCont++;
-                            }
+                                
+                                } else {
 
-
+                                    //визначити клас по видовжені
+                                 if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize > OutDT.AnalisSMP[Master].ElongMax)
+                                {       FullData(Master , MOD_MSC.L);    // L
+                                } else{ FullData(Master, MOD_MSC.S);}    // S
+                                
+                                   
+                                 }
+                            
+                            }else {   FullData(Master, MOD_MSC.Norm); }    //Norm
+                             
+                             
+                           
+                        
+                        
                         } else {
 
+
+                     
+                            /* SLAVE  BED */
                             if ((OutDT.Name[Slave] != GridData.GOOD))
-                            {
+                            {      //активує додатковий клас
                                 if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SubGroups){
-                                
-                               
-                                     if  (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize > OutDT.Aria[Slave]){
-                                
 
-                                    MSC[Master].IMG[IdxS].Images.Add(OutDT.Img[Master].ToBitmap());
-                                    MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                    dataGridViewSempls.Rows[IdxS].Cells[1].Value = (MSC[Master].IMG[IdxS].Images.Count).ToString();
-                                    MSC[Master].IdxName[IdxS].Add(IdxM);
-                                    MSC[Slave].IdxName[IdxS].Add(IdxS);
-                                    MSC[Master].Aria[IdxS].Add(OutDT.Aria[Master]);
-                                    MSC[Slave].Aria[IdxS].Add(OutDT.Aria[Slave]);
-                                    BAD_SplCont++;
-                                    }
-                                else
-                                {
-                                    IdxS++;
-                                    MSC[Master].IMG[IdxS].Images.Add(OutDT.Img[Master].ToBitmap());
-                                    MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                    dataGridViewSempls.Rows[IdxS].Cells[1].Value = (MSC[Master].IMG[IdxS].Images.Count).ToString();
-                                    MSC[Master].IdxName[IdxS].Add(IdxM);
-                                    MSC[Slave].IdxName[IdxS].Add(IdxS);
-                                    MSC[Master].Aria[IdxS].Add(OutDT.Aria[Master]);
-                                    MSC[Slave].Aria[IdxS].Add(OutDT.Aria[Slave]);
-                                    BAD_SplCont++;
 
-                                    }
-                                 }else{
-                                     //Norm
+                                    //визначити клас по розміру чорної плями
+                                    if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SurveyIn) { 
                                     
-                                    MSC[Master].IMG[IdxS].Images.Add(OutDT.Img[Master].ToBitmap());
-                                    MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
-                                    dataGridViewSempls.Rows[IdxS].Cells[1].Value = (MSC[Slave].IMG[IdxS].Images.Count).ToString();
-                                    MSC[Master].IdxName[IdxS].Add(IdxM);
-                                    MSC[Slave].IdxName[IdxS].Add(IdxS);
-                                    MSC[Master].Aria[IdxS].Add(OutDT.Aria[Master]);
-                                    MSC[Slave].Aria[IdxS].Add(OutDT.Aria[Slave]);
-                                    BAD_SplCont++;
-                                }
+                                    
+                                    }  else  {
+
+                                        //визначити клас по видовжені
+                                        if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize > OutDT.AnalisSMP[Slave].ElongMax)
+                                        {        FullData(Slave, MOD_MSC.L);  //L  
+                                        } else { FullData(Slave, MOD_MSC.S); }//S
+                                       
+
+                                    } }else{  FullData(Slave, MOD_MSC.Norm);  }  }else {   //Norm
+                                  
+
+                                   
+                                  
+
+                         
 
 
 
-                            }
-                            else {
-                                /*  ADD SHOW GOOD */
+                     
+                            
+                                /*  ADD   SHOW  GOOD */
                               if(GOOD_SplCont < SAV.DT.Device.ShowGoodPCS) { 
+
                                 MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
                                 MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
                                 
                                 MSC[Master].IdxName[IdxM].Add(IdxM);
                                 MSC[Slave].IdxName[IdxS].Add(IdxS);}
-                                MSC[Master].Aria[IdxM].Add(OutDT.Aria[Master]);
-                                MSC[Slave].Aria[IdxS].Add(OutDT.Aria[Slave]);
+
+                                MSC[Master].AnalisSMP[IdxM].Add(OutDT.AnalisSMP[Master]);
+                                MSC[Slave].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Slave]);
 
                                 GOOD_SplCont++;
                              dataGridViewSempls.Rows[IdxM].Cells[1].Value = (GOOD_SplCont.ToString());
@@ -1199,7 +1226,7 @@ STGS STGS = new STGS();
 
 
 
-
+                        /*  ADD  GOOD + BED "SHOW OLL" */
                         if (( GOOD_Ok ) ||(Goot_Show_Mosaic.Checked)) {
 
                         MSC[Master].IMG[MSIC.OLL].Images.Add(OutDT.Img[Master].ToBitmap());
@@ -1215,39 +1242,29 @@ STGS STGS = new STGS();
 
                          MSC[Master].IdxName[MSIC.OLL].Add(IdxM);
                          MSC[Slave].IdxName[MSIC.OLL].Add(IdxS);
-                         MSC[Master].Aria[MSIC.OLL].Add(OutDT.Aria[Master]);
-                         MSC[Slave].Aria[MSIC.OLL].Add(OutDT.Aria[Slave]);
 
-                            ImgListCoutMosaic++;
-                        
+                         MSC[Master].AnalisSMP[MSIC.OLL].Add(OutDT.AnalisSMP[Master]);
+                         MSC[Slave].AnalisSMP[MSIC.OLL].Add(OutDT.AnalisSMP[Slave]);
+                  
+                         ImgListCoutMosaic++;
+
                         }
 
 
                             //  List VIWE
-                            if ((visibleItemsPerPage == 0) || (ImgListCoutMosaic == 0)) { listView1_Resize(null, null);  }
-                        else
-                        {
+                         if ((visibleItemsPerPage == 0) || (ImgListCoutMosaic == 0)) { listView1_Resize(null, null);  } else {
+                       
                             int startIndex = Math.Max(0, ImgListCoutMosaic - visibleItemsPerPage); // Отримайте індекс першого елемента для відображення
                             listView1.EnsureVisible(startIndex); /// Переконайтесь, що перший елемент видимий
                             listView2.EnsureVisible(startIndex); /// Переконайтесь, що перший елемент видимий
 
-                    }
-
-
-
-
-
-
+                        }
 
                     }
-  
-
 
                 }
 
-
             }
-
 
         }
 
@@ -1470,8 +1487,8 @@ STGS STGS = new STGS();
             for (int Q = 0; Q < MSC[Master].IMG.Length; Q++) {
                 MSC[Master].IMG[Q].Images.Clear();
                 MSC[Slave].IMG[Q].Images.Clear();
-                MSC[Master].Aria[Q].Clear();
-                MSC[Slave].Aria[Q].Clear();
+                MSC[Master].AnalisSMP[Q].Clear();
+                MSC[Slave].AnalisSMP[Q].Clear();
                 MSC[Master].IdxName[Q].Clear();
                 MSC[Slave].IdxName[Q].Clear();
 
@@ -1808,7 +1825,7 @@ STGS STGS = new STGS();
 
                     pictureBoxMaster.Image = MSC[Master].IMG[NameSampleSelect].Images[SelectITMs];
                     LearnImg =  (Bitmap) MSC[Master].IMG[NameSampleSelect].Images[SelectITMs];
-                        richTextBoxArea.Text = MSC[Master].Aria[NameSampleSelect][SelectITMs].ToString();
+                        richTextBoxArea.Text = MSC[Master].AnalisSMP[NameSampleSelect][SelectITMs].ElongMax.ToString();
 
                 }
                 }catch {
@@ -1841,7 +1858,7 @@ STGS STGS = new STGS();
                     }else{
                             pictureBoxSlave.Image = MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
                             LearnImg = (Bitmap)MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
-                            richTextBoxArea.Text = MSC[Slave].Aria[NameSampleSelect][SelectITMs].ToString();
+                            richTextBoxArea.Text = MSC[Slave].AnalisSMP[NameSampleSelect][SelectITMs].ElongMax.ToString();
                     }
                 }
                 catch { Help.ErrorMesag("Choose the type of sample"); }
@@ -2239,8 +2256,16 @@ STGS STGS = new STGS();
                         int SamplSiz = SAV.DT.Analys.ClasSempl[index].SampleSize;
                         //String NameSmaller = SAV.DT.Analys.ClasSempl[index].NameSmaller;
                         //String NameLarged = SAV.DT.Analys.ClasSempl[index].NameLarged;
+
+
+    
+
+
                         bool SubGroups = SAV.DT.Analys.ClasSempl[index].SubGroups;
-                        dataGridViewUnderType.Rows.Add(Name, SamplSiz, SubGroups);
+                        bool SurveyInside = SAV.DT.Analys.ClasSempl[index].SurveyIn;
+
+
+                        dataGridViewUnderType.Rows.Add(Name, SamplSiz, SubGroups, SurveyInside);
 
                         // Створення кореневого вузла
                         TreeNode rootNode = new TreeNode(Name);
@@ -2289,8 +2314,10 @@ STGS STGS = new STGS();
 
 
                     IDx = 0;
+                comboBoxImgTypTest.Items.Clear();
                 foreach (var Sepl in pathSmpl){
                         listBox1.Items.Add(Sepl);
+              comboBoxImgTypTest.Items.Add(Sepl);
                          MLD.Names[IDx++] = Sepl;
                     }
 
@@ -2310,16 +2337,16 @@ STGS STGS = new STGS();
                     MSC[Master].IdxName = new List<int>[MLD.TypeALL.Length + 1];
                     MSC[Slave].IdxName  = new List<int>[MLD.TypeALL.Length + 1];
                       //Aria
-                    MSC[Master].Aria= new List<double>[MLD.TypeALL.Length + 1];
-                    MSC[Slave].Aria= new List<double>[MLD.TypeALL.Length + 1];
+                    MSC[Master].AnalisSMP = new List<AnalisSMP>[MLD.TypeALL.Length + 1];
+                    MSC[Slave].AnalisSMP= new List<AnalisSMP>[MLD.TypeALL.Length + 1];
 
                     for (idx = 0; idx < MLD.TypeALL.Length; idx++){
                  
                     MSC[Master].IdxName[idx] = new List<int>();
                     MSC[Slave].IdxName [idx] = new List<int>();
 
-                    MSC[Master].Aria[idx] = new List<double>();
-                    MSC[Slave].Aria[idx] = new List<double>();
+                    MSC[Master].AnalisSMP[idx] = new List<AnalisSMP>();
+                    MSC[Slave].AnalisSMP[idx] = new List<AnalisSMP>();
 
                     MSC[Master].IMG[idx] = new ImageList();
                     MSC[Slave].IMG [idx] = new ImageList();
@@ -2340,8 +2367,8 @@ STGS STGS = new STGS();
                     MSC[Master].IdxName[idx] = new List<int>();
                     MSC[Slave].IdxName[idx]  = new List<int>();
 
-                    MSC[Master].Aria[idx] = new List<double>();
-                    MSC[Slave].Aria[idx] = new List<double>();
+                    MSC[Master].AnalisSMP[idx] = new List<AnalisSMP>();
+                    MSC[Slave].AnalisSMP[idx] = new List<AnalisSMP>();
 
                     MSC[Master].IMG[idx] = new ImageList();
                     MSC[Slave].IMG[idx] = new ImageList();
@@ -2358,7 +2385,13 @@ STGS STGS = new STGS();
 
                // ManualCorrection();
 
-            }catch { Help.ErrorMesag(" problem with configuration Model "); }
+            }catch { ResetTableType();
+                Save_Click(null, null);
+
+
+                Help.ErrorMesag(" Problem with configuration Model. The table of types has been reset! " +
+                "  The error is possible with the deletion of the sample type folder.        " +
+                "                     Restart the program !"); }
         }
 
 
@@ -2855,8 +2888,8 @@ STGS STGS = new STGS();
                             MSC[Master].IdxName[Q].Add(Q);
                             MSC[Slave].IdxName[Q].Add(Q);
 
-                            MSC[Master].Aria[Q].Add(MSC[Master].Aria[MSIC.SELECT][DTLimg.SelectITM[d]]);
-                            MSC[Slave].Aria[Q].Add(MSC[Slave].Aria[MSIC.SELECT][DTLimg.SelectITM[d]]);
+                            MSC[Master].AnalisSMP[Q].Add(MSC[Master].AnalisSMP[MSIC.SELECT][DTLimg.SelectITM[d]]);
+                            MSC[Slave].AnalisSMP[Q].Add(MSC[Slave].AnalisSMP[MSIC.SELECT][DTLimg.SelectITM[d]]);
 
                             }
 
@@ -2867,8 +2900,8 @@ STGS STGS = new STGS();
                                 MSC[Master].IdxName[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
                                 MSC[Slave].IdxName[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
 
-                                MSC[Master].Aria[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
-                                MSC[Slave].Aria[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
+                                MSC[Master].AnalisSMP[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
+                                MSC[Slave].AnalisSMP[MSIC.SELECT].RemoveAt(DTLimg.SelectITM[d] - d);
 
                             }
                                
@@ -4116,6 +4149,7 @@ STGS STGS = new STGS();
                // SAV.DT.Analys.ClasSempl[idx].NameSmaller = (string)dataGridViewUnderType.Rows[idx].Cells[2].Value;
                 //SAV.DT.Analys.ClasSempl[idx].NameLarged = (string)dataGridViewUnderType.Rows[idx].Cells[3].Value;
                 SAV.DT.Analys.ClasSempl[idx].SubGroups = (bool)dataGridViewUnderType.Rows[idx].Cells[2].Value;
+                SAV.DT.Analys.ClasSempl[idx].SurveyIn = (bool)dataGridViewUnderType.Rows[idx].Cells[3].Value;
 
             }
         }
@@ -4127,11 +4161,176 @@ STGS STGS = new STGS();
 
         private void button52_Click(object sender, EventArgs e)
         {
+   
+            ResetTableType();
+        }
+
+        void ResetTableType() {
             SAV.DT.Analys.ClasSempl.Clear();
             dataGridViewUnderType.Rows.Clear();
-            
+        }
+
+        /*************************************************/
+        int IdxShouTest = 0;
+        string[] files;
+        VIS vision = new VIS();
+
+        Emgu.CV.Mat imOriginalM;
+        void TestImgBlb()
+        {
+            string PshData = Path.Combine(STGS.DT.URL_Models , STGS.DT.Name_Model, "SAMPLES"); ;// Path.Combine(PachML.Text, "Data"); //створити шлях до каталога "Data"
+            string PshSempls =  Path.Combine(PshData, comboBoxImgTypTest.Text); //створити шлях до каталога "SAMPLES"
+           
+
+            try
+            {
+                string urlMaster = PshSempls + "\\" + "Image" + IdxShouTest++ + ".png";
+                files = Directory.GetFiles(@PshSempls, "*.png");
+
+                int count = files.Length;
+
+                if (files != null)
+                {
+                    if (IdxShouTest <= files.Length)
+                    {
+                        Bitmap imM = new Bitmap(files[IdxShouTest]);
+                        textBox3.Text = IdxShouTest.ToString();
+
+                        imOriginalM = imM.ToImage<Bgr, byte>().Resize(64, 64, interpolationType: Inter.Linear).Mat;
+
+                        Stopwatch watch = Stopwatch.StartNew();
+
+
+
+                        Image<Bgr, byte> ImagesViw = new Image<Bgr, byte>(100, 100);
+                        if (AnalysisTest.Checked)
+                        {
+                            ImagesViw = vision.WhiteBackground(imOriginalM, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value);
+
+                            //ImagesViw = vision.DetectBlob(ImagesViwTest.Mat, labelDectContur);
+                        }
+                        else
+                        {
+
+                            ImagesViw = vision.WhiteBackground(imOriginalM, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value);
+
+                           // ImagesViw = vision.DetectBlobBlack(ImagesViwTest.Mat, labelDectContur);
+
+                        }
+
+
+
+                        watch.Stop();
+                        var elapsedMs = watch.ElapsedMilliseconds;
+                        toolStripStatusLabel5.Text = elapsedMs.ToString();
+                        // Console.WriteLine("First Prediction took: " + elapsedMs + " ms");
+
+                        pictureBox1.Image = ImagesViw.ToBitmap();
+                        pictureBox2.Image = imOriginalM.ToBitmap();
+
+
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void button56_Click(object sender, EventArgs e)
+        {
+            TestImgBlb();
 
         }
+
+        private void button55_Click(object sender, EventArgs e)
+        {
+            IdxShouTest--;
+            IdxShouTest--;
+            TestImgBlb();
+        }
+
+        private void button57_Click(object sender, EventArgs e)
+        {
+            IdxShouTest = 0;
+        }
+
+        private void numericUpDown10_ValueChanged(object sender, EventArgs e)
+        {
+            SetingsValGrayImg();
+            //SaveSetValue();
+        }
+
+
+        void SetingsValGrayImg()
+        {
+            try
+            {
+
+                if (files != null)
+                {
+
+                    if (IdxShouTest <= files.Length)
+                    {
+
+
+                        Bitmap imM = new Bitmap(files[IdxShouTest]);
+                        textBox3.Text = IdxShouTest.ToString();
+
+                        imOriginalM = imM.ToImage<Bgr, byte>().Resize(64, 64, interpolationType: Inter.Linear).Mat;
+
+                        Stopwatch watch = Stopwatch.StartNew();
+
+
+                        Image<Bgr, byte> ImagesViw = new Image<Bgr, byte>(100, 100);
+
+                        if (AnalysisTest.Checked)
+                        {
+                           // ImagesViw = vision.DetectBlob(imOriginalM, labelDectContur);
+                        }
+                        else
+                        {
+                         //   ImagesViw = vision.DetectBlobBlack(imOriginalM, labelDectContur);
+                        }
+
+
+                        watch.Stop();
+                        var elapsedMs = watch.ElapsedMilliseconds;
+                        toolStripStatusLabel5.Text = elapsedMs.ToString();
+                        // Console.WriteLine("First Prediction took: " + elapsedMs + " ms");
+
+                        pictureBox1.Image = ImagesViw.ToBitmap();
+                        pictureBox2.Image = imOriginalM.ToBitmap();
+
+
+                    }
+                }
+
+            }
+            catch { }
+
+        }
+
+        private void numericUpDownWhite_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Bitmap imM = new Bitmap(files[IdxShouTest]);
+                textBox3.Text = IdxShouTest.ToString();
+
+                imOriginalM = imM.ToImage<Bgr, byte>().Resize(64, 64, interpolationType: Inter.Linear).Mat;
+
+                Image<Bgr, byte> ImagesViw = vision.WhiteBackground(imOriginalM, (int)numericUpDownWhite.Value  , (int)numericUpDown13.Value);
+
+
+                pictureBox2.Image = ImagesViw.ToBitmap();
+                /// pictureBox2.Image = imOriginalM.ToBitmap();
+                /// 
+            }
+            catch { }
+
+        }
+
+     
     }
 }
 
