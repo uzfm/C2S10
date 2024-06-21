@@ -1114,7 +1114,7 @@ STGS STGS = new STGS();
 
         }
 
-/// /////////////////////////////////////////////////////////////////////////////////////
+/// ////////////////////////  S E P E R A T I O N E /////////////////////////////////////////////////////////////
 
         static  int ImgListCout = 0;
         static int ImgListCoutMosaic = 0;
@@ -1126,7 +1126,7 @@ STGS STGS = new STGS();
         private void RefreshMosaics()
         {
 
-            if ((MosaicDTlistBufer.Count != 0)){// && (ImgListCout <= (Convert.ToInt32(PageCauntMosaic.Text)))
+            if ((MosaicDTlistBufer.Count != 0)){
     
                 //візуалізація мозаїки
                 for (; 1 <= MosaicDTlistBufer.Count; ImgListCout++)
@@ -1142,30 +1142,51 @@ STGS STGS = new STGS();
                         int IdxM = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp;
                         int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
 
+                        if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SurveyIn) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SurveyIn)){
 
-                        bool GOOD_Ok = true;
+
+
+                     
+
+                            vision.ContaminationZise(OutDT.Img[Master].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMm , OutDT.AnalisSMP[Master].Scale);
+                            OutDT.AnalisSMP[Master].ElongMax = diameterMm ;
+
+                      
+
+                            vision.ContaminationZise(OutDT.Img[Slave].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out  diameterMm, OutDT.AnalisSMP[Slave].Scale);
+                            OutDT.AnalisSMP[Slave].ElongMax = diameterMm ;
+                        }
+                   
+
+
+
+                            bool GOOD_Ok = true;
 
                         /* MASTER BED */
                         if (OutDT.Name[Master] != GridData.GOOD) {
-                                // активує додатковий клас
-                            if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SubGroups)
-                            {
-                                   //визначити клас по розміру чорної плями
-                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SurveyIn) {
-                                
-                                
-                                } else {
+
+                            // активує додатковий клас  -- C L A S  --
+                            if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SubGroups){
 
                                     //визначити клас по видовжені
                                  if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize > OutDT.AnalisSMP[Master].ElongMax)
                                 {       FullData(Master , MOD_MSC.L);    // L
                                 } else{ FullData(Master, MOD_MSC.S);}    // S
                                 
-                                   
-                                 }
-                            
-                            }else {   FullData(Master, MOD_MSC.Norm); }    //Norm
-                             
+                            }else {
+                                //визначити клас по розміру чорної плями SurveyIn
+                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SurveyIn) {
+
+                                    //визначити клас по видовжені
+                                    if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize > OutDT.AnalisSMP[Master].ElongMax)
+                                    {
+                                        FullData(Master, MOD_MSC.L);    // L
+                                    } else { FullData(Master, MOD_MSC.S); }    // S
+
+
+
+                                }else {  FullData(Master, MOD_MSC.Norm); }}    //Norm
+                           //----------------------------------------------  
                              
                            
                         
@@ -1175,16 +1196,11 @@ STGS STGS = new STGS();
 
                      
                             /* SLAVE  BED */
-                            if ((OutDT.Name[Slave] != GridData.GOOD))
-                            {      //активує додатковий клас
+                            if ((OutDT.Name[Slave] != GridData.GOOD)){  
+
+                                //активує додатковий клас  -- C L A S  --
                                 if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SubGroups){
 
-
-                                    //визначити клас по розміру чорної плями
-                                    if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SurveyIn) { 
-                                    
-                                    
-                                    }  else  {
 
                                         //визначити клас по видовжені
                                         if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize > OutDT.AnalisSMP[Slave].ElongMax)
@@ -1192,9 +1208,18 @@ STGS STGS = new STGS();
                                         } else { FullData(Slave, MOD_MSC.S); }//S
                                        
 
-                                    } }else{  FullData(Slave, MOD_MSC.Norm);  }  }else {   //Norm
-                                  
+                                    }else{
 
+                                    //визначити клас по розміру чорної плями SurveyIn
+                                    if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SurveyIn)
+                                    { 
+                                    
+                                    
+                                    
+                                    
+                                    }else {FullData(Slave, MOD_MSC.Norm); } }  }else {   //Norm
+ 
+                                //---------------------------------------------------------------
                                    
                                   
 
@@ -1823,8 +1848,18 @@ STGS STGS = new STGS();
                 }
                 else {
 
-                    pictureBoxMaster.Image = MSC[Master].IMG[NameSampleSelect].Images[SelectITMs];
-                    LearnImg =  (Bitmap) MSC[Master].IMG[NameSampleSelect].Images[SelectITMs];
+                        // 
+
+
+
+                        if (SAV.DT.Analys.ClasSempl[NameSampleSelect].SurveyIn)  {
+                      
+                            pictureBoxMaster.Image = vision.ContaminationZise((((Bitmap)MSC[Master].IMG[NameSampleSelect].Images[SelectITMs]).ToImage<Bgr, byte>()).Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMm, MSC[Master].AnalisSMP[NameSampleSelect][SelectITMs].Scale).ToBitmap();
+                        } else { pictureBoxMaster.Image = MSC[Master].IMG[NameSampleSelect].Images[SelectITMs]; }
+
+
+                        //MLD.TypeALL[i]
+                        LearnImg =  (Bitmap) MSC[Master].IMG[NameSampleSelect].Images[SelectITMs];
                         richTextBoxArea.Text = MSC[Master].AnalisSMP[NameSampleSelect][SelectITMs].ElongMax.ToString();
 
                 }
@@ -1856,8 +1891,14 @@ STGS STGS = new STGS();
                             pictureBoxSlave.Image = EMGU.FiltreColour(EMGU.Slave);
                         
                     }else{
-                            pictureBoxSlave.Image = MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
-                            LearnImg = (Bitmap)MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
+
+                        //  pictureBoxSlave.Image = MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
+
+
+                        pictureBoxSlave.Image = vision.ContaminationZise(((Bitmap)MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs]).ToImage<Bgr, byte>().Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMm, MSC[Slave].AnalisSMP[NameSampleSelect][SelectITMs].Scale).ToBitmap();
+
+
+                        LearnImg = (Bitmap)MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
                             richTextBoxArea.Text = MSC[Slave].AnalisSMP[NameSampleSelect][SelectITMs].ElongMax.ToString();
                     }
                 }
@@ -1954,7 +1995,8 @@ STGS STGS = new STGS();
 
                 } catch {timer2.Enabled = false; FlowAnalis.Setings = false; IdxSlavShou = 1; IdxMastShou = 1; MessageBox.Show("Сheck the link to the image library"); }
 
-            } else { timer2.Enabled = false; FlowAnalis.Setings = false; IdxSlavShou = 1; IdxMastShou = 1; }
+            } else {
+                timer2.Enabled = false; FlowAnalis.Setings = false; IdxSlavShou = 1; IdxMastShou = 1; }
         }
 
 
@@ -2253,7 +2295,7 @@ STGS STGS = new STGS();
                     {
                         dataGridViewUnderType.RowTemplate.Height = 20;
                         string Name = SAV.DT.Analys.ClasSempl[index].Name;
-                        int SamplSiz = SAV.DT.Analys.ClasSempl[index].SampleSize;
+                        double SamplSiz = SAV.DT.Analys.ClasSempl[index].SampleSize;
                         //String NameSmaller = SAV.DT.Analys.ClasSempl[index].NameSmaller;
                         //String NameLarged = SAV.DT.Analys.ClasSempl[index].NameLarged;
 
@@ -4145,7 +4187,7 @@ STGS STGS = new STGS();
                
 
                 SAV.DT.Analys.ClasSempl[idx].Name = (string)dataGridViewUnderType.Rows[idx].Cells[0].Value;
-                SAV.DT.Analys.ClasSempl[idx].SampleSize = Convert.ToInt32(dataGridViewUnderType.Rows[idx].Cells[1].Value);
+                SAV.DT.Analys.ClasSempl[idx].SampleSize = Convert.ToDouble(dataGridViewUnderType.Rows[idx].Cells[1].Value);
                // SAV.DT.Analys.ClasSempl[idx].NameSmaller = (string)dataGridViewUnderType.Rows[idx].Cells[2].Value;
                 //SAV.DT.Analys.ClasSempl[idx].NameLarged = (string)dataGridViewUnderType.Rows[idx].Cells[3].Value;
                 SAV.DT.Analys.ClasSempl[idx].SubGroups = (bool)dataGridViewUnderType.Rows[idx].Cells[2].Value;
@@ -4205,14 +4247,16 @@ STGS STGS = new STGS();
                         Image<Bgr, byte> ImagesViw = new Image<Bgr, byte>(100, 100);
                         if (AnalysisTest.Checked)
                         {
-                            ImagesViw = vision.WhiteBackground(imOriginalM, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value);
+                            
+
+                            ImagesViw = vision.ContaminationZise(imOriginalM, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMm, 11.81);
 
                             //ImagesViw = vision.DetectBlob(ImagesViwTest.Mat, labelDectContur);
                         }
                         else
                         {
 
-                            ImagesViw = vision.WhiteBackground(imOriginalM, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value);
+                            ImagesViw = vision.ContaminationZise(imOriginalM, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMm, 11.81);
 
                            // ImagesViw = vision.DetectBlobBlack(ImagesViwTest.Mat, labelDectContur);
 
@@ -4314,17 +4358,19 @@ STGS STGS = new STGS();
         {
             try
             {
+                if (files != null) {
                 Bitmap imM = new Bitmap(files[IdxShouTest]);
                 textBox3.Text = IdxShouTest.ToString();
 
                 imOriginalM = imM.ToImage<Bgr, byte>().Resize(64, 64, interpolationType: Inter.Linear).Mat;
 
-                Image<Bgr, byte> ImagesViw = vision.WhiteBackground(imOriginalM, (int)numericUpDownWhite.Value  , (int)numericUpDown13.Value);
+                Image<Bgr, byte> ImagesViw = vision.ContaminationZise(imOriginalM, (int)numericUpDownWhite.Value  , (int)numericUpDown13.Value, out double diameterMm, 11.81);
 
 
                 pictureBox2.Image = ImagesViw.ToBitmap();
                 /// pictureBox2.Image = imOriginalM.ToBitmap();
-                /// 
+                ///  
+               }
             }
             catch { }
 

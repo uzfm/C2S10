@@ -112,12 +112,13 @@ namespace MVision
 
     struct AnalisSMP
     {
-        public int ElongHeight;
-        public int ElongWidth;
-        public double ElongMax;
-        public double Scale;
-        public double Aria;
-
+        public int ElongHeight;   // видовженість по ширені
+        public int ElongWidth;    // видовженість по висоті
+        public double ElongMax;  // Максимальна видовженість
+        public double Scale;     // Коефіцієнт * розмір картинки= реальний розмір картинки
+        public double Aria;      // площа з реальним розміром
+        public int      NameIdx;   // Індекс І М Е Н І
+        public string   Name;   // Індекс І М Е Н І
 
     }
 
@@ -287,7 +288,7 @@ namespace MVision
                         AnalisSMP AnalSMP_Save = new AnalisSMP();
 
                         //ROI fo Save
-                        AnalSMP_Save.ElongHeight = CutCTR_SV.ROI[i].Height* Rosolution;
+                        AnalSMP_Save.ElongHeight = CutCTR_SV.ROI[i].Height * Rosolution;
                         AnalSMP_Save.ElongWidth = CutCTR_SV.ROI[i].Width* Rosolution;
                         AnalSMP_Save.ElongMax = Large_mm(Math.Max(AnalSMP_Save.ElongWidth, AnalSMP_Save.ElongHeight));
                  
@@ -382,6 +383,8 @@ namespace MVision
                                 TempColl.Img[ID] = NewMatAI.ToImage<Bgr, byte>().Copy().Resize(64, 64, Inter.Linear).Mat;
                                 TempColl.ROI[ID] = ROI;
                                 AnalSMP_Save.Scale = (double)(((double)ROI.Height * (double)ROI.Width) / (double)4096);
+                                if (AnalSMP_Save.Scale == 0) { AnalSMP_Save.Scale =1; }
+
                                 TempColl.AnalSMP[ID] = AnalSMP_Save;
 
 
@@ -449,6 +452,7 @@ namespace MVision
                                     TempColl.Img[ID] = ImagsCam[ID].Copy().Resize(64, 64, Inter.Linear).Mat;
                                     TempColl.ROI[ID] = ROI;
                                     AnalSMP_Save.Scale = (double)(((double)ROI.Height * (double)ROI.Width) / (double)4096);
+                                    if (AnalSMP_Save.Scale == 0) { AnalSMP_Save.Scale = 1; }
                                     //ROI fo Save
                                     TempColl.AnalSMP[ID] = AnalSMP_Save;
              
@@ -692,7 +696,7 @@ namespace MVision
 
         double widthInPixels = 8192; // ширина поля в пікселях
         double widthInCm = 200; // ширина поля в см
-        double Kofic = 1.06; // ширина поля в см
+        double Kofic = 1.00; // ширина поля в см
 
         double Areamm2(double Aria)
         {
@@ -1096,12 +1100,16 @@ namespace MVision
                                 DTLimg[i].Value[0] = new float[PDT[i].Value.Length];
                                 DTLimg[i].Value[0] = PDT[i].Value;
                                 DTLimg[i].IdxName[0] = PDT[i].ID;
+                                DTLimg[i].AnalisSMP[0].NameIdx = PDT[i].ID;
+                                DTLimg[i].AnalisSMP[0].Name = PDT[i].Nema;
 
-                              //  для слідуючого індикса добавляєм зміщення CountBF
+                                //  для слідуючого індикса добавляєм зміщення CountBF
                                 DTLimg[i].Name[1] = PDT[i + CountBF].Nema; ;
                                 DTLimg[i].Value[1] = new float[PDT[i + CountBF].Value.Length];
                                 DTLimg[i].Value[1] = PDT[i + CountBF].Value;
                                 DTLimg[i].IdxName[1] = PDT[i + CountBF].ID; ;
+                                DTLimg[i].AnalisSMP[1].NameIdx = PDT[i + CountBF].ID;
+                                DTLimg[i].AnalisSMP[1].Name = PDT[i + CountBF].Nema;
 
                                 WatchML.Stop();
                                 var elapsedMs = WatchML.ElapsedMilliseconds;

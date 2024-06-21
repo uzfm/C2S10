@@ -578,8 +578,13 @@ namespace MVision
         }
 
 
-        public Image<Bgr, byte> WhiteBackground(Mat image, int intensity, int intensityGry)
+        public Image<Bgr, byte> ContaminationZise(Mat img, int intensity, int intensityGry, out double diameterMm, double ZipImg)
         {
+
+
+            int test = (int)Math.Sqrt((double)(64 * 64) * ZipImg);
+            Mat image = img.ToImage<Bgr, byte>().Resize(test, test, Inter.Linear).Mat;
+
 
             // Перетворення зображення в сірий колір
             Mat grayImage = new Mat();
@@ -629,18 +634,13 @@ namespace MVision
             // Скопіювати область з оригінального зображення на білий фон
             maskedImage.CopyTo(result, mask);
 
-
-
-
-
-
-
-
-            return  BlackContur(result, intensityGry);
+            return  BlackContur(result, intensityGry, out diameterMm, ZipImg);
         }
 
-        public Image<Bgr, byte> BlackContur(Mat image, int intensityGry)
-        {
+       
+
+        public Image<Bgr, byte> BlackContur(Mat image, int intensityGry, out double diameterMm , double ZipImg)
+        {  double PixelToMm = (220.0 / 8192.0); // мм на піксель
 
             // Перетворення зображення в сірий колір
             Mat grayImage = new Mat();
@@ -668,37 +668,34 @@ namespace MVision
                 }
             }
 
+
+
+
             // Створити маску для найбільшого контуру
-          //  Mat mask = new Mat(image.Size, DepthType.Cv8U, 1);
-           // mask.SetTo(new MCvScalar(0)); // встановити чорний фон для маски
-            CvInvoke.DrawContours(image, contours, largestContourIndex, new MCvScalar(255,0,0), 1); // намалювати білий контур
+            CvInvoke.DrawContours(image, contours, largestContourIndex, new MCvScalar(0,0,255), 1); // намалювати білий контур
 
-            // Стягнути контур на 2 пікселі
-           // Mat element = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(3, 3), new Point(-1, -1));
-           // CvInvoke.Erode(mask, mask, element, new Point(-1, -1), 2, BorderType.Default, new MCvScalar(0));
+            diameterMm = 0;
 
+            if (largestContourArea > 0)
+            {
+                // Перетворення площі з пікселів в квадратні міліметри
+                double largestContourAreaMm2 = largestContourArea * Math.Pow(PixelToMm, 2);
 
+                // Обчислення діаметра з площі
+                   diameterMm  = 2 * Math.Sqrt(largestContourAreaMm2 / Math.PI);
+            }
+            if (diameterMm == 0) { diameterMm = 0.001; }
 
-            // Створити результуюче зображення з білим фоном
-           // Mat result = new Mat(image.Size, DepthType.Cv8U, 3);
-           // result.SetTo(new MCvScalar(200, 200, 200)); // встановити білий фон
-
-            // Використовувати маску для копіювання тільки контурів на білий фон
-           //  Mat maskedImage = new Mat();
-           //  CvInvoke.BitwiseAnd(image, image, maskedImage, mask);
-
-            // Скопіювати область з оригінального зображення на білий фон
-            // maskedImage.CopyTo(result, mask);
-
-
-
-
-
+                // Додати текст з діаметром на зображення
+                string diameterText = $"{diameterMm:F3} mm";
+            Point textPosition = new Point(5, 20); // Позиція тексту на зображенні
+            CvInvoke.PutText(image, diameterText, textPosition, Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.8, new MCvScalar(100, 0, 100), 1);
 
 
 
             return image.ToImage<Bgr, byte>();
         }
+
 
 
 

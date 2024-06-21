@@ -115,7 +115,7 @@ namespace MVision
 
         /*****  REPORT  ***********/
         public string Name;
-        public int SampleSize;
+        public double SampleSize;
         public string NameSmaller ="_S";
         public string NameLarged  ="_L";
         public bool   SubGroups;    // Активація під груа вимірювання по зовнішньому 
