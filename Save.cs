@@ -116,14 +116,14 @@ namespace MVision
         /*****  REPORT  ***********/
         public string Name;
         public double SampleSize;
-        public string NameSmaller ="_S";
-        public string NameLarged  ="_L";
+        public string NameSmaller = "_S";
+        public string NameLarged  = "_L";
         public bool   SubGroups;    // Активація під груа вимірювання по зовнішньому 
-        public bool   SurveyIn;    // Активація під груп вимірювання по внутрішньому контурі.
+        public bool   PeletInsid;    // Активація під груп вимірювання по внутрішньому контурі.
+        public bool   PeletAria;     // Активація під груп вимірювання по внутрішньому контурі.
 
 
-            public int   IdxGrp;       //індикс першого значення підгрупи в Image List.(для індексації Mosaic)
-
+                   public int   IdxGrp;             //індикс першого значення підгрупи в Image List.(для індексації Mosaic)
         static   public short   IdxGrpleng;         // довжина List з групами  та активованими підгрупами.
 
             //public bool   TypeOn;
