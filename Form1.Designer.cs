@@ -61,6 +61,7 @@ namespace MVision
             this.StatusLineMenu = new System.Windows.Forms.ToolStripStatusLabel();
             this.IDtex = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.SampleModelStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -123,7 +124,14 @@ namespace MVision
             this.label8 = new System.Windows.Forms.Label();
             this.MakeReportButton = new System.Windows.Forms.Button();
             this.UnderType = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.Typelabel = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.AreammTextBox = new System.Windows.Forms.RichTextBox();
+            this.WidthmmTextBox = new System.Windows.Forms.RichTextBox();
+            this.HeightmmTextBox = new System.Windows.Forms.RichTextBox();
+            this.UnderTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.button52 = new System.Windows.Forms.Button();
             this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
             this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,10 +139,10 @@ namespace MVision
             this.SubgroupsOutside = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PelletInside = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PelletArea = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.richTextBoxArea = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.richTextBoxArea = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -389,7 +397,7 @@ namespace MVision
             this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowGoodNumeric)).BeginInit();
             this.UnderType.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.UnderTypeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -507,11 +515,12 @@ namespace MVision
             this.toolStripStatusLabel6,
             this.StatusLineMenu,
             this.IDtex,
-            this.toolStripSplitButton1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 571);
+            this.toolStripSplitButton1,
+            this.SampleModelStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 567);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(1924, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1924, 30);
             this.statusStrip1.TabIndex = 34;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -520,7 +529,7 @@ namespace MVision
             this.HidConect.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.HidConect.ForeColor = System.Drawing.Color.Salmon;
             this.HidConect.Name = "HidConect";
-            this.HidConect.Size = new System.Drawing.Size(107, 21);
+            this.HidConect.Size = new System.Drawing.Size(107, 25);
             this.HidConect.Text = "not connected";
             // 
             // TimerWorks
@@ -528,7 +537,7 @@ namespace MVision
             this.TimerWorks.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TimerWorks.ForeColor = System.Drawing.Color.Crimson;
             this.TimerWorks.Name = "TimerWorks";
-            this.TimerWorks.Size = new System.Drawing.Size(50, 21);
+            this.TimerWorks.Size = new System.Drawing.Size(50, 25);
             this.TimerWorks.Text = "00:00";
             // 
             // toolStripStatusLabel13
@@ -536,7 +545,7 @@ namespace MVision
             this.toolStripStatusLabel13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripStatusLabel13.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
-            this.toolStripStatusLabel13.Size = new System.Drawing.Size(11, 21);
+            this.toolStripStatusLabel13.Size = new System.Drawing.Size(11, 25);
             this.toolStripStatusLabel13.Text = "|";
             // 
             // PCSmin
@@ -544,14 +553,14 @@ namespace MVision
             this.PCSmin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PCSmin.ForeColor = System.Drawing.Color.Black;
             this.PCSmin.Name = "PCSmin";
-            this.PCSmin.Size = new System.Drawing.Size(28, 21);
+            this.PCSmin.Size = new System.Drawing.Size(28, 25);
             this.PCSmin.Text = "00";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(59, 21);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(59, 25);
             this.toolStripStatusLabel1.Text = "PCS/min";
             // 
             // toolStripStatusLabel11
@@ -559,7 +568,7 @@ namespace MVision
             this.toolStripStatusLabel11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripStatusLabel11.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
-            this.toolStripStatusLabel11.Size = new System.Drawing.Size(11, 21);
+            this.toolStripStatusLabel11.Size = new System.Drawing.Size(11, 25);
             this.toolStripStatusLabel11.Text = "|";
             // 
             // toolStripStatusLabel4
@@ -568,7 +577,7 @@ namespace MVision
             this.toolStripStatusLabel4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.toolStripStatusLabel4.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(28, 21);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(28, 25);
             this.toolStripStatusLabel4.Text = "00";
             // 
             // toolStripStatusLabel5
@@ -577,7 +586,7 @@ namespace MVision
             this.toolStripStatusLabel5.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.toolStripStatusLabel5.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(28, 21);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(28, 25);
             this.toolStripStatusLabel5.Text = "PCS";
             // 
             // Kg_StatusLabel
@@ -585,7 +594,7 @@ namespace MVision
             this.Kg_StatusLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Kg_StatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
             this.Kg_StatusLabel.Name = "Kg_StatusLabel";
-            this.Kg_StatusLabel.Size = new System.Drawing.Size(28, 21);
+            this.Kg_StatusLabel.Size = new System.Drawing.Size(28, 25);
             this.Kg_StatusLabel.Text = "00";
             // 
             // Kg_Label
@@ -593,7 +602,7 @@ namespace MVision
             this.Kg_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Kg_Label.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.Kg_Label.Name = "Kg_Label";
-            this.Kg_Label.Size = new System.Drawing.Size(21, 21);
+            this.Kg_Label.Size = new System.Drawing.Size(21, 25);
             this.Kg_Label.Text = "Kg";
             // 
             // toolStripStatusLabel12
@@ -601,55 +610,55 @@ namespace MVision
             this.toolStripStatusLabel12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripStatusLabel12.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.toolStripStatusLabel12.Name = "toolStripStatusLabel12";
-            this.toolStripStatusLabel12.Size = new System.Drawing.Size(11, 21);
+            this.toolStripStatusLabel12.Size = new System.Drawing.Size(11, 25);
             this.toolStripStatusLabel12.Text = "|";
             // 
             // MastFoto
             // 
             this.MastFoto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MastFoto.Name = "MastFoto";
-            this.MastFoto.Size = new System.Drawing.Size(31, 21);
+            this.MastFoto.Size = new System.Drawing.Size(31, 25);
             this.MastFoto.Text = " ID1";
             // 
             // MastFotoIdx
             // 
             this.MastFotoIdx.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MastFotoIdx.Name = "MastFotoIdx";
-            this.MastFotoIdx.Size = new System.Drawing.Size(28, 21);
+            this.MastFotoIdx.Size = new System.Drawing.Size(28, 25);
             this.MastFotoIdx.Text = "00";
             // 
             // SlaveFoto
             // 
             this.SlaveFoto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SlaveFoto.Name = "SlaveFoto";
-            this.SlaveFoto.Size = new System.Drawing.Size(27, 21);
+            this.SlaveFoto.Size = new System.Drawing.Size(27, 25);
             this.SlaveFoto.Text = "ID2";
             // 
             // SlaveFotoIdx
             // 
             this.SlaveFotoIdx.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SlaveFotoIdx.Name = "SlaveFotoIdx";
-            this.SlaveFotoIdx.Size = new System.Drawing.Size(28, 21);
+            this.SlaveFotoIdx.Size = new System.Drawing.Size(28, 25);
             this.SlaveFotoIdx.Text = "00";
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 21);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 25);
             this.toolStripStatusLabel2.Text = "Cameras error";
             // 
             // toolStripStatusLabel8
             // 
             this.toolStripStatusLabel8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripStatusLabel8.Name = "toolStripStatusLabel8";
-            this.toolStripStatusLabel8.Size = new System.Drawing.Size(28, 21);
+            this.toolStripStatusLabel8.Size = new System.Drawing.Size(28, 25);
             this.toolStripStatusLabel8.Text = "00";
             // 
             // toolStripStatusLabel7
             // 
             this.toolStripStatusLabel7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(28, 21);
+            this.toolStripStatusLabel7.Size = new System.Drawing.Size(28, 25);
             this.toolStripStatusLabel7.Text = "00";
             // 
             // ErrorDevid
@@ -657,40 +666,40 @@ namespace MVision
             this.ErrorDevid.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ErrorDevid.ForeColor = System.Drawing.Color.Maroon;
             this.ErrorDevid.Name = "ErrorDevid";
-            this.ErrorDevid.Size = new System.Drawing.Size(19, 21);
+            this.ErrorDevid.Size = new System.Drawing.Size(19, 25);
             this.ErrorDevid.Text = "0";
             // 
             // toolStripStatusLabel9
             // 
             this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(51, 21);
+            this.toolStripStatusLabel9.Size = new System.Drawing.Size(51, 25);
             this.toolStripStatusLabel9.Text = "Time PD";
             // 
             // TimerPredict
             // 
             this.TimerPredict.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TimerPredict.Name = "TimerPredict";
-            this.TimerPredict.Size = new System.Drawing.Size(28, 21);
+            this.TimerPredict.Size = new System.Drawing.Size(28, 25);
             this.TimerPredict.Text = "00";
             // 
             // BuferIMGText
             // 
             this.BuferIMGText.Name = "BuferIMGText";
-            this.BuferIMGText.Size = new System.Drawing.Size(57, 21);
+            this.BuferIMGText.Size = new System.Drawing.Size(57, 25);
             this.BuferIMGText.Text = "BuferIMG";
             // 
             // BuferIMG
             // 
             this.BuferIMG.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BuferIMG.Name = "BuferIMG";
-            this.BuferIMG.Size = new System.Drawing.Size(28, 21);
+            this.BuferIMG.Size = new System.Drawing.Size(28, 25);
             this.BuferIMG.Text = "00";
             // 
             // toolStripStatusLabel6
             // 
             this.toolStripStatusLabel6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(47, 21);
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(47, 25);
             this.toolStripStatusLabel6.Text = "GUIDE";
             // 
             // StatusLineMenu
@@ -698,7 +707,7 @@ namespace MVision
             this.StatusLineMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.StatusLineMenu.ForeColor = System.Drawing.Color.DarkGreen;
             this.StatusLineMenu.Name = "StatusLineMenu";
-            this.StatusLineMenu.Size = new System.Drawing.Size(269, 21);
+            this.StatusLineMenu.Size = new System.Drawing.Size(269, 25);
             this.StatusLineMenu.Text = "To start measurement click \"Start Analysis\"";
             // 
             // IDtex
@@ -706,7 +715,7 @@ namespace MVision
             this.IDtex.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.IDtex.Margin = new System.Windows.Forms.Padding(400, 3, 0, 2);
             this.IDtex.Name = "IDtex";
-            this.IDtex.Size = new System.Drawing.Size(34, 21);
+            this.IDtex.Size = new System.Drawing.Size(34, 25);
             this.IDtex.Text = "NO";
             // 
             // toolStripSplitButton1
@@ -715,10 +724,18 @@ namespace MVision
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 24);
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 28);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             this.toolStripSplitButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
+            // 
+            // SampleModelStatusLabel
+            // 
+            this.SampleModelStatusLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.SampleModelStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
+            this.SampleModelStatusLabel.Name = "SampleModelStatusLabel";
+            this.SampleModelStatusLabel.Size = new System.Drawing.Size(134, 25);
+            this.SampleModelStatusLabel.Text = "Sample Model";
             // 
             // toolStripContainer1
             // 
@@ -739,14 +756,14 @@ namespace MVision
             // toolStripContainer2.ContentPanel
             // 
             this.toolStripContainer2.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer2.ContentPanel.Size = new System.Drawing.Size(1924, 546);
+            this.toolStripContainer2.ContentPanel.Size = new System.Drawing.Size(1924, 542);
             this.toolStripContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer2.LeftToolStripPanelVisible = false;
             this.toolStripContainer2.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer2.Name = "toolStripContainer2";
             this.toolStripContainer2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.toolStripContainer2.RightToolStripPanelVisible = false;
-            this.toolStripContainer2.Size = new System.Drawing.Size(1924, 571);
+            this.toolStripContainer2.Size = new System.Drawing.Size(1924, 567);
             this.toolStripContainer2.TabIndex = 39;
             this.toolStripContainer2.Text = "toolStripContainer2";
             // 
@@ -776,8 +793,8 @@ namespace MVision
             this.splitContainer1.Panel2.Controls.Add(this.ClearExperimentButton);
             this.splitContainer1.Panel2.Controls.Add(this.StartButton);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Size = new System.Drawing.Size(1924, 546);
-            this.splitContainer1.SplitterDistance = 227;
+            this.splitContainer1.Size = new System.Drawing.Size(1924, 542);
+            this.splitContainer1.SplitterDistance = 223;
             this.splitContainer1.TabIndex = 34;
             // 
             // splitContainer2
@@ -797,8 +814,8 @@ namespace MVision
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer2.Size = new System.Drawing.Size(1924, 227);
-            this.splitContainer2.SplitterDistance = 48;
+            this.splitContainer2.Size = new System.Drawing.Size(1924, 223);
+            this.splitContainer2.SplitterDistance = 47;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -815,7 +832,7 @@ namespace MVision
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.pictureBoxSlave);
-            this.splitContainer3.Size = new System.Drawing.Size(1924, 48);
+            this.splitContainer3.Size = new System.Drawing.Size(1924, 47);
             this.splitContainer3.SplitterDistance = 962;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -828,7 +845,7 @@ namespace MVision
             this.pictureBoxMaster.InitialImage = null;
             this.pictureBoxMaster.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxMaster.Name = "pictureBoxMaster";
-            this.pictureBoxMaster.Size = new System.Drawing.Size(962, 48);
+            this.pictureBoxMaster.Size = new System.Drawing.Size(962, 47);
             this.pictureBoxMaster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxMaster.TabIndex = 14;
             this.pictureBoxMaster.TabStop = false;
@@ -842,7 +859,7 @@ namespace MVision
             this.pictureBoxSlave.InitialImage = null;
             this.pictureBoxSlave.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxSlave.Name = "pictureBoxSlave";
-            this.pictureBoxSlave.Size = new System.Drawing.Size(958, 48);
+            this.pictureBoxSlave.Size = new System.Drawing.Size(958, 47);
             this.pictureBoxSlave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxSlave.TabIndex = 15;
             this.pictureBoxSlave.TabStop = false;
@@ -861,7 +878,7 @@ namespace MVision
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer7);
-            this.splitContainer4.Size = new System.Drawing.Size(1924, 175);
+            this.splitContainer4.Size = new System.Drawing.Size(1924, 172);
             this.splitContainer4.SplitterDistance = 271;
             this.splitContainer4.TabIndex = 0;
             // 
@@ -882,7 +899,7 @@ namespace MVision
             this.dataGridViewSempls.RowHeadersVisible = false;
             this.dataGridViewSempls.RowHeadersWidth = 40;
             this.dataGridViewSempls.RowTemplate.Height = 25;
-            this.dataGridViewSempls.Size = new System.Drawing.Size(271, 175);
+            this.dataGridViewSempls.Size = new System.Drawing.Size(271, 172);
             this.dataGridViewSempls.TabIndex = 0;
             this.dataGridViewSempls.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSempls_CellClick);
             // 
@@ -927,7 +944,7 @@ namespace MVision
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.listView2);
-            this.splitContainer7.Size = new System.Drawing.Size(1649, 175);
+            this.splitContainer7.Size = new System.Drawing.Size(1649, 172);
             this.splitContainer7.SplitterDistance = 825;
             this.splitContainer7.TabIndex = 0;
             // 
@@ -938,7 +955,7 @@ namespace MVision
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(825, 175);
+            this.listView1.Size = new System.Drawing.Size(825, 172);
             this.listView1.TabIndex = 0;
             this.listView1.TileSize = new System.Drawing.Size(120, 120);
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -954,7 +971,7 @@ namespace MVision
             this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(0, 0);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(820, 175);
+            this.listView2.Size = new System.Drawing.Size(820, 172);
             this.listView2.TabIndex = 1;
             this.listView2.TileSize = new System.Drawing.Size(120, 120);
             this.listView2.UseCompatibleStateImageBehavior = false;
@@ -1594,7 +1611,16 @@ namespace MVision
             // 
             // UnderType
             // 
-            this.UnderType.Controls.Add(this.groupBox5);
+            this.UnderType.Controls.Add(this.Typelabel);
+            this.UnderType.Controls.Add(this.label49);
+            this.UnderType.Controls.Add(this.label42);
+            this.UnderType.Controls.Add(this.label33);
+            this.UnderType.Controls.Add(this.AreammTextBox);
+            this.UnderType.Controls.Add(this.WidthmmTextBox);
+            this.UnderType.Controls.Add(this.HeightmmTextBox);
+            this.UnderType.Controls.Add(this.UnderTypeGroupBox);
+            this.UnderType.Controls.Add(this.richTextBoxArea);
+            this.UnderType.Controls.Add(this.label2);
             this.UnderType.Location = new System.Drawing.Point(4, 25);
             this.UnderType.Name = "UnderType";
             this.UnderType.Size = new System.Drawing.Size(1560, 277);
@@ -1602,27 +1628,121 @@ namespace MVision
             this.UnderType.Text = "Under Type";
             this.UnderType.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // Typelabel
             // 
-            this.groupBox5.Controls.Add(this.button52);
-            this.groupBox5.Controls.Add(this.dataGridViewUnderType);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.treeView1);
-            this.groupBox5.Controls.Add(this.richTextBoxArea);
-            this.groupBox5.Controls.Add(this.button2);
-            this.groupBox5.Location = new System.Drawing.Point(3, 7);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1034, 267);
-            this.groupBox5.TabIndex = 389;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Setting Measurements";
+            this.Typelabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Typelabel.AutoSize = true;
+            this.Typelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Typelabel.ForeColor = System.Drawing.Color.Maroon;
+            this.Typelabel.Location = new System.Drawing.Point(955, 22);
+            this.Typelabel.Name = "Typelabel";
+            this.Typelabel.Size = new System.Drawing.Size(53, 24);
+            this.Typelabel.TabIndex = 396;
+            this.Typelabel.Text = "Type";
+            // 
+            // label49
+            // 
+            this.label49.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(1051, 185);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(64, 16);
+            this.label49.TabIndex = 395;
+            this.label49.Text = "Area mm ";
+            // 
+            // label42
+            // 
+            this.label42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(1051, 149);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(69, 16);
+            this.label42.TabIndex = 394;
+            this.label42.Text = "Width mm ";
+            // 
+            // label33
+            // 
+            this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(1051, 104);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(71, 16);
+            this.label33.TabIndex = 393;
+            this.label33.Text = "Height mm";
+            // 
+            // AreammTextBox
+            // 
+            this.AreammTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AreammTextBox.BackColor = System.Drawing.Color.AliceBlue;
+            this.AreammTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AreammTextBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.AreammTextBox.HideSelection = false;
+            this.AreammTextBox.Location = new System.Drawing.Point(955, 176);
+            this.AreammTextBox.MaxLength = 20;
+            this.AreammTextBox.Multiline = false;
+            this.AreammTextBox.Name = "AreammTextBox";
+            this.AreammTextBox.ReadOnly = true;
+            this.AreammTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.AreammTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.AreammTextBox.Size = new System.Drawing.Size(81, 35);
+            this.AreammTextBox.TabIndex = 392;
+            this.AreammTextBox.Text = "0";
+            // 
+            // WidthmmTextBox
+            // 
+            this.WidthmmTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.WidthmmTextBox.BackColor = System.Drawing.Color.AliceBlue;
+            this.WidthmmTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.WidthmmTextBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.WidthmmTextBox.HideSelection = false;
+            this.WidthmmTextBox.Location = new System.Drawing.Point(955, 135);
+            this.WidthmmTextBox.MaxLength = 20;
+            this.WidthmmTextBox.Multiline = false;
+            this.WidthmmTextBox.Name = "WidthmmTextBox";
+            this.WidthmmTextBox.ReadOnly = true;
+            this.WidthmmTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.WidthmmTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.WidthmmTextBox.Size = new System.Drawing.Size(81, 35);
+            this.WidthmmTextBox.TabIndex = 391;
+            this.WidthmmTextBox.Text = "0";
+            // 
+            // HeightmmTextBox
+            // 
+            this.HeightmmTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.HeightmmTextBox.BackColor = System.Drawing.Color.AliceBlue;
+            this.HeightmmTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.HeightmmTextBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.HeightmmTextBox.HideSelection = false;
+            this.HeightmmTextBox.Location = new System.Drawing.Point(955, 95);
+            this.HeightmmTextBox.MaxLength = 20;
+            this.HeightmmTextBox.Multiline = false;
+            this.HeightmmTextBox.Name = "HeightmmTextBox";
+            this.HeightmmTextBox.ReadOnly = true;
+            this.HeightmmTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.HeightmmTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.HeightmmTextBox.Size = new System.Drawing.Size(81, 35);
+            this.HeightmmTextBox.TabIndex = 390;
+            this.HeightmmTextBox.Text = "0";
+            // 
+            // UnderTypeGroupBox
+            // 
+            this.UnderTypeGroupBox.Controls.Add(this.button52);
+            this.UnderTypeGroupBox.Controls.Add(this.dataGridViewUnderType);
+            this.UnderTypeGroupBox.Controls.Add(this.treeView1);
+            this.UnderTypeGroupBox.Controls.Add(this.button2);
+            this.UnderTypeGroupBox.Location = new System.Drawing.Point(3, 7);
+            this.UnderTypeGroupBox.Name = "UnderTypeGroupBox";
+            this.UnderTypeGroupBox.Size = new System.Drawing.Size(924, 267);
+            this.UnderTypeGroupBox.TabIndex = 389;
+            this.UnderTypeGroupBox.TabStop = false;
+            this.UnderTypeGroupBox.Text = "Setting Measurements";
             // 
             // button52
             // 
             this.button52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button52.Location = new System.Drawing.Point(944, 79);
+            this.button52.Location = new System.Drawing.Point(814, 29);
             this.button52.Name = "button52";
-            this.button52.Size = new System.Drawing.Size(73, 24);
+            this.button52.Size = new System.Drawing.Size(104, 24);
             this.button52.TabIndex = 389;
             this.button52.Text = "Resеt";
             this.button52.UseVisualStyleBackColor = true;
@@ -1692,16 +1812,6 @@ namespace MVision
             this.PelletArea.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.PelletArea.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(812, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 16);
-            this.label2.TabIndex = 388;
-            this.label2.Text = " Measurement mm ";
-            // 
             // treeView1
             // 
             this.treeView1.Cursor = System.Windows.Forms.Cursors.Default;
@@ -1711,6 +1821,17 @@ namespace MVision
             this.treeView1.Size = new System.Drawing.Size(286, 246);
             this.treeView1.TabIndex = 280;
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(814, 210);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(104, 51);
+            this.button2.TabIndex = 279;
+            this.button2.Text = "Apply Changes";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // richTextBoxArea
             // 
             this.richTextBoxArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1718,7 +1839,7 @@ namespace MVision
             this.richTextBoxArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBoxArea.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.richTextBoxArea.HideSelection = false;
-            this.richTextBoxArea.Location = new System.Drawing.Point(936, 28);
+            this.richTextBoxArea.Location = new System.Drawing.Point(955, 54);
             this.richTextBoxArea.MaxLength = 20;
             this.richTextBoxArea.Multiline = false;
             this.richTextBoxArea.Name = "richTextBoxArea";
@@ -1729,16 +1850,15 @@ namespace MVision
             this.richTextBoxArea.TabIndex = 387;
             this.richTextBoxArea.Text = "0";
             // 
-            // button2
+            // label2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(924, 216);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 51);
-            this.button2.TabIndex = 279;
-            this.button2.Text = "Apply Changes";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1051, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 16);
+            this.label2.TabIndex = 388;
+            this.label2.Text = " Measurement mm ";
             // 
             // tabPage1
             // 
@@ -4579,8 +4699,8 @@ namespace MVision
             this.groupBox12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowGoodNumeric)).EndInit();
             this.UnderType.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.UnderType.PerformLayout();
+            this.UnderTypeGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnderType)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -4979,7 +5099,7 @@ namespace MVision
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox richTextBoxArea;
         private System.Windows.Forms.Button button49;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox UnderTypeGroupBox;
         private System.Windows.Forms.Button button52;
         private System.Windows.Forms.TabPage MeasurementPellet;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -5002,6 +5122,14 @@ namespace MVision
         private System.Windows.Forms.DataGridViewCheckBoxColumn PelletInside;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PelletArea;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.RichTextBox AreammTextBox;
+        private System.Windows.Forms.RichTextBox WidthmmTextBox;
+        private System.Windows.Forms.RichTextBox HeightmmTextBox;
+        private System.Windows.Forms.Label Typelabel;
+        private System.Windows.Forms.ToolStripStatusLabel SampleModelStatusLabel;
     }
 }
 

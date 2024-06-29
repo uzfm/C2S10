@@ -720,8 +720,8 @@ namespace MVision
         public Image<Bgr, byte>[] ImgSlave ;
         public Rectangle[] ROI_Master ;
         public Rectangle[] ROI_Slave;
-        public double   [] AriaM ;
-        public double   [] AriaS;
+       // public double   [] AriaM ;
+        //public double   [] AriaS;
         public AnalisSMP[] AnalSMP_M;
         public AnalisSMP[] AnalSMP_S;
 
