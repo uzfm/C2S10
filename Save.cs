@@ -249,8 +249,14 @@ namespace MVision
             public string     Password         { get; set; }
             public StringCollection SampleType { get; set; } 
             public StringCollection CreatedBy  { get; set; }  // назви відів семплів (назва папки)
-            
-        }
+
+
+   
+           public double PixelToMm ; // мм на піксель
+           public double PixelToMm2 ; // мм² на піксель²
+        
+
+    }
 
 
 
@@ -292,7 +298,12 @@ namespace MVision
                 {
                     string json = File.ReadAllText(filePath);
                     DT = JsonConvert.DeserializeObject<Data>(json);
-                 
+
+
+
+                  if (DT.PixelToMm == 0) { DT.PixelToMm = 220.0 / 8192.0; } // мм на піксель
+                  if(DT.PixelToMm2  == 0 ) {  DT.PixelToMm2 = DT.PixelToMm * DT.PixelToMm; } // мм² на піксель²
+
                     Console.WriteLine("Deserialize JSON OK");
                     return true;
                 }

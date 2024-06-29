@@ -127,7 +127,8 @@ STGS STGS = new STGS();
             STGS.Read();
             PashModelML.Text = STGS.DT.URL_Models;
             NameModelML.Text = STGS.DT.Name_Model;
-  
+            SampleModelStatusLabel.Text = NameModelML.Text;
+            IDtex.Text = "User mode";
 
 
             if (ReloadSetingsFile == false){
@@ -188,7 +189,7 @@ STGS STGS = new STGS();
 
 
 
-                if (DLS.DLS_HowManyCAMERAS != _DLS.HowMany.NO) { 
+                if (DLS.DLS_HowManyCAMERAS != _DLS.HowMany.CAM1_CAM2) { 
             DLS.SetGain( (double) SAV.DT.DALSA.GEIN[Master], Master);
             DLS.SetGain((double)SAV.DT.DALSA.GEIN[Slave], Slave);
 
@@ -1074,8 +1075,8 @@ STGS STGS = new STGS();
             int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
 
 
-            if ((MOD == MOD_MSC.S) && (ID == Master)) { IdxM++; } 
-            if ((MOD == MOD_MSC.S) && (ID == Slave)) { IdxS++; }
+            if ((MOD == MOD_MSC.L) && (ID == Master)) { IdxM++; } 
+            if ((MOD == MOD_MSC.L) && (ID == Slave)) { IdxS++; }
 
 
 
@@ -1138,27 +1139,52 @@ STGS STGS = new STGS();
                         int IdxM = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp;
                         int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
 
-                        if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid)){
+                        if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid))
+                        {
 
 
-                            vision.ContaminationZise(OutDT.Img[Master].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMm , OutDT.AnalisSMP[Master].Scale);
-                            OutDT.AnalisSMP[Master].ElongMax = diameterMm ;
+                            vision.ContaminationZise(OutDT.Img[Master].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmM, OutDT.AnalisSMP[Master].Scale);
 
+                            vision.ContaminationZise(OutDT.Img[Slave].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[Slave].Scale);
 
-                            vision.ContaminationZise(OutDT.Img[Slave].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out  diameterMm, OutDT.AnalisSMP[Slave].Scale);
-                            OutDT.AnalisSMP[Slave].ElongMax = diameterMm ;
+                            if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD) && (OutDT.AnalisSMP[Slave].Name != GridData.GOOD))
+                            {
+                                OutDT.AnalisSMP[Master].ElongMax = Math.Max(diameterMmM, diameterMmS);
+                                OutDT.AnalisSMP[Slave].ElongMax = Math.Max(diameterMmM, diameterMmS);
+                            }
+                            else { 
+
+                            if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD))
+                            {
+                                OutDT.AnalisSMP[Master].ElongMax = diameterMmM;
+                                OutDT.AnalisSMP[Slave].ElongMax = diameterMmM;
+                            }
+                            else
+                            {
+                                OutDT.AnalisSMP[Master].ElongMax = diameterMmS;
+                                OutDT.AnalisSMP[Slave].ElongMax = diameterMmS;
+                            }}
                         }
 
 
                         if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletAria) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletAria))
                         {
-
-
-                            
-                            OutDT.AnalisSMP[Master].ElongMax = OutDT.AnalisSMP[Master].Aria;
-
-                            OutDT.AnalisSMP[Slave].ElongMax = OutDT.AnalisSMP[Slave].Aria;
-
+                            if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD) && (OutDT.AnalisSMP[Slave].Name != GridData.GOOD))
+                            {
+                                OutDT.AnalisSMP[Master].ElongMax = OutDT.AnalisSMP[Master].ElongMax = Math.Max(OutDT.AnalisSMP[Master].Aria, OutDT.AnalisSMP[Slave].Aria);
+                            } else
+                            {
+                                if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD))
+                                {
+                                    OutDT.AnalisSMP[Master].ElongMax = OutDT.AnalisSMP[Master].Aria;
+                                    OutDT.AnalisSMP[Slave].ElongMax = OutDT.AnalisSMP[Master].Aria;
+                                }
+                                else
+                                {
+                                    OutDT.AnalisSMP[Master].ElongMax = OutDT.AnalisSMP[Slave].Aria;
+                                    OutDT.AnalisSMP[Slave].ElongMax  = OutDT.AnalisSMP[Slave].Aria;
+                                }
+                            }
 
                           
                         }
@@ -1177,7 +1203,7 @@ STGS STGS = new STGS();
                             if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SubGroups){
 
                                     //визначити клас по видовжені
-                                 if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize > OutDT.AnalisSMP[Master].ElongMax)
+                                 if ( OutDT.AnalisSMP[Master].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize)
                                 {       FullData(Master , MOD_MSC.L);    // L
                                 } else{ FullData(Master, MOD_MSC.S);}    // S
                                 
@@ -1186,7 +1212,7 @@ STGS STGS = new STGS();
                                 if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) {
 
                                     //визначити клас по видовжені
-                                    if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize > OutDT.AnalisSMP[Master].ElongMax)
+                                    if ( OutDT.AnalisSMP[Master].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize)
                                     {
                                         FullData(Master, MOD_MSC.L);    // L
                                     } else { FullData(Master, MOD_MSC.S); }    // S
@@ -1211,7 +1237,7 @@ STGS STGS = new STGS();
 
 
                                         //визначити клас по видовжені
-                                        if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize > OutDT.AnalisSMP[Slave].ElongMax)
+                                        if (OutDT.AnalisSMP[Slave].ElongMax  >  SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize  )
                                         {        FullData(Slave, MOD_MSC.L);  //L  
                                         } else { FullData(Slave, MOD_MSC.S); }//S
                                        
@@ -1223,7 +1249,7 @@ STGS STGS = new STGS();
                                     {
 
                                         //визначити клас по видовжені
-                                        if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize > OutDT.AnalisSMP[Slave].ElongMax)
+                                        if (  OutDT.AnalisSMP[Slave].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize)
                                         {
                                             FullData(Master, MOD_MSC.L);    // L
                                         }
@@ -1876,7 +1902,11 @@ STGS STGS = new STGS();
                         LearnImg =  (Bitmap) MSC[Master].IMG[NameSampleSelect].Images[SelectITMs];
                         richTextBoxArea.Text = MSC[Master].AnalisSMP[NameSampleSelect][SelectITMs].ElongMax.ToString();
 
-                }
+                        HeightmmTextBox.Text = MSC[Master].AnalisSMP[NameSampleSelect][SelectITMs].HeightMM.ToString();
+                        WidthmmTextBox.Text = MSC[Master].AnalisSMP[NameSampleSelect][SelectITMs].WidthMM.ToString();
+                        AreammTextBox.Text = MSC[Master].AnalisSMP[NameSampleSelect][SelectITMs].Aria.ToString();
+                        Typelabel.Text = MSC[Master].AnalisSMP[NameSampleSelect][SelectITMs].Name;
+                    }
                 }catch {
                     Help.ErrorMesag("Choose the type of sample"); }
 
@@ -1915,6 +1945,12 @@ STGS STGS = new STGS();
 
                         LearnImg = (Bitmap)MSC[Slave].IMG[NameSampleSelect].Images[SelectITMs];
                             richTextBoxArea.Text = MSC[Slave].AnalisSMP[NameSampleSelect][SelectITMs].ElongMax.ToString();
+
+                        HeightmmTextBox.Text = MSC[Slave].AnalisSMP[NameSampleSelect][SelectITMs].HeightMM.ToString();
+                        WidthmmTextBox.Text = MSC[Slave].AnalisSMP[NameSampleSelect][SelectITMs].WidthMM.ToString();
+                        AreammTextBox.Text = MSC[Slave].AnalisSMP[NameSampleSelect][SelectITMs].Aria.ToString();
+                        Typelabel.Text = MSC[Slave].AnalisSMP[NameSampleSelect][SelectITMs].Name;
+
                     }
                 }
                 catch { Help.ErrorMesag("Choose the type of sample"); }
@@ -2239,7 +2275,7 @@ STGS STGS = new STGS();
         void VisualID()
         {
             string[] nemaID = new string[2] { "SAMPLES", "SAMPLES" };
-            IDtex.Text = nemaID[ID];
+          
 
         }
 
@@ -2794,6 +2830,7 @@ STGS STGS = new STGS();
                             DialogResult result = DialogResult.Yes;
                             result = MessageBox.Show("Make sure the hopper is empty! ", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (result == DialogResult.Yes) { STGS.DT.Name_Model = comboBox1.Text; NameModelML.Text = comboBox1.Text; }}}
+                    SampleModelStatusLabel.Text = NameModelML.Text;
                 }
 
 
@@ -3158,6 +3195,8 @@ STGS STGS = new STGS();
                 groupBox1.Enabled = true;
                 groupBoxWeight.Enabled = true;
                 groupBoxSelectCamera.Enabled = true;
+                VisionSettings.Enabled = true;
+                UnderTypeGroupBox.Enabled = true;
                 IDtex.Text = "Admin mode"; // Label visual Mode
                 PaswordString.Text = "";
                 PaswortChange = "";
@@ -3220,6 +3259,8 @@ STGS STGS = new STGS();
             groupBox1.Enabled = false;
             groupBoxWeight.Enabled = false;
             groupBoxSelectCamera.Enabled = false;
+            VisionSettings.Enabled = false;
+            UnderTypeGroupBox.Enabled = false;
             PasworLable.Text = "Lock";
             IDtex.Text = "User mode";   // Label visual Mode
         }

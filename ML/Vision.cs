@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace MVision
 {
-   public class VIS
+    public class VIS
     {
         public static DATA_Save Data = new DATA_Save();
 
@@ -26,9 +26,9 @@ namespace MVision
         public class DATA_Save
         {
             //для виривнюваня фону
-         
-            public byte  blurA      { get; set; }
-            public byte  ThresholdA { get; set; }
+
+            public byte blurA { get; set; }
+            public byte ThresholdA { get; set; }
 
 
             public byte blurB { get; set; }
@@ -42,22 +42,22 @@ namespace MVision
         }
 
         static public bool ArcLengTestChecd = false;
-        Image<Bgr, byte>   ColorBlobimg = new Image<Bgr, byte>(100, 100, new Bgr(255, 0, 0));
+        Image<Bgr, byte> ColorBlobimg = new Image<Bgr, byte>(100, 100, new Bgr(255, 0, 0));
         VectorOfVectorOfPoint conturs = new VectorOfVectorOfPoint();
 
 
-        public  Image<Bgr, byte>  DetectBlob(Mat img_Dtc, Label labelDectContur) {
-       
+        public Image<Bgr, byte> DetectBlob(Mat img_Dtc, Label labelDectContur) {
+
             Mat ouput = new Mat();
 
             ////Середня фільтрація Blur
             CvInvoke.Blur(img_Dtc, ouput, new Size(Data.blurA, Data.blurA), new Point(-1, -1));
-            var   _imgGry = ouput.ToImage<Gray, byte>();
-            Image<Bgr, byte>  _img  = ouput.ToImage<Bgr, byte>();
+            var _imgGry = ouput.ToImage<Gray, byte>();
+            Image<Bgr, byte> _img = ouput.ToImage<Bgr, byte>();
 
             // Визначення середнього значення інтенсивності
             MCvScalar meanIntensity = CvInvoke.Mean(_imgGry);
-            int Threshld = (int) (meanIntensity.V0);
+            int Threshld = (int)(meanIntensity.V0);
 
             //___________________________________
 
@@ -71,38 +71,38 @@ namespace MVision
             // Визначення мінімального та максимального значення інтенсивності
             CvInvoke.MinMaxLoc(_imgGry, ref MinValue, ref MaxValue, ref minLocation, ref maxLocation);
 
-            var test = 255/ (Threshld  - MinValue); //2.47
-            var test2 = (Threshld - MinValue)/test; //41.6
+            var test = 255 / (Threshld - MinValue); //2.47
+            var test2 = (Threshld - MinValue) / test; //41.6
 
-            CvInvoke.Threshold(_imgGry, _imgGry, MinValue - Data.ThresholdA+test2, 255, ThresholdType.Binary);
+            CvInvoke.Threshold(_imgGry, _imgGry, MinValue - Data.ThresholdA + test2, 255, ThresholdType.Binary);
 
 
-              Mat hierarchy = new Mat(); 
+            Mat hierarchy = new Mat();
 
-              CvInvoke.FindContours(~_imgGry, conturs, hierarchy, RetrType.Tree, ChainApproxMethod.ChainApproxSimple);
+            CvInvoke.FindContours(~_imgGry, conturs, hierarchy, RetrType.Tree, ChainApproxMethod.ChainApproxSimple);
 
             //Test img
-           ColorBlobimg = new Image<Bgr, byte>(img_Dtc.Width, img_Dtc.Height, new Bgr(10, 10, 10));
+            ColorBlobimg = new Image<Bgr, byte>(img_Dtc.Width, img_Dtc.Height, new Bgr(10, 10, 10));
 
             // Фільтрування та відображення закритих контурів
-            for (int i = 0; i < conturs.Size ; i++) {
+            for (int i = 0; i < conturs.Size; i++) {
 
                 double perimeter = CvInvoke.ArcLength(conturs[i], true);
 
                 // Якщо контур є закритим, вивести його шукаєм більш менш кругляшкі
-                if (conturs[i].Size >= 1){
-                
+                if (conturs[i].Size >= 1) {
+
                     CvInvoke.DrawContours(ColorBlobimg, conturs, i, new MCvScalar(20, 20, 255), 1); //RED
                     labelDectContur.Text = "Detected";
                     labelDectContur.ForeColor = Color.Red;
                     return ColorBlobimg;
                 }
-                else {  CvInvoke.DrawContours(ColorBlobimg, conturs, -1, new MCvScalar(20, 255, 20), 1); //GEEN
+                else { CvInvoke.DrawContours(ColorBlobimg, conturs, -1, new MCvScalar(20, 255, 20), 1); //GEEN
                 }
             }
-                      labelDectContur.Text = "Not detected";
-                      labelDectContur.ForeColor = Color.Green;
-            return    ColorBlobimg;
+            labelDectContur.Text = "Not detected";
+            labelDectContur.ForeColor = Color.Green;
+            return ColorBlobimg;
         }
 
 
@@ -111,7 +111,7 @@ namespace MVision
         {
             DT Dt = new DT();
 
-           Mat ouput = new Mat();
+            Mat ouput = new Mat();
 
             ////Середня фільтрація Blur
             CvInvoke.Blur(img_Dtc, ouput, new Size(Data.blurA, Data.blurA), new Point(-1, -1));
@@ -147,9 +147,9 @@ namespace MVision
 
 
             // Фільтрування та відображення закритих контурів
-            for (int i = 0; i < conturs.Size; i++){
+            for (int i = 0; i < conturs.Size; i++) {
                 double perimeter = CvInvoke.ArcLength(conturs[i], true);
-                if (conturs[i].Size >= 1){
+                if (conturs[i].Size >= 1) {
                     Dt.SizeCNT = SizeAriaDetect(conturs, i);
                     Dt.Detect = true;
                     return Dt;
@@ -192,23 +192,23 @@ namespace MVision
                 double perimeter = CvInvoke.ArcLength(conturs[i], true);
 
                 // Zise contur Check
-                if ((perimeter >= Data.ArcLengthB)&&(!ArcLengTestChecd)){
-                     dT.SizeCNT =   SizeAriaDetect(conturs, i);
-                     dT.Detect = true;
+                if ((perimeter >= Data.ArcLengthB) && (!ArcLengTestChecd)) {
+                    dT.SizeCNT = SizeAriaDetect(conturs, i);
+                    dT.Detect = true;
                     return dT;
                 }
                 else {
 
-                // Zise contur Check Test
-                if ((perimeter >= Data.ArcLengthTest) && (ArcLengTestChecd)){
+                    // Zise contur Check Test
+                    if ((perimeter >= Data.ArcLengthTest) && (ArcLengTestChecd)) {
                         dT.SizeCNT = SizeAriaDetect(conturs, i);
                         dT.Detect = true;
                         return dT;
-                } }
+                    } }
 
             }
 
-             dT.Detect = false;
+            dT.Detect = false;
             return dT;
         }
 
@@ -225,7 +225,7 @@ namespace MVision
 
             Image<Bgr, byte> _img = ouput.ToImage<Bgr, byte>();
 
-            CvInvoke.Threshold(_imgGry, _imgGry, Data.ThresholdB , 255, ThresholdType.Binary);
+            CvInvoke.Threshold(_imgGry, _imgGry, Data.ThresholdB, 255, ThresholdType.Binary);
 
             Mat hierarchy = new Mat();
 
@@ -248,16 +248,16 @@ namespace MVision
                     labelDectContur.Text = "Detected";
                     labelDectContur.ForeColor = Color.Red;
                     return ColorBlobimg;
-                }else{
-                
-                // Zise contur Check
-                if ((perimeter >= Data.ArcLengthTest) && (ArcLengTestChecd))
-                {
-                    CvInvoke.DrawContours(ColorBlobimg, conturs, i, new MCvScalar(20, 20, 255), 1); // RED 
-                    labelDectContur.Text = "Detected";
-                    labelDectContur.ForeColor = Color.Red;
-                    return ColorBlobimg;
-                }}}
+                } else {
+
+                    // Zise contur Check
+                    if ((perimeter >= Data.ArcLengthTest) && (ArcLengTestChecd))
+                    {
+                        CvInvoke.DrawContours(ColorBlobimg, conturs, i, new MCvScalar(20, 20, 255), 1); // RED 
+                        labelDectContur.Text = "Detected";
+                        labelDectContur.ForeColor = Color.Red;
+                        return ColorBlobimg;
+                    } } }
 
 
 
@@ -399,34 +399,34 @@ namespace MVision
 
 
 
-          double SizeAriaDetect(VectorOfVectorOfPoint contours, int idx) {
+        double SizeAriaDetect(VectorOfVectorOfPoint contours, int idx) {
 
 
 
 
 
 
-        double temp = CvInvoke.ContourArea(contours[idx]);
+            double temp = CvInvoke.ContourArea(contours[idx]);
 
-            double CameraWidthVisibility = 293 ; // ширина видимості камери в міліметрах
+            double CameraWidthVisibility = 293; // ширина видимості камери в міліметрах
             double CameraWidthPixl = 8192;       // розширення камери в пікселях
-             double   SizePixl = CameraWidthVisibility / CameraWidthPixl;
+            double SizePixl = CameraWidthVisibility / CameraWidthPixl;
 
-                      double SizeCt = 0;
-                                if (temp != 0) {
+            double SizeCt = 0;
+            if (temp != 0) {
                 SizeCt = ((temp * SizePixl) * (double)1000.0);
-                                        } else { SizeCt = (SizePixl / 2) * (double)1000.0; }
+            } else { SizeCt = (SizePixl / 2) * (double)1000.0; }
 
             return SizeCt;
-         }
+        }
 
 
 
 
 
-       public class DT {
+        public class DT {
             public double SizeCNT;
-            public   bool Detect;
+            public bool Detect;
         }
 
 
@@ -503,8 +503,8 @@ namespace MVision
 
 
 
-        public Image<Bgr, byte> WhiteBackground1(Mat image, int intensity){
-        
+        public Image<Bgr, byte> WhiteBackground1(Mat image, int intensity) {
+
             // Перетворення зображення в сірий колір
             Mat grayImage = new Mat();
             CvInvoke.CvtColor(image, grayImage, ColorConversion.Bgr2Gray);
@@ -634,13 +634,16 @@ namespace MVision
             // Скопіювати область з оригінального зображення на білий фон
             maskedImage.CopyTo(result, mask);
 
-            return  BlackContur(result, intensityGry, out diameterMm, ZipImg);
+            return BlackContur(result, intensityGry, out diameterMm, ZipImg);
         }
 
-       
+
+
+
 
         public Image<Bgr, byte> BlackContur(Mat image, int intensityGry, out double diameterMm , double ZipImg)
-        {  double PixelToMm = (220.0 / 8192.0); // мм на піксель
+        {  
+
 
             // Перетворення зображення в сірий колір
             Mat grayImage = new Mat();
@@ -679,7 +682,7 @@ namespace MVision
             if (largestContourArea > 0)
             {
                 // Перетворення площі з пікселів в квадратні міліметри
-                double largestContourAreaMm2 = largestContourArea * Math.Pow(PixelToMm, 2);
+                double largestContourAreaMm2 = largestContourArea * Math.Pow(STGS.DT.   PixelToMm, 2);
 
                 // Обчислення діаметра з площі
                    diameterMm  = 2 * Math.Sqrt(largestContourAreaMm2 / Math.PI);
