@@ -143,7 +143,7 @@ namespace MVision
         static Mat NewMat;
         static Image<Bgr, byte> img;
         static Image<Bgr, byte>[] Old_IMG = new Image<Bgr, byte>[2];
-        //static Image<Bgr, byte>[] Main_IMG = new Image<Bgr, byte>[2];
+
 
         // Live Wive
         public static PictureBox LiveViewTvMaster = new PictureBox();
@@ -422,8 +422,7 @@ namespace MVision
                                                 if ((SAV.DT.Analys.SelectPS)&& (SAV.DT.Device.LiveView)) { 
                                                 CvInvoke.Rectangle(imgAVT[ID].Mat, ROIT, new Bgr(Color.Blue).MCvScalar, 1);
                                                 CvInvoke.Rectangle(imgAVT[ID].Mat, ROIB, new Bgr(Color.Red).MCvScalar, 1);}
-                                    
-                                               
+
                                                 ListCutImg[j].AnalSMP[Slave] = AnalSMP_Save;
                                                 ListCutImg[j].Img[Slave] = TempColl.Img[Slave];
                                                 ListCutImg[j].ROI[Slave] = TempColl.ROI[Slave];
@@ -475,9 +474,11 @@ namespace MVision
                                     if (ID == Master) {
 
                                         if ((SAV.DT.Analys.SelectPS)&& (SAV.DT.Device.LiveView)) { CvInvoke.Rectangle(imgAVT[ID].Mat, CutCTR_SV.ROI[i], new Bgr(Color.LightSeaGreen).MCvScalar, 1); }
-
+                              
                                         ListCutImg.Add(TempColl);
                                     } else {
+
+
 
                                         /************************    Тут вирізає картинки з Slave CAM                   *****************************************/
                                         /************************    Знаходить найбилищий зразок до семла з Master CAM   *****************************************/
@@ -530,7 +531,7 @@ namespace MVision
                                             } }
 
                                     } }else {
-                                
+                                    //===========  IMG CATING ============================= //
                                     if ((CutCTR_SV.ROI[i].Y < CatHeight) && (CatLeng < imgAVT[ID].Height) && ( ID==Slave ))
                                     {
 
@@ -544,11 +545,11 @@ namespace MVision
                                         TempColl = new CutImg();
                                         TempColl.Img[ID] = Old_IMG[ID].Copy().Resize(64, 64, Inter.Linear).Mat;
                                         TempColl.ROI[ID] = ROI;
+                                        TempColl.AnalSMP[ID] = AnalSMP_Save;
 
 
 
 
-                           
 
                                         for (int j = 0; j < ListCutImg.Count; j++)
                                             {
@@ -618,7 +619,8 @@ namespace MVision
 
                         cutImg.AnalSMP[0] = ListCutImg[idx].AnalSMP[0];
                         cutImg.AnalSMP[1] = ListCutImg[idx].AnalSMP[1];
-                       // cutImg.SizeCorect[0] = ListCutImg[idx].SizeCorect[0];
+
+                        // cutImg.SizeCorect[0] = ListCutImg[idx].SizeCorect[0];
                         //cutImg.SizeCorect[1] = ListCutImg[idx].SizeCorect[1];
 
 
@@ -656,7 +658,7 @@ namespace MVision
                 
                 Old_IMG[0] = ImagsCam[Master];
                 Old_IMG[1] = ImagsCam[Slave];
-
+                
 
 
 
@@ -1099,6 +1101,8 @@ namespace MVision
 
                            DTLimg[i].AnalisSMP[0] = IMG_CUT.AnalSMP_M[i];
                            DTLimg[i].AnalisSMP[1] = IMG_CUT.AnalSMP_S[i];
+
+
                         }
 
 
@@ -1135,9 +1139,11 @@ namespace MVision
                                 var elapsedMs = WatchML.ElapsedMilliseconds;
                                 analisReadData.SetMLtime(((int)elapsedMs));
                                 //Debug.WriteLine("Predict:--" + "PCS-" + CountBF.ToString() + "Time-" + elapsedMs.ToString() + " ms"); ;
+                                
+                    
+                                
 
-
-                                if ((DTLimg[i].Name[0] != GridData.GOOD)||(TestFlaps))
+                                if ((!(DTLimg[i].Name[0].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))) ||(TestFlaps))
 
                                 {
                                     OUTPUT_BIT = EMGU.SeparationChenal( IMG_CUT.ROI_Master[i].X, IMG_CUT.ROI_Master[i].Width);
@@ -1151,8 +1157,9 @@ namespace MVision
                                     //USB_HID.FLAPS.SET((USB_HID.FLAPS.Select)OUTPUT_BIT[1]);
                                 }
                                 else
-                                {
-                                    if (DTLimg[i].Name[1] != GridData.GOOD)
+                                {     
+
+                                    if (!(DTLimg[i].Name[1].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))
                                     {
                                         OUTPUT_BIT = EMGU.SeparationChenal( IMG_CUT.ROI_Master[i].X, IMG_CUT.ROI_Master[i].Width);
                                         USB_HID.FLAPS.SET((USB_HID.FLAPS.Select)OUTPUT_BIT[0]);
