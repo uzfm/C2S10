@@ -4430,7 +4430,9 @@ STGS STGS = new STGS();
                 IDtex.Text = " NO " ;
             }
             else {
+
             IDtex.Text = " THE PROGRAM IS UNLOCKED " + TimerEnbl.ToString(); 
+
             }
 
 
