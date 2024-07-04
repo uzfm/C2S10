@@ -168,10 +168,6 @@ STGS STGS = new STGS();
 
 
 
-            if (DLS.DLS_HowManyCAMERAS != _DLS.HowMany.NO)
-            {
-                PaswordLock_Click(null, null);   // Lock MENU
-            }
 
             FlowAnalis.LiveViewTV(pictureBoxMaster);
             FlowAnalis.LiveViewTV2(pictureBoxSlave);
@@ -199,6 +195,16 @@ STGS STGS = new STGS();
                 DLS.StartCAMERA(Master);
                 DLS.StartCAMERA(Slave);
                  }
+
+
+            if (DLS.DLS_HowManyCAMERAS != _DLS.HowMany.NO)
+            {
+                PaswordLock_Click(null, null);   // Lock MENU
+
+            Enabled = false;
+            timer3.Enabled = true;
+            }
+
 
 
 
@@ -1141,10 +1147,8 @@ STGS STGS = new STGS();
 
                         int IdxM = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp;
                         int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
-
-                        if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid))
-                        {
-
+                        //визначення типу по чорних плямах
+                        if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid)) {
 
                             vision.ContaminationZise(OutDT.Img[Master].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmM, OutDT.AnalisSMP[Master].Scale);
 
@@ -1169,7 +1173,7 @@ STGS STGS = new STGS();
                             }}
                         }
 
-
+                        /// визначення типу по площі
                         if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletAria) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletAria))
                         {
                             if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD) && (OutDT.AnalisSMP[Slave].Name != GridData.GOOD))
@@ -1199,7 +1203,7 @@ STGS STGS = new STGS();
 
                         bool GOOD_Ok = true;
 
-                        /* MASTER BED */
+                        /************* MASTER BED ******************/
                         if (OutDT.Name[Master] != GridData.GOOD) {
 
                             // активує додатковий клас  -- C L A S  --
@@ -1232,7 +1236,7 @@ STGS STGS = new STGS();
 
 
                      
-                            /* SLAVE  BED */
+                            /******************** SLAVE  BED *************************/
                             if ((OutDT.Name[Slave] != GridData.GOOD)){  
 
                                 //активує додатковий клас  -- C L A S  --
@@ -1255,12 +1259,14 @@ STGS STGS = new STGS();
                                         if (  OutDT.AnalisSMP[Slave].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize)
                                         {
                                             FullData(Master, MOD_MSC.L);    // L
-                                        }
-                                        else { FullData(Master, MOD_MSC.S); }    // S
+
+                                        }else { FullData(Master, MOD_MSC.S); }    // S
 
 
-                                    }
-                                    else {FullData(Slave, MOD_MSC.Norm); } }  }else {   //Norm
+                                    } else {FullData(Slave, MOD_MSC.Norm); } } 
+                                              
+                            
+                                             }else {   //Norm
  
                                 //---------------------------------------------------------------
                                    
@@ -1272,7 +1278,7 @@ STGS STGS = new STGS();
 
                      
                             
-                                /*  ADD   SHOW  GOOD */
+                                /*  ADD  GOOD    Але не показувати в реальному часі і з обмеженням по кількості */
                               if(GOOD_SplCont < SAV.DT.Device.ShowGoodPCS) { 
 
                                 MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
@@ -1285,17 +1291,18 @@ STGS STGS = new STGS();
                                 MSC[Slave].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Slave]);
 
                                 GOOD_SplCont++;
-                             dataGridViewSempls.Rows[IdxM].Cells[1].Value = (GOOD_SplCont.ToString());
-                                GOOD_Ok = false;
+                                dataGridViewSempls.Rows[IdxM].Cells[1].Value = (GOOD_SplCont.ToString());
+                                //GOOD_Ok = false;
                         } }
 
 
 
 
+                        if ((OutDT.Name[Master].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))&& 
+                            (OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))  { GOOD_Ok = false; }
 
-
-                        /*  ADD  GOOD + BED "SHOW OLL" */
-                        if (( GOOD_Ok ) ||(Goot_Show_Mosaic.Checked)) {
+                            /**************  ADD  GOOD + BED "SHOW OLL" *************************/
+                            if (( GOOD_Ok ) ||(Goot_Show_Mosaic.Checked)) {
 
                         MSC[Master].IMG[MSIC.OLL].Images.Add(OutDT.Img[Master].ToBitmap());
                         MSC[Slave].IMG[MSIC.OLL].Images.Add(OutDT.Img[Slave].ToBitmap());
@@ -4411,7 +4418,28 @@ STGS STGS = new STGS();
 
         }
 
-     
+        int TimerEnbl = 15;
+        private void timer3_Tick_1(object sender, EventArgs e)
+        {
+            TimerEnbl--;
+
+            if (TimerEnbl == 0 ) {
+
+                timer3.Enabled = false;
+                Enabled = true;
+                IDtex.Text = " NO " ;
+            }
+            else {
+            IDtex.Text = "  PROGRAM IS UNLOCKED " + TimerEnbl.ToString(); 
+            }
+
+
+
+
+        }
+
+
+
     }
 }
 

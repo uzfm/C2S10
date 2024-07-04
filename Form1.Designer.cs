@@ -4626,6 +4626,11 @@ namespace MVision
             this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // timer3
+            // 
+            this.timer3.Interval = 1000;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick_1);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
