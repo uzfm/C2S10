@@ -4431,7 +4431,8 @@ STGS STGS = new STGS();
             }
             else {
 
-            IDtex.Text = "  PROGRAM IS UNLOCKED - " + TimerEnbl.ToString(); 
+            IDtex.Text = " PROGRAM IS UNLOCKED - " + TimerEnbl.ToString(); 
+
 
             }
 
