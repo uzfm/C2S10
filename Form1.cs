@@ -1115,7 +1115,7 @@ STGS STGS = new STGS();
             MSC[Master].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Master]);
             MSC[Slave].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Slave]);
             }
-            BAD_SplCont++;
+            
 
 
         }
@@ -1290,7 +1290,7 @@ STGS STGS = new STGS();
                                 MSC[Master].AnalisSMP[IdxM].Add(OutDT.AnalisSMP[Master]);
                                 MSC[Slave].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Slave]);
 
-                                GOOD_SplCont++;
+                                
                                 dataGridViewSempls.Rows[IdxM].Cells[1].Value = (GOOD_SplCont.ToString());
                                 //GOOD_Ok = false;
                         } }
@@ -1299,7 +1299,8 @@ STGS STGS = new STGS();
 
 
                         if ((OutDT.Name[Master].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))&& 
-                            (OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))  { GOOD_Ok = false; }
+                            (OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))  { GOOD_SplCont++; GOOD_Ok = false; }
+                        else { BAD_SplCont++; }
 
                             /**************  ADD  GOOD + BED "SHOW OLL" *************************/
                             if (( GOOD_Ok ) ||(Goot_Show_Mosaic.Checked)) {
@@ -1629,7 +1630,7 @@ STGS STGS = new STGS();
 
             for (int NameIdxSempl = 0; NameIdxSempl < lengImg; NameIdxSempl++) {
                 string Name = MLD.TypeALL[NameIdxSempl];
-                if (Name != GridData.GOOD) {
+                if (!(Name.StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))) {
                     for (int idx = 0; idx < MSC[Master].IMG[NameIdxSempl].Images.Count; idx++){
 
                         Bitmap bitImg = EMGU.ContactImagsWithContur(new Bitmap(MSC[Slave].IMG[NameIdxSempl].Images[idx], 50, 50), new Bitmap(MSC[Master].IMG[NameIdxSempl].Images[idx], 50, 50));
@@ -4431,7 +4432,9 @@ STGS STGS = new STGS();
             }
             else {
 
-            IDtex.Text = "  PROGRAM IS UNLOCKED - " + TimerEnbl.ToString(); 
+
+            IDtex.Text = " PROGRAM IS UNLOCKED - " + TimerEnbl.ToString(); 
+
 
 
             }
