@@ -1085,7 +1085,7 @@ STGS STGS = new STGS();
 
 
             if ((MOD == MOD_MSC.L) && (ID == Master)) { IdxM++; } 
-            if ((MOD == MOD_MSC.L) && (ID == Slave)) { IdxS++; }
+            if ((MOD == MOD_MSC.L) && (ID == Slave))  { IdxS++; }
 
 
 
@@ -1143,90 +1143,98 @@ STGS STGS = new STGS();
                     if (ImgListCout >= 1000000) { ClearMosaic(); break; }
                     if (OutDT.Img != null){
 
-
+                        int ID_SEL_TYP = Master;
+                        bool NOT_GOOD = true;
 
                         int IdxM = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp;
                         int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
+
+
+
+
+                        if((!OutDT.Name[Master].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))){
+                            if (!(OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))
+                            {
+
+                                if (OutDT.Value[Master][OutDT.IdxName[Master]] < OutDT.Value[Slave][OutDT.IdxName[Slave]])
+                                { ID_SEL_TYP = Slave; }
+                                else
+                                {
+                                    ID_SEL_TYP = Master;
+                                }
+                            }else { ID_SEL_TYP = Master; } 
+                               
+
+                        }else {
+                            if ((!OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))) { ID_SEL_TYP = Slave; } else { NOT_GOOD = false; };
+
+                        }
+
+                        if (NOT_GOOD) {
+
                         //визначення типу по чорних плямах
-                        if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid)) {
-
+                        if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletInsid)
+                        {
+                          if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) && (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid))
+                            {
                             vision.ContaminationZise(OutDT.Img[Master].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmM, OutDT.AnalisSMP[Master].Scale);
-
                             vision.ContaminationZise(OutDT.Img[Slave].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[Slave].Scale);
 
-                            if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD) && (OutDT.AnalisSMP[Slave].Name != GridData.GOOD))
-                            {
                                 OutDT.AnalisSMP[Master].ElongMax = Math.Max(diameterMmM, diameterMmS);
                                 OutDT.AnalisSMP[Slave].ElongMax = Math.Max(diameterMmM, diameterMmS);
                             }
-                            else { 
+                            else{
 
-                            if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD))
-                            {
-                                OutDT.AnalisSMP[Master].ElongMax = diameterMmM;
-                                OutDT.AnalisSMP[Slave].ElongMax = diameterMmM;
-                            }
-                            else
-                            {
+                                vision.ContaminationZise(OutDT.Img[ID_SEL_TYP].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[ID_SEL_TYP].Scale);
+
                                 OutDT.AnalisSMP[Master].ElongMax = diameterMmS;
                                 OutDT.AnalisSMP[Slave].ElongMax = diameterMmS;
-                            }}
-                        }
 
-                        /// визначення типу по площі
-                        if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletAria) || (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletAria))
-                        {
-                            if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD) && (OutDT.AnalisSMP[Slave].Name != GridData.GOOD))
-                            {
-                                OutDT.AnalisSMP[Master].ElongMax = OutDT.AnalisSMP[Master].ElongMax = Math.Max(OutDT.AnalisSMP[Master].Aria, OutDT.AnalisSMP[Slave].Aria);
-                            } else
-                            {
-                                if ((OutDT.AnalisSMP[Master].Name != GridData.GOOD))
-                                {
-                                    OutDT.AnalisSMP[Master].ElongMax = OutDT.AnalisSMP[Master].Aria;
-                                    OutDT.AnalisSMP[Slave].ElongMax = OutDT.AnalisSMP[Master].Aria;
-                                }
-                                else
-                                {
-                                    OutDT.AnalisSMP[Master].ElongMax = OutDT.AnalisSMP[Slave].Aria;
-                                    OutDT.AnalisSMP[Slave].ElongMax  = OutDT.AnalisSMP[Slave].Aria;
-                                }
                             }
-
-                          
-                        }
-
+                        
+                        }else {
 
 
+                            /// визначення типу по площі
+                            if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletAria)
+                            {
+                             
+                                     OutDT.AnalisSMP[ID_SEL_TYP].ElongMax = Math.Max(OutDT.AnalisSMP[Master].Aria, OutDT.AnalisSMP[Slave].Aria);
+                            
+                            }
+                           }
+                         }
 
+
+       
 
 
                         bool GOOD_Ok = true;
 
                         /************* MASTER BED ******************/
-                        if (OutDT.Name[Master] != GridData.GOOD) {
+                        if ((OutDT.Name[ID_SEL_TYP] != GridData.GOOD)&&((!OutDT.Name[ID_SEL_TYP].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))) {
 
-                            // активує додатковий клас  -- C L A S  --
-                            if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SubGroups){
+                            // активує додатковий клас по видовжені -- C L A S  --
+                            if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].SubGroups){
 
-                                    //визначити клас по видовжені
-                                 if ( OutDT.AnalisSMP[Master].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize)
-                                {       FullData(Master , MOD_MSC.L);    // L
-                                } else{ FullData(Master, MOD_MSC.S);}    // S
+                                    //визначити клас 
+                                 if ( OutDT.AnalisSMP[ID_SEL_TYP].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].SampleSize)
+                                {       FullData(ID_SEL_TYP, MOD_MSC.L);    // L
+                                } else{ FullData(ID_SEL_TYP, MOD_MSC.S);}    // S
                                 
                             }else {
                                 //визначити клас по розміру чорної плями SurveyIn
-                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) {
+                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletInsid) {
 
-                                    //визначити клас по видовжені
-                                    if ( OutDT.AnalisSMP[Master].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].SampleSize)
+                                    //визначити клас 
+                                    if ( OutDT.AnalisSMP[ID_SEL_TYP].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].SampleSize)
                                     {
-                                        FullData(Master, MOD_MSC.L);    // L
-                                    } else { FullData(Master, MOD_MSC.S); }    // S
+                                             FullData(ID_SEL_TYP, MOD_MSC.L);    // L
+                                    } else { FullData(ID_SEL_TYP, MOD_MSC.S); }    // S
 
 
 
-                                }else {  FullData(Master, MOD_MSC.Norm); }}    //Norm
+                                }else {  FullData(ID_SEL_TYP, MOD_MSC.Norm); }}    //Norm
                            //----------------------------------------------  
                              
                            
@@ -1235,48 +1243,8 @@ STGS STGS = new STGS();
                         } else {
 
 
-                     
-                            /******************** SLAVE  BED *************************/
-                            if ((OutDT.Name[Slave] != GridData.GOOD)){  
+                            GOOD_Ok = false;
 
-                                //активує додатковий клас  -- C L A S  --
-                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SubGroups){
-
-
-                                        //визначити клас по видовжені
-                                        if (OutDT.AnalisSMP[Slave].ElongMax  >  SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize  )
-                                        {        FullData(Slave, MOD_MSC.L);  //L  
-                                        } else { FullData(Slave, MOD_MSC.S); }//S
-                                       
-
-                                    }else{
-
-                                    //визначити клас по розміру чорної плями SurveyIn
-                                    if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid)
-                                    {
-
-                                        //визначити клас по видовжені
-                                        if (  OutDT.AnalisSMP[Slave].ElongMax > SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].SampleSize)
-                                        {
-                                            FullData(Master, MOD_MSC.L);    // L
-
-                                        }else { FullData(Master, MOD_MSC.S); }    // S
-
-
-                                    } else {FullData(Slave, MOD_MSC.Norm); } } 
-                                              
-                            
-                                             }else {   //Norm
- 
-                                //---------------------------------------------------------------
-                                   
-                                  
-
-                         
-
-
-
-                     
                             
                                 /*  ADD  GOOD    Але не показувати в реальному часі і з обмеженням по кількості */
                               if(GOOD_SplCont < SAV.DT.Device.ShowGoodPCS) { 
@@ -1292,8 +1260,9 @@ STGS STGS = new STGS();
 
                                 
                                 dataGridViewSempls.Rows[IdxM].Cells[1].Value = (GOOD_SplCont.ToString());
-                                //GOOD_Ok = false;
-                        } }
+                               
+                        
+                        }
 
 
 
