@@ -2827,6 +2827,7 @@ namespace MVision
             this.SelectSempleTyp.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SelectSempleTyp.Size = new System.Drawing.Size(264, 28);
             this.SelectSempleTyp.TabIndex = 2013;
+
             // 
             // FreeRun
             // 

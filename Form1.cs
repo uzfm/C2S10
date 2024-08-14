@@ -717,8 +717,8 @@ STGS STGS = new STGS();
         {
             BAD_SplCont = 0;
             GOOD_SplCont = 0;
-
-           TimOutRefresh = 0;
+            GOOD_OLL = 0;
+            TimOutRefresh = 0;
            LastImgListCout = 0;
 
             FirstSemplesDetect = false;
@@ -1128,6 +1128,7 @@ STGS STGS = new STGS();
 
         double BAD_SplCont = 0;
         double GOOD_SplCont = 0;
+        double GOOD_OLL = 0;
         DTLimg OutDT = new DTLimg();
         private void RefreshMosaics()
         {
@@ -1169,7 +1170,7 @@ STGS STGS = new STGS();
                             if ((!OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))) { ID_SEL_TYP = Slave; } else { NOT_GOOD = false; };
 
                         }
-
+                        bool GOOD_Ok = true;
                         if (NOT_GOOD) {
 
                         //визначення типу по чорних плямах
@@ -1203,16 +1204,16 @@ STGS STGS = new STGS();
                             
                             }
                            }
-                         }
+                     
 
 
        
 
 
-                        bool GOOD_Ok = true;
+                     
 
                         /************* MASTER BED ******************/
-                        if ((OutDT.Name[ID_SEL_TYP] != GridData.GOOD)&&((!OutDT.Name[ID_SEL_TYP].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))) {
+                      //  if ((OutDT.Name[ID_SEL_TYP] != GridData.GOOD)&&((!OutDT.Name[ID_SEL_TYP].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))) {
 
                             // активує додатковий клас по видовжені -- C L A S  --
                             if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].SubGroups){
@@ -1238,38 +1239,74 @@ STGS STGS = new STGS();
                            //----------------------------------------------  
                              
                            
+                        BAD_SplCont++;
                         
-                        
+                       // }
                         } else {
 
+                            if ((OutDT.Name[Master] != GridData.GOOD))
+                            {
 
-                            GOOD_Ok = false;
+                                    GOOD_OLL++;
+                                    MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
+                                    MSC[Slave].IMG[IdxM].Images.Add(OutDT.Img[Slave].ToBitmap());
 
-                            
-                                /*  ADD  GOOD    Але не показувати в реальному часі і з обмеженням по кількості */
-                              if(GOOD_SplCont < SAV.DT.Device.ShowGoodPCS) { 
+                                    dataGridViewSempls.Rows[IdxM].Cells[1].Value = (MSC[Master].IMG[IdxM].Images.Count).ToString();
+                                    MSC[Master].IdxName[IdxM].Add(IdxM);
+                                    MSC[Slave].IdxName[IdxM].Add(IdxS);
 
-                                MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
-                                MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
+                                    MSC[Master].AnalisSMP[IdxM].Add(OutDT.AnalisSMP[Master]);
+                                    MSC[Slave].AnalisSMP[IdxM].Add(OutDT.AnalisSMP[Slave]);
+                                    
+
+                            }
+                            else { if (OutDT.Name[Slave] != GridData.GOOD) {
+
+                                    GOOD_OLL++;
+                                    MSC[Master].IMG[IdxS].Images.Add(OutDT.Img[Master].ToBitmap());
+                                    MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
+
+                                    dataGridViewSempls.Rows[IdxS].Cells[1].Value = (MSC[Master].IMG[IdxS].Images.Count).ToString();
+                                    MSC[Master].IdxName[IdxS].Add(IdxM);
+                                    MSC[Slave].IdxName[IdxS].Add(IdxS);
+
+                                    MSC[Master].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Master]);
+                                    MSC[Slave].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Slave]);
+                                    
+
+
+
+
+                                } else {
                                 
-                                MSC[Master].IdxName[IdxM].Add(IdxM);
-                                MSC[Slave].IdxName[IdxS].Add(IdxS);}
+                              /*  ADD  GOOD    Але не показувати в реальному часі і з обмеженням по кількості */  
+                                 GOOD_SplCont++;
+                                 GOOD_OLL++;
+
+                                if (GOOD_SplCont < SAV.DT.Device.ShowGoodPCS)
+                                {
+                                    MSC[Master].IMG[IdxM].Images.Add(OutDT.Img[Master].ToBitmap());
+                                    MSC[Slave].IMG[IdxS].Images.Add(OutDT.Img[Slave].ToBitmap());
+                                    MSC[Master].IdxName[IdxM].Add(IdxM);
+                                    MSC[Slave].IdxName[IdxS].Add(IdxS);
+                                }
 
                                 MSC[Master].AnalisSMP[IdxM].Add(OutDT.AnalisSMP[Master]);
                                 MSC[Slave].AnalisSMP[IdxS].Add(OutDT.AnalisSMP[Slave]);
-
-                                
                                 dataGridViewSempls.Rows[IdxM].Cells[1].Value = (GOOD_SplCont.ToString());
+                          
+                                } }
+                        GOOD_Ok = false;
+                        }
                                
                         
-                        }
+                       
 
 
-
-
-                        if ((OutDT.Name[Master].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))&& 
-                            (OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))  { GOOD_SplCont++; GOOD_Ok = false; }
-                        else { BAD_SplCont++; }
+                             
+                      //  if ((OutDT.Name[Master].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))&& 
+                         //   (OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))  {  }
+                       // else {  }
 
                             /**************  ADD  GOOD + BED "SHOW OLL" *************************/
                             if (( GOOD_Ok ) ||(Goot_Show_Mosaic.Checked)) {
@@ -1611,7 +1648,7 @@ STGS STGS = new STGS();
 
 
                 reportDT.Name[NameIdxSempl] = Name;
-                reportDT.DataPct[NameIdxSempl] = Math.Round((((double)100 / (BAD_SplCont + GOOD_SplCont)) * (double)MSC[Master].IMG[NameIdxSempl].Images.Count), 3);
+                reportDT.DataPct[NameIdxSempl] = Math.Round((((double)100 / (BAD_SplCont + GOOD_OLL)) * (double)MSC[Master].IMG[NameIdxSempl].Images.Count), 3);
                 reportDT.DataPic[NameIdxSempl] = MSC[Master].IMG[NameIdxSempl].Images.Count;
                 reportDT.Weight[NameIdxSempl] = Math.Round(SAV.DT.Report.SemplWeight * reportDT.DataPic[NameIdxSempl], 3);
 
@@ -1630,11 +1667,11 @@ STGS STGS = new STGS();
                     }
 
                     reportDT.Name[NameIdxSempl] = Name;
-                    reportDT.DataPct[NameIdxSempl] = Math.Round((((double)100 / (BAD_SplCont + GOOD_SplCont)) * (double)GOOD_SplCont), 3);
-                    reportDT.DataPic[NameIdxSempl] = (int) GOOD_SplCont;
+                    reportDT.DataPct[NameIdxSempl] = Math.Round((((double)100 / (BAD_SplCont + GOOD_OLL)) * (double)GOOD_OLL), 3);
+                    reportDT.DataPic[NameIdxSempl] = (int)GOOD_OLL;
                     reportDT.Weight[NameIdxSempl] = Math.Round(SAV.DT.Report.SemplWeight * reportDT.DataPic[NameIdxSempl], 3);
                     // Заповнення Таблиці SQL
-                    if (reportDT.IMG[NameIdxSempl].Count != 0) { GridData.Valua[Array.IndexOf(GridData.Name, Name)] = (int)GOOD_SplCont; };
+                    if (reportDT.IMG[NameIdxSempl].Count != 0) { GridData.Valua[Array.IndexOf(GridData.Name, Name)] = (int)GOOD_OLL; };
                 }
 
             }
@@ -2486,6 +2523,10 @@ STGS STGS = new STGS();
 
 
         void SaveSample(bool AskMsg){
+
+            ClearExperimentButton.Enabled = false;
+
+
             if (SelectSempleTyp.Text == "")
             {
                 MessageBox.Show("Choose a sample Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -2510,7 +2551,7 @@ STGS STGS = new STGS();
             if (false == Directory.Exists(pashImg)) { Directory.CreateDirectory(pashImg); }
             if (result == DialogResult.Yes)
             {
-
+                try {
                 for (int i = 0; i < MosaicsTeach.Images.Count; i++)
                 {
                     DateTime dateOnly = new DateTime();
@@ -2529,11 +2570,31 @@ STGS STGS = new STGS();
                     Bitmap IMGconvert = new Bitmap(MosaicsTeach.Images[i], IMG_SIZE.Width, IMG_SIZE.Height);
 
                     // MosaicsTeach.Images[i].Save(pashImg + "\\" + DataFile + "img" + i.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                    IMGconvert.Save(pashImg + "\\" + DataFile + "img" + i.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                   string NamePach = pashImg + "\\" + DataFile + "img" + i.ToString() + ".png";
+                    IMGconvert.Save(NamePach, System.Drawing.Imaging.ImageFormat.Png);
+                    // Check if the file was saved successfully
+                    if (!File.Exists(NamePach))
+                    {
+                        MessageBox.Show($"Failed to save image {i}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break; // Exit the loop if any image fails to save
+                    } }
 
+                     }
+            catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while saving image {i}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  
+                   
                 }
+
+
+
+
+           
                 DellDataTeach();
             }
+
+            ClearExperimentButton.Enabled = true;
         }
 
 
@@ -3478,7 +3539,15 @@ STGS STGS = new STGS();
                 GridData.Name[i] = dataSet.Tables["Users"].Columns[i].ColumnName.ToString();
                 if (i >= GridData.StartDataFemeli) {
                         comboBox3.Items.Add(GridData.Name[i]);
-                        SelectSempleTyp.Items.Add(GridData.Name[i]); }
+
+                       // if (!GridData.Name[i].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)) { }
+                        if ((!GridData.Name[i].EndsWith("_L", StringComparison.OrdinalIgnoreCase))
+                            &&(!GridData.Name[i].EndsWith("_S", StringComparison.OrdinalIgnoreCase))
+                            && (!GridData.Name[i].EndsWith("_M", StringComparison.OrdinalIgnoreCase))) { 
+                        
+
+                        SelectSempleTyp.Items.Add(GridData.Name[i]); }}
+
                 dataGridView1.Columns[i].Width = 63;
                 }
                 dataGridView1.Columns[0].Width = 50;
@@ -3505,7 +3574,7 @@ STGS STGS = new STGS();
                     if (GridData.Valua[i] != 0){
 
                     
-                        double Dt = ((double)100 / (double)(BAD_SplCont + GOOD_SplCont)) * (double)GridData.Valua[i];
+                        double Dt = ((double)100 / (double)(BAD_SplCont + GOOD_OLL)) * (double)GridData.Valua[i];
                         Row[GridData.Name[i]] = Math.Round(Dt, 3).ToString(); 
                     
                     } else {
@@ -4413,8 +4482,7 @@ STGS STGS = new STGS();
 
         }
 
-
-
+   
     }
 }
 
