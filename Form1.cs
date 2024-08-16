@@ -2551,9 +2551,9 @@ STGS STGS = new STGS();
             if (false == Directory.Exists(pashImg)) { Directory.CreateDirectory(pashImg); }
             if (result == DialogResult.Yes)
             {
-                try {
+                
                 for (int i = 0; i < MosaicsTeach.Images.Count; i++)
-                {
+                {try {
                     DateTime dateOnly = new DateTime();
                     dateOnly = DateTime.Now;
 
@@ -2579,13 +2579,13 @@ STGS STGS = new STGS();
                         break; // Exit the loop if any image fails to save
                     } }
 
-                     }
+                    
             catch (Exception ex)
                 {
                     MessageBox.Show($"An error occurred while saving image {i}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                   
                    
-                }
+                } }
 
 
 
