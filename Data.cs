@@ -12,6 +12,7 @@ namespace MVision
         static public int[] Valua;
         static public int StartDataFemeli = 11;
         static public string GOOD = "Good";
+        static public int GoodIDX = 0;
     };
 
 }

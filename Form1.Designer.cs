@@ -134,11 +134,6 @@ namespace MVision
             this.UnderTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.button52 = new System.Windows.Forms.Button();
             this.dataGridViewUnderType = new System.Windows.Forms.DataGridView();
-            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubgroupsOutside = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PelletInside = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PelletArea = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBoxArea = new System.Windows.Forms.RichTextBox();
@@ -354,6 +349,12 @@ namespace MVision
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.NameSmpl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SampleSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubgroupsOutside = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PelletInside = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PelletArea = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MinSizeGood = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -1634,7 +1635,7 @@ namespace MVision
             this.Typelabel.AutoSize = true;
             this.Typelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Typelabel.ForeColor = System.Drawing.Color.Maroon;
-            this.Typelabel.Location = new System.Drawing.Point(955, 22);
+            this.Typelabel.Location = new System.Drawing.Point(1075, 23);
             this.Typelabel.Name = "Typelabel";
             this.Typelabel.Size = new System.Drawing.Size(53, 24);
             this.Typelabel.TabIndex = 396;
@@ -1644,7 +1645,7 @@ namespace MVision
             // 
             this.label49.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(1051, 185);
+            this.label49.Location = new System.Drawing.Point(1171, 186);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(64, 16);
             this.label49.TabIndex = 395;
@@ -1654,7 +1655,7 @@ namespace MVision
             // 
             this.label42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(1051, 149);
+            this.label42.Location = new System.Drawing.Point(1171, 150);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(69, 16);
             this.label42.TabIndex = 394;
@@ -1664,7 +1665,7 @@ namespace MVision
             // 
             this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(1051, 104);
+            this.label33.Location = new System.Drawing.Point(1171, 105);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(71, 16);
             this.label33.TabIndex = 393;
@@ -1677,7 +1678,7 @@ namespace MVision
             this.AreammTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AreammTextBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.AreammTextBox.HideSelection = false;
-            this.AreammTextBox.Location = new System.Drawing.Point(955, 176);
+            this.AreammTextBox.Location = new System.Drawing.Point(1075, 177);
             this.AreammTextBox.MaxLength = 20;
             this.AreammTextBox.Multiline = false;
             this.AreammTextBox.Name = "AreammTextBox";
@@ -1695,7 +1696,7 @@ namespace MVision
             this.WidthmmTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.WidthmmTextBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.WidthmmTextBox.HideSelection = false;
-            this.WidthmmTextBox.Location = new System.Drawing.Point(955, 135);
+            this.WidthmmTextBox.Location = new System.Drawing.Point(1075, 136);
             this.WidthmmTextBox.MaxLength = 20;
             this.WidthmmTextBox.Multiline = false;
             this.WidthmmTextBox.Name = "WidthmmTextBox";
@@ -1713,7 +1714,7 @@ namespace MVision
             this.HeightmmTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.HeightmmTextBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.HeightmmTextBox.HideSelection = false;
-            this.HeightmmTextBox.Location = new System.Drawing.Point(955, 95);
+            this.HeightmmTextBox.Location = new System.Drawing.Point(1075, 96);
             this.HeightmmTextBox.MaxLength = 20;
             this.HeightmmTextBox.Multiline = false;
             this.HeightmmTextBox.Name = "HeightmmTextBox";
@@ -1732,7 +1733,7 @@ namespace MVision
             this.UnderTypeGroupBox.Controls.Add(this.button2);
             this.UnderTypeGroupBox.Location = new System.Drawing.Point(3, 7);
             this.UnderTypeGroupBox.Name = "UnderTypeGroupBox";
-            this.UnderTypeGroupBox.Size = new System.Drawing.Size(924, 267);
+            this.UnderTypeGroupBox.Size = new System.Drawing.Size(1054, 267);
             this.UnderTypeGroupBox.TabIndex = 389;
             this.UnderTypeGroupBox.TabStop = false;
             this.UnderTypeGroupBox.Text = "Setting Measurements";
@@ -1740,7 +1741,7 @@ namespace MVision
             // button52
             // 
             this.button52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button52.Location = new System.Drawing.Point(814, 29);
+            this.button52.Location = new System.Drawing.Point(944, 29);
             this.button52.Name = "button52";
             this.button52.Size = new System.Drawing.Size(104, 24);
             this.button52.TabIndex = 389;
@@ -1750,15 +1751,16 @@ namespace MVision
             // 
             // dataGridViewUnderType
             // 
+            this.dataGridViewUnderType.AllowUserToAddRows = false;
             this.dataGridViewUnderType.AllowUserToDeleteRows = false;
-            this.dataGridViewUnderType.AllowUserToOrderColumns = true;
             this.dataGridViewUnderType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUnderType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameSmpl,
             this.SampleSize,
             this.SubgroupsOutside,
             this.PelletInside,
-            this.PelletArea});
+            this.PelletArea,
+            this.MinSizeGood});
             this.dataGridViewUnderType.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridViewUnderType.Location = new System.Drawing.Point(6, 15);
             this.dataGridViewUnderType.Name = "dataGridViewUnderType";
@@ -1766,57 +1768,15 @@ namespace MVision
             this.dataGridViewUnderType.RowHeadersVisible = false;
             this.dataGridViewUnderType.RowHeadersWidth = 40;
             this.dataGridViewUnderType.RowTemplate.Height = 25;
-            this.dataGridViewUnderType.Size = new System.Drawing.Size(508, 246);
+            this.dataGridViewUnderType.Size = new System.Drawing.Size(640, 246);
             this.dataGridViewUnderType.TabIndex = 1;
             this.dataGridViewUnderType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnderType_CellClick);
-            // 
-            // NameSmpl
-            // 
-            this.NameSmpl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NameSmpl.FillWeight = 200F;
-            this.NameSmpl.HeaderText = "Names";
-            this.NameSmpl.MinimumWidth = 6;
-            this.NameSmpl.Name = "NameSmpl";
-            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameSmpl.Width = 200;
-            // 
-            // SampleSize
-            // 
-            this.SampleSize.HeaderText = "Sample Size mm";
-            this.SampleSize.Name = "SampleSize";
-            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SampleSize.Width = 60;
-            // 
-            // SubgroupsOutside
-            // 
-            this.SubgroupsOutside.HeaderText = "Sub Groups";
-            this.SubgroupsOutside.Name = "SubgroupsOutside";
-            this.SubgroupsOutside.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SubgroupsOutside.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SubgroupsOutside.Width = 80;
-            // 
-            // PelletInside
-            // 
-            this.PelletInside.HeaderText = "Pellet Inside";
-            this.PelletInside.Name = "PelletInside";
-            this.PelletInside.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PelletInside.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.PelletInside.Width = 80;
-            // 
-            // PelletArea
-            // 
-            this.PelletArea.HeaderText = "Pellet Area";
-            this.PelletArea.Name = "PelletArea";
-            this.PelletArea.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PelletArea.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // treeView1
             // 
             this.treeView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.treeView1.Location = new System.Drawing.Point(520, 15);
+            this.treeView1.Location = new System.Drawing.Point(652, 15);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(286, 246);
             this.treeView1.TabIndex = 280;
@@ -1824,7 +1784,7 @@ namespace MVision
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(814, 210);
+            this.button2.Location = new System.Drawing.Point(944, 210);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(104, 51);
             this.button2.TabIndex = 279;
@@ -1839,7 +1799,7 @@ namespace MVision
             this.richTextBoxArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBoxArea.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.richTextBoxArea.HideSelection = false;
-            this.richTextBoxArea.Location = new System.Drawing.Point(955, 54);
+            this.richTextBoxArea.Location = new System.Drawing.Point(1075, 55);
             this.richTextBoxArea.MaxLength = 20;
             this.richTextBoxArea.Multiline = false;
             this.richTextBoxArea.Name = "richTextBoxArea";
@@ -1854,7 +1814,7 @@ namespace MVision
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1051, 64);
+            this.label2.Location = new System.Drawing.Point(1171, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 16);
             this.label2.TabIndex = 388;
@@ -2827,7 +2787,6 @@ namespace MVision
             this.SelectSempleTyp.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SelectSempleTyp.Size = new System.Drawing.Size(264, 28);
             this.SelectSempleTyp.TabIndex = 2013;
-
             // 
             // FreeRun
             // 
@@ -4637,6 +4596,61 @@ namespace MVision
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // NameSmpl
+            // 
+            this.NameSmpl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NameSmpl.FillWeight = 200F;
+            this.NameSmpl.HeaderText = "Names";
+            this.NameSmpl.MaxInputLength = 50;
+            this.NameSmpl.MinimumWidth = 6;
+            this.NameSmpl.Name = "NameSmpl";
+            this.NameSmpl.ReadOnly = true;
+            this.NameSmpl.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameSmpl.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameSmpl.Width = 200;
+            // 
+            // SampleSize
+            // 
+            this.SampleSize.HeaderText = "Sample Size mm";
+            this.SampleSize.MaxInputLength = 5;
+            this.SampleSize.Name = "SampleSize";
+            this.SampleSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SampleSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SampleSize.Width = 60;
+            // 
+            // SubgroupsOutside
+            // 
+            this.SubgroupsOutside.HeaderText = "Sub Groups";
+            this.SubgroupsOutside.Name = "SubgroupsOutside";
+            this.SubgroupsOutside.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SubgroupsOutside.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SubgroupsOutside.Width = 80;
+            // 
+            // PelletInside
+            // 
+            this.PelletInside.HeaderText = "Pellet Inside";
+            this.PelletInside.Name = "PelletInside";
+            this.PelletInside.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PelletInside.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.PelletInside.Width = 80;
+            // 
+            // PelletArea
+            // 
+            this.PelletArea.HeaderText = "Pellet Area";
+            this.PelletArea.Name = "PelletArea";
+            this.PelletArea.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PelletArea.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // MinSizeGood
+            // 
+            this.MinSizeGood.FillWeight = 50F;
+            this.MinSizeGood.HeaderText = "Area< =Good";
+            this.MinSizeGood.MaxInputLength = 5;
+            this.MinSizeGood.Name = "MinSizeGood";
+            this.MinSizeGood.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MinSizeGood.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MinSizeGood.Width = 60;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -5122,11 +5136,6 @@ namespace MVision
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button57;
         private System.Windows.Forms.NumericUpDown numericUpDownWhite;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameSmpl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SampleSize;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn SubgroupsOutside;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn PelletInside;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn PelletArea;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label42;
@@ -5136,6 +5145,12 @@ namespace MVision
         private System.Windows.Forms.RichTextBox HeightmmTextBox;
         private System.Windows.Forms.Label Typelabel;
         private System.Windows.Forms.ToolStripStatusLabel SampleModelStatusLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameSmpl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SampleSize;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SubgroupsOutside;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PelletInside;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PelletArea;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinSizeGood;
     }
 }
 

@@ -580,8 +580,8 @@ namespace MVision
 
         public Image<Bgr, byte> ContaminationZise(Mat img, int intensity, int intensityGry, out double diameterMm, double ZipImg)
         {
-
-
+            //6.494140625
+            ZipImg = Math.Round(ZipImg, 3);
             int test = (int)Math.Sqrt((double)(64 * 64) * ZipImg);
             Mat image = img.ToImage<Bgr, byte>().Resize(test, test, Inter.Linear).Mat;
 
@@ -687,6 +687,8 @@ namespace MVision
                 // Обчислення діаметра з площі
                    diameterMm  = 2 * Math.Sqrt(largestContourAreaMm2 / Math.PI);
             }
+
+            diameterMm = Math.Round(diameterMm,3);
             if (diameterMm == 0) { diameterMm = 0.001; }
 
                 // Додати текст з діаметром на зображення

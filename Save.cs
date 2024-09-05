@@ -121,9 +121,9 @@ namespace MVision
         public bool   SubGroups;    // Активація під груа вимірювання по зовнішньому 
         public bool   PeletInsid;    // Активація під груп вимірювання по внутрішньому контурі.
         public bool   PeletAria;     // Активація під груп вимірювання по внутрішньому контурі.
+        public double PeletMin;     // Активація під груп вимірювання по внутрішньому контурі.
 
-
-                   public int   IdxGrp;             //індикс першого значення підгрупи в Image List.(для індексації Mosaic)
+            public int   IdxGrp;             //індикс першого значення підгрупи в Image List.(для індексації Mosaic)
         static   public short   IdxGrpleng;         // довжина List з групами  та активованими підгрупами.
 
             //public bool   TypeOn;

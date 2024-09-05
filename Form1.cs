@@ -629,13 +629,18 @@ STGS STGS = new STGS();
                 ClearExperimentButton.Enabled = false;
                 StartButton.Enabled = true;
                 FriTimCount = 0;
+
+                StartButton.Enabled = true;
             }
             else {
+                StartButton.Enabled = false;
+                TimerEnbl = 2;
+                 timer3.Enabled = true;
 
-
+                /*
                 StartButton.Enabled = false;
                 USB_HID_VIBRATING_RES();
-                Thread.Sleep(2000);
+                 Thread.Sleep(2000);
                 DLS.STOP_CAM();
                 Thread.Sleep(200);
                 USB_HID.LIGHT.RES();
@@ -646,11 +651,10 @@ STGS STGS = new STGS();
                 ClearExperimentButton.Enabled = true;
                 Save_Report_Button.Enabled = true;
                 dataGridViewSempls.Enabled = true;
-
                 StartButton.Enabled = true;
-
+                */
             }
-            StartButton.Enabled = true;
+           // StartButton.Enabled = true;
         }
 
 
@@ -1147,13 +1151,14 @@ STGS STGS = new STGS();
                         int ID_SEL_TYP = Master;
                         bool NOT_GOOD = true;
 
-                        int IdxM = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp;
-                        int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
+                     
 
+                       
+           
 
+                 
 
-
-                        if((!OutDT.Name[Master].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))){
+                            if ((!OutDT.Name[Master].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))){
                             if (!(OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase)))
                             {
 
@@ -1170,40 +1175,143 @@ STGS STGS = new STGS();
                             if ((!OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))) { ID_SEL_TYP = Slave; } else { NOT_GOOD = false; };
 
                         }
+
+
+
+                        if (NOT_GOOD)
+                        {
+                            bool RefreshID_SEL_TYP = false;
+                            //визначення типу по чорних плямах
+                            if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletInsid)
+                            {
+                                if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) && (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid))
+                                {
+                                    vision.ContaminationZise(OutDT.Img[Master].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmM, OutDT.AnalisSMP[Master].Scale);
+                                    vision.ContaminationZise(OutDT.Img[Slave].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[Slave].Scale);
+
+                                   double BleakSpotMax = Math.Max(diameterMmM, diameterMmS);
+                                    // *******************  SAMPLE MIN == GOOD     ****************************
+                                    if (BleakSpotMax < SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletMin)
+                                    { OutDT.Name[Master]    = GridData.GOOD;
+                                      OutDT.IdxName[Master] = GridData.GoodIDX;
+                                      OutDT.AnalisSMP[Master].Name = GridData.GOOD;
+                                      OutDT.AnalisSMP[Master].NameIdx = GridData.GoodIDX;
+                                      OutDT.Name[Slave]     = GridData.GOOD;
+                                      OutDT.IdxName[Slave]  = GridData.GoodIDX;
+                                      OutDT.AnalisSMP[Slave].Name = GridData.GOOD;
+                                      OutDT.AnalisSMP[Slave].NameIdx = GridData.GoodIDX;
+
+                                        RefreshID_SEL_TYP = true;
+                                    } else { 
+                                    OutDT.AnalisSMP[Master].ElongMax = BleakSpotMax;
+                                    OutDT.AnalisSMP[Slave].ElongMax = BleakSpotMax;  }
+                                }
+                                else
+                                {
+
+                                    vision.ContaminationZise(OutDT.Img[ID_SEL_TYP].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[ID_SEL_TYP].Scale);
+                                    // *******************  SAMPLE MIN == GOOD     ****************************
+                                    if (diameterMmS < SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletMin){
+                                    
+                                        OutDT.Name[ID_SEL_TYP] = GridData.GOOD;
+                                        OutDT.AnalisSMP[ID_SEL_TYP].Name = GridData.GOOD;
+                                        OutDT.AnalisSMP[ID_SEL_TYP].NameIdx = GridData.GoodIDX;
+                                        OutDT.IdxName[ID_SEL_TYP] = GridData.GoodIDX;
+                                        if (ID_SEL_TYP == Master)
+                                        { ID_SEL_TYP = Slave;} else { ID_SEL_TYP = Master; }
+                                        RefreshID_SEL_TYP = true;
+                                    }
+                                    else
+                                    {
+                                        OutDT.AnalisSMP[ID_SEL_TYP].ElongMax = diameterMmS;
+                                        //OutDT.AnalisSMP[Slave].ElongMax = diameterMmS;
+                                    }
+
+                                  
+
+                                }} 
+
+
+                                /// визначення типу по площі
+                                if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletAria)
+                                {
+                                    double BleakSpotMax = Math.Max(OutDT.AnalisSMP[Master].Aria, OutDT.AnalisSMP[Slave].Aria);
+                                    // *******************  SAMPLE MIN == GOOD     ****************************
+                                    if (BleakSpotMax < SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletMin)
+                                    {
+                                        OutDT.Name[ID_SEL_TYP] = GridData.GOOD;
+                                        OutDT.IdxName[ID_SEL_TYP] = GridData.GoodIDX;
+                                        OutDT.AnalisSMP[ID_SEL_TYP].Name = GridData.GOOD;
+                                        OutDT.AnalisSMP[ID_SEL_TYP].NameIdx = GridData.GoodIDX;
+                                        RefreshID_SEL_TYP = true;
+                                    }
+                                    else
+                                    {
+                                        OutDT.AnalisSMP[ID_SEL_TYP].ElongMax = BleakSpotMax;
+                                        //OutDT.AnalisSMP[Slave].ElongMax = BleakSpotMax;
+                                    }
+                                   
+
+                                }
+                            
+
+                            //  ПЕРЕВИЗНАЧЕННЯ ОСНОВНОГО ТИПУ
+                            if (RefreshID_SEL_TYP) { 
+                            if ((!(OutDT.Name[Master].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))) || 
+                                (!(OutDT.Name[Slave].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))) ) {
+                            
+                                if ((OutDT.Name[ID_SEL_TYP].StartsWith(GridData.GOOD, StringComparison.OrdinalIgnoreCase))) {
+
+                                if (ID_SEL_TYP == Master) {
+                                    ID_SEL_TYP = Slave;
+                                }else { ID_SEL_TYP = Master; } }
+                                
+                                 } else { NOT_GOOD = false; }};
+
+                        }
+
+
+                        int IdxM = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].IdxGrp;
+                        int IdxS = SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].IdxGrp;
+
+
+
+
+
                         bool GOOD_Ok = true;
                         if (NOT_GOOD) {
 
-                        //визначення типу по чорних плямах
-                        if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletInsid)
-                        {
-                          if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) && (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid))
-                            {
-                            vision.ContaminationZise(OutDT.Img[Master].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmM, OutDT.AnalisSMP[Master].Scale);
-                            vision.ContaminationZise(OutDT.Img[Slave].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[Slave].Scale);
+                        ////визначення типу по чорних плямах
+                        //if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletInsid)
+                        //{
+                        //  if ((SAV.DT.Analys.ClasSempl[OutDT.IdxName[Master]].PeletInsid) && (SAV.DT.Analys.ClasSempl[OutDT.IdxName[Slave]].PeletInsid))
+                        //    {
+                        //    vision.ContaminationZise(OutDT.Img[Master].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmM, OutDT.AnalisSMP[Master].Scale);
+                        //    vision.ContaminationZise(OutDT.Img[Slave].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[Slave].Scale);
 
-                                OutDT.AnalisSMP[Master].ElongMax = Math.Max(diameterMmM, diameterMmS);
-                                OutDT.AnalisSMP[Slave].ElongMax = Math.Max(diameterMmM, diameterMmS);
-                            }
-                            else{
+                        //        OutDT.AnalisSMP[Master].ElongMax = Math.Max(diameterMmM, diameterMmS);
+                        //        OutDT.AnalisSMP[Slave].ElongMax = Math.Max(diameterMmM, diameterMmS);
+                        //    }
+                        //    else{
 
-                                vision.ContaminationZise(OutDT.Img[ID_SEL_TYP].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[ID_SEL_TYP].Scale);
+                        //        vision.ContaminationZise(OutDT.Img[ID_SEL_TYP].Mat, (int)numericUpDownWhite.Value, (int)numericUpDown13.Value, out double diameterMmS, OutDT.AnalisSMP[ID_SEL_TYP].Scale);
 
-                                OutDT.AnalisSMP[Master].ElongMax = diameterMmS;
-                                OutDT.AnalisSMP[Slave].ElongMax = diameterMmS;
+                        //        OutDT.AnalisSMP[Master].ElongMax = diameterMmS;
+                        //        OutDT.AnalisSMP[Slave].ElongMax = diameterMmS;
 
-                            }
+                        //    }
                         
-                        }else {
+                        //}else {
 
 
-                            /// визначення типу по площі
-                            if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletAria)
-                            {
+                        //    /// визначення типу по площі
+                        //    if (SAV.DT.Analys.ClasSempl[OutDT.IdxName[ID_SEL_TYP]].PeletAria)
+                        //    {
                              
-                                     OutDT.AnalisSMP[ID_SEL_TYP].ElongMax = Math.Max(OutDT.AnalisSMP[Master].Aria, OutDT.AnalisSMP[Slave].Aria);
+                        //             OutDT.AnalisSMP[ID_SEL_TYP].ElongMax = Math.Max(OutDT.AnalisSMP[Master].Aria, OutDT.AnalisSMP[Slave].Aria);
                             
-                            }
-                           }
+                        //    }
+                        //   }
                      
 
 
@@ -2345,6 +2453,10 @@ STGS STGS = new STGS();
 
                 short IDx = 0;
                 short TypeALLCout = 0;
+
+                // Знаходимо індекс елемента GOOD для швиткої індентифікації в майбутньому
+                GridData.GoodIDX = SAV.DT.Analys.ClasSempl.FindIndex(obj => obj.Name.Contains(GridData.GOOD));
+
                 //Заповнення таблиці для поділу ВЕЛИКІ та МАЛЕНЬКІ семпли відносно типів.
                 foreach (var Sepl in pathSmpl){
 
@@ -2362,17 +2474,17 @@ STGS STGS = new STGS();
                     else
                     {
                         dataGridViewUnderType.RowTemplate.Height = 20;
-                        string Name = SAV.DT.Analys.ClasSempl[index].Name;
-                        double SamplSiz = SAV.DT.Analys.ClasSempl[index].SampleSize;
-                        //String NameSmaller = SAV.DT.Analys.ClasSempl[index].NameSmaller;
-                        //String NameLarged = SAV.DT.Analys.ClasSempl[index].NameLarged;
+                        string Name      = SAV.DT.Analys.ClasSempl[index].Name;
+                        double SamplSiz  = SAV.DT.Analys.ClasSempl[index].SampleSize;
+                        double PelletMin = SAV.DT.Analys.ClasSempl[index].PeletMin;
 
                         bool SubGroups    = SAV.DT.Analys.ClasSempl[index].SubGroups;
                         bool PelletInside = SAV.DT.Analys.ClasSempl[index].PeletInsid;
                         bool PelletAria   = SAV.DT.Analys.ClasSempl[index].PeletAria;
+                        
 
 
-                        dataGridViewUnderType.Rows.Add(Name, SamplSiz, SubGroups, PelletInside, PelletAria);
+                        dataGridViewUnderType.Rows.Add(Name, SamplSiz, SubGroups, PelletInside, PelletAria,PelletMin);
 
                         // Створення кореневого вузла
                         TreeNode rootNode = new TreeNode(Name);
@@ -4287,8 +4399,8 @@ STGS STGS = new STGS();
 
                 SAV.DT.Analys.ClasSempl[idx].Name = (string)dataGridViewUnderType.Rows[idx].Cells[0].Value;
                 SAV.DT.Analys.ClasSempl[idx].SampleSize = Convert.ToDouble(dataGridViewUnderType.Rows[idx].Cells[1].Value);
-               // SAV.DT.Analys.ClasSempl[idx].NameSmaller = (string)dataGridViewUnderType.Rows[idx].Cells[2].Value;
-                //SAV.DT.Analys.ClasSempl[idx].NameLarged = (string)dataGridViewUnderType.Rows[idx].Cells[3].Value;
+                SAV.DT.Analys.ClasSempl[idx].PeletMin= Convert.ToDouble(dataGridViewUnderType.Rows[idx].Cells[5].Value);
+
                 SAV.DT.Analys.ClasSempl[idx].SubGroups = (bool)dataGridViewUnderType.Rows[idx].Cells[2].Value;
                 SAV.DT.Analys.ClasSempl[idx].PeletInsid = (bool)dataGridViewUnderType.Rows[idx].Cells[3].Value;
                 SAV.DT.Analys.ClasSempl[idx].PeletAria  = (bool)dataGridViewUnderType.Rows[idx].Cells[4].Value;
@@ -4457,30 +4569,104 @@ STGS STGS = new STGS();
 
         }
 
-        int TimerEnbl = 15;
+
+
+
+
+      ushort TimerEnbl = 15;
+        int STOP_Count = 0;
         private void timer3_Tick_1(object sender, EventArgs e)
         {
             TimerEnbl--;
+            if ((TimerEnbl>10)) { TimerEnbl = 0; }
 
-            if (TimerEnbl == 0 ) {
+            if ((TimerEnbl == 0 )&& (StartButton.Text != "Stop Analysis")) {
 
                 timer3.Enabled = false;
                 Enabled = true;
                 IDtex.Text = " NO " ;
             }
-            else {
+            else {}
 
 
             IDtex.Text = " PROGRAM IS UNLOCKED - " + TimerEnbl.ToString(); 
 
 
 
+            
+
+
+
+              if(StartButton.Text == "Stop Analysis") {
+
+
+
+                if ((TimerEnbl == 0) && (STOP_Count ==0)) {
+               
+                USB_HID_VIBRATING_RES();
+                    STOP_Count = 1;
+                    TimerEnbl = 2;
+                 }
+
+
+                if ((TimerEnbl == 0) && (STOP_Count == 1))
+                {
+
+                    DLS.STOP_CAM();
+                    STOP_Count = 2;
+                    TimerEnbl = 3;
+                }
+
+                if ((TimerEnbl == 0) && (STOP_Count == 2))
+                {
+                    USB_HID.LIGHT.RES();
+                    USB_HID.FAN.SET();
+                    STOP_Count = 3;
+                    TimerEnbl = 4;
+                }
+
+
+                if ((TimerEnbl == 0) && (STOP_Count == 3))
+                {
+
+                    StartButton.Text = "Start Analysis";
+                    StatusLineMenu.Text = "To continue click 'Sort by Type'";
+                    StartButton.BackColor = Color.GreenYellow;
+                    ClearExperimentButton.Enabled = true;
+                    Save_Report_Button.Enabled = true;
+                    dataGridViewSempls.Enabled = true;
+                    StartButton.Enabled = true;
+                    StartButton.Enabled = true;
+                    STOP_Count = 0;
+                    timer3.Enabled = false;
+                    Enabled = true;
+                    IDtex.Text = " NO ";
+                }
+
+
             }
+           
 
 
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    
     }
